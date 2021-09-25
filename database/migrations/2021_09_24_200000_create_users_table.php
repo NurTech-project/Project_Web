@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             //Los campos donde se van almacenar las foreign keys
-            $table->unsignedBigInteger('roleId');
-            $table->unsignedBigInteger('ciudadId');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('ciudad_id');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('celular');
