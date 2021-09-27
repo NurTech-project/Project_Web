@@ -16,12 +16,13 @@ class CreatePiezasTable extends Migration
         Schema::create('piezas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('donante_id');
-            $table->string('nombre');
-            $table->string('detalle');
-            $table->string('estado');
-            $table->timestamps();
+            $table->string('nombre',150);
+            $table->string('detalle',150);
+            $table->string('estado')->nullable();
+            
+            $table->foreign('donante_id')->references('id')->on('donantes')->onUpdate('cascade');
 
-            $table->foreign('donante_id')->references('id')-> on('donantes')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 

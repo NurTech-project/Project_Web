@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoDonacionesTable extends Migration
+class CreateDistribuidorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateTipoDonacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_donaciones', function (Blueprint $table) {
+        Schema::create('distribuidors', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion');
+            $table->unsignedBigInteger('user_id');
+            $table->string('descripcion',200);
+            $table->string('disponibilidad')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreateTipoDonacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_donaciones');
+        Schema::dropIfExists('distribuidors');
     }
 }

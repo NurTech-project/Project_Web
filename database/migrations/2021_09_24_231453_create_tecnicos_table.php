@@ -16,11 +16,12 @@ class CreateTecnicosTable extends Migration
         Schema::create('tecnicos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('descripcion');
-            $table->string('disponibilidad');
-            $table->timestamps();
-
+            $table->string('descripcion',200);
+            $table->string('disponibilidad')->nullable();
+            
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

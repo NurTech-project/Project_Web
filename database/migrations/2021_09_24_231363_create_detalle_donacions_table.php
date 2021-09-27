@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetalleDonacionesTable extends Migration
+class CreateDetalleDonacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateDetalleDonacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_donaciones', function (Blueprint $table) {
+        Schema::create('detalle_donacions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('equipo_id');
-            $table->unsignedBigInteger('pieza_id');
-            $table->unsignedBigInteger('distribuidor_id');
-            $table->timestamps();
-
+            $table->unsignedBigInteger('equipo_id')->nullable();
+            $table->unsignedBigInteger('pieza_id')->nullable();
+            $table->unsignedBigInteger('distribuidor_id')->nullable();
+            
             $table->foreign('equipo_id')->references('id')->on('equipos')->onUpdate('cascade');
             $table->foreign('pieza_id')->references('id')->on('piezas')->onUpdate('cascade');
-            $table->foreign('distribuidor_id')->references('id')->on('distribuidores')->onUpdate('cascade');
+            $table->foreign('distribuidor_id')->references('id')->on('distribuidors')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 
@@ -33,6 +34,6 @@ class CreateDetalleDonacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalle_donaciones');
+        Schema::dropIfExists('detalle_donacions');
     }
 }

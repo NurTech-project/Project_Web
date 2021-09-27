@@ -16,11 +16,12 @@ class CreateHistoriasTable extends Migration
         Schema::create('historias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('administrador_id');
-            $table->string('imagen');
-            $table->string('descripcion');
-            $table->timestamps();
+            $table->string('imagen')->nullable();
+            $table->string('descripcion',300);
+           
+            $table->foreign('administrador_id')->references('id')->on('administradors')->onUpdate('cascade');
 
-            $table->foreign('administrador_id')->references('id')->on('administradores')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 

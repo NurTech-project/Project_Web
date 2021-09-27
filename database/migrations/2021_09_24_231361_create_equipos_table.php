@@ -16,15 +16,16 @@ class CreateEquiposTable extends Migration
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('donante_id');
-            $table->string('sistema_operativo');
-            $table->string('procesador');
-            $table->string('ram');
-            $table->string('almacenamiento');
-            $table->string('detalle');
-            $table->string('estado');
-            $table->timestamps();
-
+            $table->string('sistema_operativo',50);
+            $table->string('procesador',100);
+            $table->string('ram',100);
+            $table->string('almacenamiento',100);
+            $table->string('detalle',200);
+            $table->string('estado')->nullable();
+            
             $table->foreign('donante_id')->references('id')-> on('donantes')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 
