@@ -9,15 +9,15 @@ class DetalleDonacion extends Model
 {
     use HasFactory;
 
-    public function distribuidores(){
+    public function distribuidor(){
         return $this->belongsTo(Distribuidor::class);
     }
 
-    public function equipos(){
+    public function equipo(){
         return $this->belongsTo(Equipo::class);
     }
     
-    public function piezas(){
+    public function pieza(){
         return $this->belongsTo(Pieza::class);
     }
 
