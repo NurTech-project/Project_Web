@@ -15,11 +15,15 @@ class CreateDetalleEntregaDonacionsTable extends Migration
     {
         Schema::create('detalle_entrega_donacions', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_entrega')->nullable();
+            $table->time('hora_entrega')->nullable();
+            $table->string('estado_distribuidor')->nullable();
+            $table->string('estado_beneficiario')->nullable();
+            $table->string('estado_tecnico')->nullable();
+            $table->unsignedBigInteger('diagnostico_id')->nullable();
             $table->unsignedBigInteger('administrador_id')->nullable();
             $table->unsignedBigInteger('beneficiario_id')->nullable();
             $table->unsignedBigInteger('distribuidor_id')->nullable();
-            $table->unsignedBigInteger('diagnostico_id')->nullable();
-            $table->string('estado')->nullable();
             $table->timestamps();
 
             $table->foreign('administrador_id')-> references('id')-> on('administradors')->onUpdate('cascade');
