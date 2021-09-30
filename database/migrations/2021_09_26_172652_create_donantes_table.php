@@ -16,12 +16,12 @@ class CreateDonantesTable extends Migration
         Schema::create('donantes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('tipo_donacion_id');
-            $table->string('fecha_entrega');
-            $table->time('hora_entrega');
+            $table->unsignedBigInteger('tipo_donacion_id')->nullable();
+            $table->string('fecha_entrega')->nullable();
+            $table->time('hora_entrega')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('tipo_donacion_id')->references('id')->on('tipo_donaciones')->onUpdate('cascade');
+            $table->foreign('tipo_donacion_id')->references('id')->on('tipo_donacions')->onUpdate('cascade');
             
         });
     }
