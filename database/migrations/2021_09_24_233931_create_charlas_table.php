@@ -16,11 +16,11 @@ class CreateCharlasTable extends Migration
         Schema::create('charlas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('administrador_id');
-            $table->string('link_video');
-            $table->string('descripcion');
+            $table->string('link_video')->nullable();
+            $table->string('descripcion',300);
             $table->timestamps();
 
-            $table->foreign('administrador_id')->references('id')->on('administradores')->onUpdate('cascade');
+            $table->foreign('administrador_id')->references('id')->on('administradors')->onUpdate('cascade');
         });
     }
 

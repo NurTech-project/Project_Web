@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDistribuidoresTable extends Migration
+class CreateDistribuidorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDistribuidoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('distribuidores', function (Blueprint $table) {
+        Schema::create('distribuidors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('descripcion');
-            $table->string('disponibilidad');
+            $table->string('descripcion',200);
+            $table->string('disponibilidad')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
@@ -31,6 +31,6 @@ class CreateDistribuidoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('distribuidores');
+        Schema::dropIfExists('distribuidors');
     }
 }

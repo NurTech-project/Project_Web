@@ -16,9 +16,9 @@ class CreatePiezasTable extends Migration
         Schema::create('piezas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('donante_id');
-            $table->string('nombre');
-            $table->string('detalle');
-            $table->string('estado');
+            $table->string('nombre',150);
+            $table->string('detalle',150);
+            $table->string('estado')->nullable();
             $table->timestamps();
 
             $table->foreign('donante_id')->references('id')-> on('donantes')->onUpdate('cascade');

@@ -16,12 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id(); 
             $table->unsignedBigInteger('role_id');
-            $table->unsignedBigInteger('ciudad_id');
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('celular');
-            $table->string('direccion');
-            $table->string('email')->unique();
+            $table->unsignedBigInteger('canton_id')->nullable();
+            $table->string('nombre',50)->nullable();
+            $table->string('apellido',50)->nullable();
+            $table->string('celular')->nullable();
+            $table->string('direccion',50)->nullable();
+            $table->string('email',50)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             // Referencia hacia las foreing Key
 
             $table->foreign('role_id')-> references('id')-> on('roles')->onUpdate('cascade');
-            $table->foreign('ciudad_id')-> references('id')-> on('ciudades')->onUpdate('cascade');
+            $table->foreign('canton_id')-> references('id')-> on('cantons')->onUpdate('cascade');
         });
     }
             
