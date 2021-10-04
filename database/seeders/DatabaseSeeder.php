@@ -33,8 +33,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Role::factory(5)->create();
-        
-        //Provincias
         Provincia::factory()->create(['descripcion'=>'Azuay']);
         Provincia::factory()->create(['descripcion'=>'Bolivar']);
         Provincia::factory()->create(['descripcion'=>'Cañar']);
@@ -60,7 +58,6 @@ class DatabaseSeeder extends Seeder
         Provincia::factory()->create(['descripcion'=>'Santo Domingo de los Tsachilas']);
         Provincia::factory()->create(['descripcion'=>'Santa Elena']);
 
-        //Cantones
         Canton::factory()->create(['provincia_id'=>'1','descripcion'=>'Cuenca']);
         Canton::factory()->create(['provincia_id'=>'1','descripcion'=>'Gualaceo']);
         Canton::factory()->create(['provincia_id'=>'1','descripcion'=>'Nabón']);
@@ -303,22 +300,37 @@ class DatabaseSeeder extends Seeder
         Canton::factory()->create(['provincia_id'=>'24','descripcion'=>'Santa Elena']);
         Canton::factory()->create(['provincia_id'=>'24','descripcion'=>'La Libertad']);
         Canton::factory()->create(['provincia_id'=>'24','descripcion'=>'Salinas']);
-        
+
         TipoDonacion::factory(2)->create();
+
         User::factory(5)->create();
+
         Donante::factory(5)->create();
+
         Distribuidor::factory(5)->create();
+
         Equipo::factory(5)->create();
+
         Pieza::factory(5)->create();
+
         DetalleDonacion::factory(5)->create();
+
         Beneficiario::factory(5)->create();
+
         Tecnico::factory(5)->create();
+
         Administrador::factory(5)->create();
+
         Historia::factory(5)->create();
+
         Charla::factory(5)->create();
+
         DetalleRecepcionTecnico::factory(5)->create();
+
         Diagnostico::factory(5)->create();
+
         DetalleEntregaDonacion::factory(5)->create();
+
     }
 }
 

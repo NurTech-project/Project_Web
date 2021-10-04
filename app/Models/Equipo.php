@@ -10,7 +10,7 @@ class Equipo extends Model
     use HasFactory;
 
     public function donante(){
-     return $this->belongsTo(Donante::class);
+        return $this->belongsTo(Donante::class);
     }
 
     public function detalleDonaciones(){

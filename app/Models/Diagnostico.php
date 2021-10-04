@@ -15,5 +15,5 @@ class Diagnostico extends Model
 
     public function detalleEntregaDonaciones(){
         return $this->hasMany(DetalleEntregaDonacion::class);
-       }
+    }
 }

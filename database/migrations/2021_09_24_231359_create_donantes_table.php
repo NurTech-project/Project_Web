@@ -19,11 +19,12 @@ class CreateDonantesTable extends Migration
             $table->unsignedBigInteger('tipo_donacion_id')->nullable();
             $table->date('fecha_entrega')->nullable();
             $table->time('hora_entrega')->nullable();
-            $table->timestamps();
+            
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
-            $table ->foreign('tipo_donacion_id')->references('id') ->on('tipo_donacions')->onUpdate('cascade');
+            $table ->foreign('tipo_donacion_id')->references('id')->on('tipo_donacions')->onUpdate('cascade');
             
+            $table->timestamps();
         });
     }
 

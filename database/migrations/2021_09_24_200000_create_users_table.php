@@ -14,7 +14,8 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id(); 
+            $table->id();
+            //Los campos donde se van almacenar las foreign keys
             $table->unsignedBigInteger('role_id');
             $table->unsignedBigInteger('canton_id')->nullable();
             $table->string('nombre',50)->nullable();
@@ -22,18 +23,26 @@ class CreateUsersTable extends Migration
             $table->string('celular')->nullable();
             $table->string('direccion',50)->nullable();
             $table->string('email',50)->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+
+            //foreign keys
+            $table->foreign('role_id')->references('id')->on('roles')
+                    ->onUpdate('cascade');
+
+            $table->foreign('canton_id')->references('id')->on('cantons')
+                ->onUpdate('cascade');
+
+
             $table->timestamps();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
 
-            // Referencia hacia las foreing Key
+            
 
-            $table->foreign('role_id')-> references('id')-> on('roles')->onUpdate('cascade');
-            $table->foreign('canton_id')-> references('id')-> on('cantons')->onUpdate('cascade');
+
         });
     }
-            
+
     /**
      * Reverse the migrations.
      *

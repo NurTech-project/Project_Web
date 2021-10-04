@@ -18,11 +18,12 @@ class CreateDetalleDonacionsTable extends Migration
             $table->unsignedBigInteger('equipo_id')->nullable();
             $table->unsignedBigInteger('pieza_id')->nullable();
             $table->unsignedBigInteger('distribuidor_id')->nullable();
-            $table->timestamps();
-
+            
             $table->foreign('equipo_id')->references('id')->on('equipos')->onUpdate('cascade');
             $table->foreign('pieza_id')->references('id')->on('piezas')->onUpdate('cascade');
             $table->foreign('distribuidor_id')->references('id')->on('distribuidors')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

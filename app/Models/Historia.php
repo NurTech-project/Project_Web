@@ -10,6 +10,6 @@ class Historia extends Model
     use HasFactory;
 
     public function administrador(){
-     return $this->belongsTo(Administrador::class);
+        return $this->belongsTo(Administrador::class);
     }
 }

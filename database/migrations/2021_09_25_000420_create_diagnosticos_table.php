@@ -19,10 +19,12 @@ class CreateDiagnosticosTable extends Migration
             $table->unsignedBigInteger('tecnico_id')->nullable();
             $table->string('detalle',300);
             $table->string('estado')->nullable();
-            $table->timestamps();
 
             $table->foreign('detalle_recepcion_id')-> references('id')-> on('detalle_recepcion_tecnicos')->onUpdate('cascade');
             $table->foreign('tecnico_id')-> references('id')-> on('tecnicos')->onUpdate('cascade');
+
+            
+            $table->timestamps();
         });
     }
 

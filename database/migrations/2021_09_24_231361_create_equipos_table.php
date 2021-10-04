@@ -22,9 +22,10 @@ class CreateEquiposTable extends Migration
             $table->string('almacenamiento',100);
             $table->string('detalle',200);
             $table->string('estado')->nullable();
-            $table->timestamps();
-
+            
             $table->foreign('donante_id')->references('id')-> on('donantes')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

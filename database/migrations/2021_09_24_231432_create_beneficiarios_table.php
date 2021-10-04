@@ -19,9 +19,10 @@ class CreateBeneficiariosTable extends Migration
             $table->string('descripcion',150);
             $table->string('estado')->nullable();
             $table->string('prioridad',50);
-            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

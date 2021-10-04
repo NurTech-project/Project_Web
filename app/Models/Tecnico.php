@@ -10,10 +10,10 @@ class Tecnico extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class);  
+        return $this->belongsTo(User::class);
     }
-    
-    public function detalleRecepcionTecnico(){
-      return $this->hasMany(DetalleRecepcionTecnico::class);
+
+    public function detalleRecepcionTecnicos(){
+        return $this->hasMany(DetalleRecepcionTecnico::class);
     }
 }

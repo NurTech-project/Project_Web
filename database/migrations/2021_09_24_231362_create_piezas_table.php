@@ -19,9 +19,10 @@ class CreatePiezasTable extends Migration
             $table->string('nombre',150);
             $table->string('detalle',150);
             $table->string('estado')->nullable();
-            $table->timestamps();
+            
+            $table->foreign('donante_id')->references('id')->on('donantes')->onUpdate('cascade');
 
-            $table->foreign('donante_id')->references('id')-> on('donantes')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 

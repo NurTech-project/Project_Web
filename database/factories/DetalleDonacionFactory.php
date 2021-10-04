@@ -24,7 +24,7 @@ class DetalleDonacionFactory extends Factory
         return [
             'equipo_id'=>$this->faker->randomElement([1,2,3,4,5]),
             'pieza_id'=>$this->faker->randomElement([1,2,3,4,5]),
-            'distribuidor_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'distribuidor_id'=>$this->faker->randomElement([1,2,3,4,5])
         ];
     }
 }

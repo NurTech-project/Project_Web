@@ -25,7 +25,7 @@ class DiagnosticoFactory extends Factory
             'detalle_recepcion_id'=>$this->faker->randomElement([1,2,3,4,5]),
             'tecnico_id'=>$this->faker->randomElement([1,2,3,4,5]),
             'detalle'=>$this->faker->sentence($nbWords = 10, $variableNbWords = true),
-            'estado'=>$this->faker->word,
+            'estado'=>$this->faker->word
         ];
     }
 }

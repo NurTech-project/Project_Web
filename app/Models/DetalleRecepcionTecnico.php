@@ -10,19 +10,18 @@ class DetalleRecepcionTecnico extends Model
     use HasFactory;
 
     public function detalleDonacion(){
-      return $this->belongsTo(DetalleDonacion::class);
-  }
+        return $this->belongsTo(DetalleDonacion::class);
+    }
 
     public function distribuidor(){
         return $this->belongsTo(Distribuidor::class);
-       }
-    
+    }
+
     public function tecnico(){
-      return $this->belongsTo(Tecnico::class);
+        return $this->belongsTo(Tecnico::class);
     }
 
     public function diagnosticos(){
-      return $this->hasMany(Diagnostico::class);
-     }
-
+        return $this->hasMany(Diagnostico::class);
+    }
 }

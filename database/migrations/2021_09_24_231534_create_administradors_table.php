@@ -17,9 +17,10 @@ class CreateAdministradorsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('estado')->nullable();
-            $table->timestamps();
-
+            
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

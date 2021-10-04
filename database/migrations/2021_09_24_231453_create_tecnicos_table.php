@@ -18,9 +18,10 @@ class CreateTecnicosTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('descripcion',200);
             $table->string('disponibilidad')->nullable();
-            $table->timestamps();
-
+            
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

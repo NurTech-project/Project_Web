@@ -22,8 +22,9 @@ class TipoDonacionFactory extends Factory
     public function definition()
     {
         return [
-            'descripcion'=>$this->faker->unique()->randomElement(
-                $array=array('Equipo','Pieza')),
+            'descripcion' => $this->faker->unique()->randomElement(
+                $array = array ('Pieza','Equipo')
+            ),
         ];
     }
 }

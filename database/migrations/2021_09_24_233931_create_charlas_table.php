@@ -18,9 +18,10 @@ class CreateCharlasTable extends Migration
             $table->unsignedBigInteger('administrador_id');
             $table->string('link_video')->nullable();
             $table->string('descripcion',300);
-            $table->timestamps();
 
             $table->foreign('administrador_id')->references('id')->on('administradors')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 

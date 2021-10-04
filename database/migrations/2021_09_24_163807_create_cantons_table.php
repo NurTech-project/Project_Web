@@ -17,9 +17,10 @@ class CreateCantonsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('provincia_id')->nullable();
             $table->string('descripcion',50);
-            $table->timestamps();
             //Foreing Key
             $table->foreign('provincia_id')-> references('id')-> on('provincias')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 
