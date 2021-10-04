@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Support\Facades\DB;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -70,5 +72,85 @@ class User extends Authenticatable
 
     public function administrador(){
         return $this->hasOne(Administrador::class);
+    }
+
+    public function isTecnico()
+    {
+        $roles=DB::table('roles')->get();
+        $users=DB::table('users')->get();
+        foreach ($roles as $role)
+        {
+            foreach ($users as $user){
+                if ($this->email == $user->email && 
+                $user->role_id == $role->id && $role->descripcion == 'Técnico')
+                {
+                    return true;
+                }
+            }
+        }
+    }
+
+    public function isBeneficiario()
+    {
+        $roles=DB::table('roles')->get();
+        $users=DB::table('users')->get();
+        foreach ($roles as $role)
+        {
+            foreach ($users as $user){
+                if ($this->email == $user->email && 
+                $user->role_id == $role->id && $role->descripcion == 'Beneficiario')
+                {
+                    return true;
+                }
+            }
+        }
+    }
+
+    public function isDonante()
+    {
+        $roles=DB::table('roles')->get();
+        $users=DB::table('users')->get();
+        foreach ($roles as $role)
+        {
+            foreach ($users as $user){
+                if ($this->email == $user->email && 
+                $user->role_id == $role->id && $role->descripcion == 'Donante')
+                {
+                    return true;
+                }
+            }
+        }
+    }
+
+    public function isDistribuidor()
+    {
+        $roles=DB::table('roles')->get();
+        $users=DB::table('users')->get();
+        foreach ($roles as $role)
+        {
+            foreach ($users as $user){
+                if ($this->email == $user->email && 
+                $user->role_id == $role->id && $role->descripcion == 'Distribuidor')
+                {
+                    return true;
+                }
+            }
+        }
+    }
+
+    public function isAdministrador()
+    {
+        $roles=DB::table('roles')->get();
+        $users=DB::table('users')->get();
+        foreach ($roles as $role)
+        {
+            foreach ($users as $user){
+                if ($this->email == $user->email && 
+                $user->role_id == $role->id && $role->descripcion == 'Administrador')
+                {
+                    return true;
+                }
+            }
+        }
     }
 }
