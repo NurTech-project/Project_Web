@@ -1,4 +1,4 @@
-<?php
+?php
 
 namespace App\Http\Controllers;
 
@@ -11,14 +11,11 @@ class TecnicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-=======
     public function vista()
     {
         return view('tecnico.dashboard');
     }
 
->>>>>>> develop
     public function index()
     {
         //
@@ -32,10 +29,6 @@ class TecnicoController extends Controller
     public function create()
     {
         //
-<<<<<<< HEAD
-        return view('tecnico.create');
-=======
->>>>>>> develop
     }
 
     /**

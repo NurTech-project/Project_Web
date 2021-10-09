@@ -19,6 +19,7 @@ class TipoDonacionController extends Controller
         return view('tipoDonacion.index', $dates);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
