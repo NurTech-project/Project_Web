@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\TecnicoController;
 use App\Http\Controllers\TipoDonacionController;
 
-=======
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\BeneficiarioController;
@@ -19,8 +17,7 @@ use App\Http\Controllers\DonanteController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\PiezaController;
-use App\Http\Controllers\TecnicoController;
->>>>>>> develop
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +32,6 @@ use App\Http\Controllers\TecnicoController;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 //>Tecnic rute's 
 /*
 Route::get('/tecnic', function(){
@@ -45,7 +41,6 @@ Route::get('tecnic/create', [TecnicoController::class,'create']);
 */
 Route::resource('tecnic', TecnicoController::class);
 Route::resource('typeDonation', TipoDonacionController::class);
-=======
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -67,4 +62,3 @@ Route::get('/tecnico/dashboard', [TecnicoController::class, 'vista'])->middlewar
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
 
 require __DIR__.'/auth.php';
->>>>>>> develop
