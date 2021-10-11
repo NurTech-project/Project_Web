@@ -12,7 +12,8 @@ class Tecnico extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function detalleRecepcionTecnico(){
+
+    public function detalleRecepcionTecnicos(){
         return $this->hasMany(DetalleRecepcionTecnico::class);
     }
 }

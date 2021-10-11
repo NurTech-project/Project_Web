@@ -22,10 +22,10 @@ class PiezaFactory extends Factory
     public function definition()
     {
         return [
-            'donante_id'=>$this->faker->randomElement(1,2,3,4,5),
-            'nombre'=>$this->faker->sentence($nbWords = 2, $variableNbWords = true),
-            'detalle'=>$this->faker->sentence($nbWords = 4, $variableNbWords = true),
-            'estado'=>$this->faker->word,
+            'donante_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'nombre'=>$this->faker->sentence($nbWords =2, $variableNbWords = true),
+            'detalle'=>$this->faker->sentence($nbWords= 4, $variableNbWords = true),
+            'estado'=>$this->faker->word
         ];
     }
 }

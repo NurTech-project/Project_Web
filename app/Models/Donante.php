@@ -9,20 +9,20 @@ class Donante extends Model
 {
     use HasFactory;
 
-    //relaciones
     public function user(){
-    return $this->belongsTo(User::class);
-
+        return $this->belongsTo(User::class);
     }
+
     public function equipos(){
-    return $this->hasMany(Equipo::class);
+        return $this->hasMany(Equipo::class);
+    }
 
-    }
     public function piezas(){
-    return $this->hasMany(Pieza::class);
-        
+        return $this->hasMany(Pieza::class);
     }
+
     public function tipoDonacion(){
-    return $this->belongsTo(TipoDonacion::class);
+        return $this->belongsTo(TipoDonacion::class);
     }
+
 }

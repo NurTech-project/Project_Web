@@ -22,9 +22,9 @@ class CharlaFactory extends Factory
     public function definition()
     {
         return [
-            'administrador_id'=>$this->faker->randomElement(1,2,3,4,5),
-            'link_video'=>$this->faker->url,
-            'descripcion'=>$this->faker->sentence($nbWords = 10, $variableNbWords = true),
+            'administrador_id' =>$this->faker->randomElement([1,2,3,4,5]),
+            'link_video' => $this->faker->url,
+            'descripcion' =>$this->faker->sentence($nbWords =10, $variableNbWords = true),
         ];
     }
 }

@@ -22,10 +22,10 @@ class DonanteFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>$this->faker->randomElement(1,2,3,4,5),
-            'tipo_donacion_id'=>$this->faker->randomElement(1,2),
-            'fecha_entrega'=>$this->faker->date($format='Y-m-d',$max='now'),
-            'hora_entrega'=>$this->faker->time($format='H:i:s',$max='now'),
+            'user_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'tipo_donacion_id'=>$this->faker->randomElement([1,2]),
+            'fecha_entrega'=>$this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'hora_entrega'=>$this->faker->time($format = 'H:i:s', $max = 'now')
         ];
     }
 }

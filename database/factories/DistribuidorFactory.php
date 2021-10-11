@@ -22,9 +22,9 @@ class DistribuidorFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>$this->faker->randomElement(1,2,3,4,5),
-            'descripcion'=>$this->faker->sentence($nbWords = 10, $variableNbWords = true),
-            'disponibilidad'=>$this->faker->word,
+            'user_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'descripcion'=>$this->faker->sentence($nbWords =10, $nbWords = 10, $variableNbWords = true),
+            'disponibilidad'=>$this->faker->word
         ];
     }
 }

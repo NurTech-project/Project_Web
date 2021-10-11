@@ -11,17 +11,16 @@ class Distribuidor extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
     public function detalleDonaciones(){
-        return $this->hasMany(DetalleDonaciones::class);
-
+        return $this->hasMany(DetalleDonacion::class);
     }
+
     public function detalleRecepcionTecnicos(){
-        return $this->hasMany(DetalleRecepcionTecnicos::class);
-
+        return $this->hasMany(DetalleRecepcionTecnico::class);
     }
+
     public function detalleEntregaDonaciones(){
-        return $this->hasMany(DetalleEntregaDonaciones::class);
-
+        return $this->hasMany(DetalleEntregaDonacion::class);
     }
-    
 }

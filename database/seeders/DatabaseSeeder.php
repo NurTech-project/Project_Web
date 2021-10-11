@@ -23,7 +23,6 @@ use \App\Models\Diagnostico;
 use \App\Models\DetalleEntregaDonacion;
 
 
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -34,7 +33,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Role::factory(5)->create();
-        
 
         Provincia::factory()->create(['descripcion'=>'Azuay']);
         Provincia::factory()->create(['descripcion'=>'Bolivar']);
@@ -305,29 +303,35 @@ class DatabaseSeeder extends Seeder
         Canton::factory()->create(['provincia_id'=>'24','descripcion'=>'La Libertad']);
         Canton::factory()->create(['provincia_id'=>'24','descripcion'=>'Salinas']);
 
-
-
         TipoDonacion::factory(2)->create();
+
         User::factory(5)->create();
+
         Donante::factory(5)->create();
+
         Distribuidor::factory(5)->create();
+
         Equipo::factory(5)->create();
+
         Pieza::factory(5)->create();
+
         DetalleDonacion::factory(5)->create();
+
         Beneficiario::factory(5)->create();
+
         Tecnico::factory(5)->create();
+
         Administrador::factory(5)->create();
+
         Historia::factory(5)->create();
+
         Charla::factory(5)->create();
+
         DetalleRecepcionTecnico::factory(5)->create();
+
         Diagnostico::factory(5)->create();
+
         DetalleEntregaDonacion::factory(5)->create();
-
-
-
-
-
-
 
     }
 }

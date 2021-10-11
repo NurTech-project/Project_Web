@@ -16,9 +16,11 @@ class DetalleRecepcionTecnico extends Model
     public function distribuidor(){
         return $this->belongsTo(Distribuidor::class);
     }
+
     public function tecnico(){
         return $this->belongsTo(Tecnico::class);
     }
+
     public function diagnosticos(){
         return $this->hasMany(Diagnostico::class);
     }

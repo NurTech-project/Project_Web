@@ -22,8 +22,8 @@ class AdministradorFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>$this->faker->randomElement(1,2,3,4,5),
-            'estado'=>$this->faker->word,
+            'user_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'estado'=>$this->faker->word
         ];
     }
 }

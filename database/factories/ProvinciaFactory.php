@@ -22,8 +22,7 @@ class ProvinciaFactory extends Factory
     public function definition()
     {
         return [
-            'descripcion'=>$this->faker->word,
-
+            'descripcion'=>$this->faker->word
         ];
     }
 }

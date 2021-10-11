@@ -9,7 +9,7 @@ class TipoDonacion extends Model
 {
     use HasFactory;
 
-    public function donante(){
+    public function donantes(){
         return $this->hasMany(Donante::class);
     }
 }

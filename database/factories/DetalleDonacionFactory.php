@@ -22,10 +22,10 @@ class DetalleDonacionFactory extends Factory
     public function definition()
     {
         return [
-            'equipo_id'=>$this->faker->randomElement(1,2,3,4,5),
-            'pieza_id'=>$this->faker->randomElement(1,2,3,4,5),
-            'distribuidor_id'=>$this->faker->randomElement(1,2,3,4,5),
-
+            'equipo_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'pieza_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'distribuidor_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'estado'=>$this->faker->word
         ];
     }
 }
