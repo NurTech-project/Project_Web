@@ -16,17 +16,6 @@ class CreateEquiposTable extends Migration
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('donante_id');
-<<<<<<< HEAD
-            $table->string('sistema_operativo');
-            $table->string('procesador');
-            $table->string('ram');
-            $table->string('almacenamiento');
-            $table->string('detalle');
-            $table->string('estado');
-            $table->timestamps();
-
-            $table->foreign('donante_id')->references('id')-> on('donantes')->onUpdate('cascade');
-=======
             $table->string('sistema_operativo',50);
             $table->string('procesador',100);
             $table->string('ram',100);
@@ -37,7 +26,6 @@ class CreateEquiposTable extends Migration
             $table->foreign('donante_id')->references('id')-> on('donantes')->onUpdate('cascade');
 
             $table->timestamps();
->>>>>>> f970313c289b55d6fa7dd1e0b738778672534ccd
         });
     }
 

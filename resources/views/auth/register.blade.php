@@ -1,3 +1,4 @@
+<script type="text/javascript" src="{{ asset('resources/js/cantones.js') }}"></script>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -28,7 +29,7 @@
               <div>
                 <x-label for="provincia_id" :value="__('Provincia')" />
 
-                <select id="provincia_id" name="provincia_id" class="form-control mb-2">
+                <select id="provincia_id" name="provincia_id" class="form-control mb-2" >
                 <option>------Seleccionar------</option>
                 @foreach($provincias as $provincia)
                 <option value="{{ $provincia->id }}" name="provincia_id">{{ $provincia->descripcion }}</option>
@@ -43,7 +44,7 @@
                 <x-label for="canton_id" :value="__('Cantón')" />
 
                 <select id="canton_id" name="canton_id" class="form-control mb-2">
-                <option>------Seleccionar------</option>
+<                <option>------Seleccionar------</option>
                 @foreach($cantones as $canton)
                 <option value="{{ $canton->cantonId }}" name="canton_id">{{ $canton->cantonDescripcion }}</option>
                 @endforeach
@@ -118,3 +119,6 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+<section>
+
+</section>

@@ -79,11 +79,13 @@ class RegisteredUserController extends Controller
 
         
     }
+     public function canton(){
+        $q       = trim(\request('q'));
+        $results = Cantons::where('nombre', 'LIKE', '%' . $q . '%')->take(15)->get();
+    
+        return Response::json($results);
+    }
 
-    // public function capturarProvincia(Request $request){
-    //     $cantones=DB::table('cantons')->get();
-    //     if($reques == cantones->provincia_id){
-            
-    //     }
-    // }
-}
+    
+     }
+
