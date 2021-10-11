@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Canton extends Model
 {
     use HasFactory;
-
     public function users(){
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class)->withTimeStamps();
     }
-
-    public function provincias(){
-        return $this->belongsTo(Provincias::class);
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class);
     }
 }

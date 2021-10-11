@@ -22,12 +22,13 @@ class EquipoFactory extends Factory
     public function definition()
     {
         return [
-            'donante_id'=>$this->faker->randomElement([1,2,3,4,5]),
-            'sistema_operativo'=>$this->faker->sentence($nbWords = 2, $variableNbWords = true),
-            'procesador'=>$this->faker->sentence($nbWords = 3, $variableNbWords = true),
-            'ram'=>$this->faker->sentence($nbWords = 2, $variableNbWords = true),
-            'almacenamiento'=>$this->faker->sentence($nbWords = 2, $variableNbWords = true),
-            'detalle'=>$this->faker->sentence($nbWords = 5, $variableNbWords = true),
+            'donante_id' =>$this->faker->randomElement([1,2,3,4,5]),
+            'sistema_operativo'=>$this->faker->sentence($nbWords =2, $variableNbWords = true),
+            'procesador'=>$this->faker->sentence($nbWords =3, $variableNbWords = true),
+            'ram'=>$this->faker->sentence($nbWords =2, $variableNbWords = true),
+            'almacenamiento'=>$this->faker->sentence($nbWords =2, $variableNbWords = true),
+            'detalle'=>$this->faker->sentence($nbWords =5, $variableNbWords = true),
+            'estado'=>$this->faker->word
         ];
     }
 }

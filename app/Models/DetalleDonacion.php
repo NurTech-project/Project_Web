@@ -16,12 +16,13 @@ class DetalleDonacion extends Model
     public function equipo(){
         return $this->belongsTo(Equipo::class);
     }
-
+    
     public function pieza(){
         return $this->belongsTo(Pieza::class);
     }
 
     public function detalleRecepcionTecnicos(){
-        return $this->belongsTo(DetalleRecepcionTecnico::class);
+        return $this->hasMany(DetalleRecepcionTecnico::class);
     }
+
 }

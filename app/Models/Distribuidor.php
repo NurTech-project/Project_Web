@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Distribuidor extends Model
 {
     use HasFactory;
-
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -22,6 +21,6 @@ class Distribuidor extends Model
     }
 
     public function detalleEntregaDonaciones(){
-        return $this->hasMany(DetalleEntregaDonaciones::class);
+        return $this->hasMany(DetalleEntregaDonacion::class);
     }
 }

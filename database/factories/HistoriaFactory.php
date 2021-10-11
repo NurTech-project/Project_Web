@@ -22,9 +22,9 @@ class HistoriaFactory extends Factory
     public function definition()
     {
         return [
-            'administrador'=>$this->faker->randomElement([1,2,3,4,5]),
-            'imagen'=>$this->faker->imageUrl($width = 640, $heigth = 400),
-            'descripcion'=>$this->faker->sentence($nbWords = 4, $variableNbWords = true),
+            'administrador_id'=>$this->faker->randomElement([1,2,3,4,5]),
+            'imagen'=>$this->faker->imageUrl($width = 640, $height = 480),
+            'descripcion'=>$this->faker->sentence($nbWords =4, $variableNbWords = true)
         ];
     }
 }

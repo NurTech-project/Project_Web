@@ -10,7 +10,7 @@ class Diagnostico extends Model
     use HasFactory;
 
     public function detalleRecepcionTecnico(){
-        return $this->belongsTo(DetalleTRecepcionTecnico::class);
+        return $this->belongsTo(DetalleRecepcionTecnico::class);
     }
 
     public function detalleEntregaDonaciones(){
