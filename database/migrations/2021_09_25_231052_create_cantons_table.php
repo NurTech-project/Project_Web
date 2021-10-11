@@ -20,7 +20,7 @@ class CreateCantonsTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('provinciaId')->references('id')->on('provincias')->onUpdate('cascade');
+            $table->foreign('provincia_id')->references('id')->on('provincias')->onUpdate('cascade');
         });
     }
 

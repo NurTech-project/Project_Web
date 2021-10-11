@@ -21,11 +21,12 @@ class CreateDetalleRecepcionTecnicosTable extends Migration
             $table->date('fecha')->nullable();
             $table->time('hora')->nullable();
             $table->string('estado')->nullable();
-            $table->timestamps();
 
             $table->foreign('tecnico_id')->references('id')->on('tecnicos')->onUpdate('cascade');
             $table->foreign('distribuidor_id')->references('id')->on('distribuidors')->onUpdate('cascade');
-            $table->foreign('detalle_donacion_id')->references('id')->on('detalle_donaciones')->onUpdate('cascade');
+            $table->foreign('detalle_donacion_id')->references('id')->on('detalle_donacions')->onUpdate('cascade');
+
+            $table->timestamps();
         });
     }
 
