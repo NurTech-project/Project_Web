@@ -8,11 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\DB;
 
->>>>>>> e523e9afa72da0dada491e6b9fa6778ee7d0a48a
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
