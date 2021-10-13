@@ -27,7 +27,11 @@ use App\Http\Controllers\TecnicoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.home');
+});
+
+Route::get('/home/ser-voluntario', function () {
+    return view('home.ser-voluntario');
 });
 
 Route::get('/dashboard', function () {
