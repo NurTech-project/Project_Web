@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TecnicoController;
-use App\Http\Controllers\TipoDonacionController;
+//use App\Http\Controllers\TipoDonacionController;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdministradorController;
@@ -39,8 +39,7 @@ Route::get('/tecnic', function(){
 });
 Route::get('tecnic/create', [TecnicoController::class,'create']);
 */
-Route::resource('tecnic', TecnicoController::class);
-Route::resource('typeDonation', TipoDonacionController::class);
+;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -60,5 +59,19 @@ Route::get('/tecnico/dashboard', [TecnicoController::class, 'vista'])->middlewar
 
 //Rutas de Administrador
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
+
+//Ruta Donación 
+/*Route::get('/donante/create', [DonanteController::class, 'create'])
+                ->middleware(['auth'])
+                ->name('donante.create');
+
+Route::post('/donante/create', [DonanteController::class, 'store'])
+                ->middleware(['auth'])
+                ->name('donante.store');*/
+Route::resource('/donante', DonanteController::class);
+//Ruta equipo
+Route::resource('/donante/equipo', EquipoController::class)->middleware(['auth']);
+//Ruta pieza
+Route::resource('/donante/pieza', PiezaController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
