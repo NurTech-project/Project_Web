@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-
-=======
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\BeneficiarioController;
@@ -18,7 +15,6 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\PiezaController;
 use App\Http\Controllers\TecnicoController;
->>>>>>> e523e9afa72da0dada491e6b9fa6778ee7d0a48a
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,8 +29,6 @@ use App\Http\Controllers\TecnicoController;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
-=======
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -56,4 +50,3 @@ Route::get('/tecnico/dashboard', [TecnicoController::class, 'vista'])->middlewar
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
 
 require __DIR__.'/auth.php';
->>>>>>> e523e9afa72da0dada491e6b9fa6778ee7d0a48a
