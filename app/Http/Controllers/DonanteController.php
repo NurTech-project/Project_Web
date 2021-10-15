@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Donante;
+use Illuminate\Support\Facades\DB;
 
 class DonanteController extends Controller
 {
@@ -13,7 +16,13 @@ class DonanteController extends Controller
      */
     public function vista()
     {
-        return view('donante.dashboard');
+        $donante=DB::table('donantes')
+        ->join('users', 'users.id', '=', 'donantes.user_id')
+        ->select('donantes.id as donanteId','users.email as userEmail','users.id as userId')
+        ->get();
+        $equipos=DB::table('equipos')->get();
+        $piezas=DB::table('piezas')->get();
+        return view('donante.dashboard', compact('equipos','piezas','donante'));
     }
 
     public function index()

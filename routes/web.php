@@ -27,7 +27,7 @@ use App\Http\Controllers\TecnicoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.home');
 });
 
 Route::get('/dashboard', function () {
@@ -37,11 +37,28 @@ Route::get('/dashboard', function () {
 //Rutas de Donante
 Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middleware(['auth'])->name('donante_dashboard');
 
+
 //Rutas de Beneficiario
 Route::get('/beneficiario/dashboard',[BeneficiarioController::class, 'vista'])->middleware(['auth'])->name('beneficiario_dashboard');
 
 //Rutas de Distribuidor
 Route::get('/distribuidor/dashboard', [DistribuidorController::class, 'vista'])->middleware(['auth'])->name('distribuidor_dashboard');
+Route::get('/distribuidor/create/equipo/{id}', [DistribuidorController::class, 'equipoCreate'])->middleware(['auth'])->name('distribuidor_equipo_create');
+Route::post('/distribuidor/create/equipo', [DistribuidorController::class, 'equipoStore'])->middleware(['auth'])->name('distribuidor_equipo_post');
+Route::get('/distribuidor/edit/equipo/{id}', [DistribuidorController::class, 'equipoShow'])->middleware(['auth'])->name('distribuidor_equipo_show');
+Route::put('/distribuidor/edit/equipo/{id}', [DistribuidorController::class, 'equipoEdit'])->middleware(['auth'])->name('distribuidor_equipo_edit');
+
+
+Route::get('/distribuidor/create/pieza/{id}', [DistribuidorController::class, 'piezaCreate'])->middleware(['auth'])->name('distribuidor_pieza_create');
+Route::post('/distribuidor/create/pieza', [DistribuidorController::class, 'piezaStore'])->middleware(['auth'])->name('distribuidor_pieza_post');
+Route::get('/distribuidor/edit/pieza/{id}', [DistribuidorController::class, 'piezaShow'])->middleware(['auth'])->name('distribuidor_pieza_show');
+Route::put('/distribuidor/edit/pieza/{id}', [DistribuidorController::class, 'piezaEdit'])->middleware(['auth'])->name('distribuidor_pieza_edit');
+
+Route::get('/distribuidor/agenda', [DistribuidorController::class, 'agenda'])->middleware(['auth'])->name('distribuidor_agenda');
+Route::get('/distribuidor/create/equipo/agenda/{id}', [DistribuidorController::class, 'agendaEquipoCreate'])->middleware(['auth'])->name('distribuidor_agenda_create_equipo');
+Route::get('/distribuidor/create/pieza/agenda/{id}', [DistribuidorController::class, 'agendaPiezaCreate'])->middleware(['auth'])->name('distribuidor_agenda_create_pieza');
+Route::post('/distribuidor/create/equipo/agenda', [DistribuidorController::class, 'agendaEquipoStore'])->middleware(['auth'])->name('distribuidor_agenda_post_equipo');
+Route::post('/distribuidor/create/pieza/agenda', [DistribuidorController::class, 'agendaPiezaStore'])->middleware(['auth'])->name('distribuidor_agenda_post_pieza');
 
 //Rutas de Tecnico
 Route::get('/tecnico/dashboard', [TecnicoController::class, 'vista'])->middleware(['auth'])->name('tecnico_dashboard');

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Provincia;
 use App\Models\Canton;
+use App\Models\Distribuidor;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -70,10 +71,29 @@ class RegisteredUserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         
+        $roles= DB::table('roles')->get();
+
+        //dd($roles);
         
         Auth::login($user);
         if($user->save()){
+            
+            foreach ($roles as $role){
+                if($user->role_id == $role->id && $role->descripcion == 'Distribuidor'){
+                    $distribuidor= new Distribuidor();
+                    $distribuidor->user_id =$user->id;
+                    $distribuidor->disponibilidad='Activa';
+                    $distribuidor->save();
+                }else if($user->role_id == $role->id && $role->descripcion == 'Técnico'){
+                    $tecnico=new Tecnico();
+                    $tecnico->user_id=$user->id;
+                    $tecnico->disponibilidad='Activa';
+                    $tecnico->save();
+                }
+            }
+            //colocar lo de beneficiario de ser el caso
             return redirect(RouteServiceProvider::LOGIN);
+            
         }
 
 
