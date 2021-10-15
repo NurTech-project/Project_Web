@@ -51,7 +51,7 @@
                     @endforeach
 
                     <div>
-                    <input type="text" class="block mt-1 w-full" name="estado" value="Agendado"/>
+                    <input type="text" class="block mt-1 w-full mb-4" name="estado" value="Agendado"  readonly/>
                     </div>
 
                     <x-button type="submit" 

@@ -17,12 +17,12 @@
 
                     <div>
                     <x-label for="fecha" :value="__('Fecha de entrega')" />
-                    <x-input type="date" class="block mt-1 w-full" name="fecha" />
+                    <x-input type="date" class="block mt-1 w-full mb-4" name="fecha" />
                     </div>
 
                     <div>
                     <x-label for="hora" :value="__('Hora de entrega')" />
-                    <input type="time" class="block mt-1 w-full" name="hora"/>
+                    <input type="time" class="block mt-1 w-full mb-4" name="hora"/>
                     </div>
                     
                     <div>
@@ -50,7 +50,7 @@
                     @endforeach
 
                     <div>
-                    <input type="hidden" class="block mt-1 w-full" name="estado" value="Pendiente"/>
+                    <input type="text" class="block mt-1 w-full mb-4" name="estado" value="Agendado" readonly/>
                     </div>
 
                     <x-button type="submit" 

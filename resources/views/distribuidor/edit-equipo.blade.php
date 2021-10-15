@@ -50,7 +50,7 @@
                     @method('PUT')
 
                     @foreach ($detalleD as $detalle)
-                    <input type="hidden" name="detalle_id" value="{{$detalle->id}}"/>
+                    <input type="hidden" name="detalle_id" value="{{$detalle->detalleId}}"/>
                     @endforeach
                     <input type="hidden" name="estado" value=""/>
 

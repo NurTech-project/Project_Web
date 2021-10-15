@@ -81,24 +81,34 @@
                     @if (count($detallePendienteEquipos) > 0)
                         <table style="border: 1px solid black;">
                         <tr style="border: 1px solid black;">
-                            <th>Sistema operativo</th>
-                            <th>Almacenamiento</th>
-                            <th>Detalle</th>
+                            <th>Fecha entrega</th>
+                            <th>Hora entrega</th>
+                            <th>Técnico</th>
+                            <th>Equipo detalle</th>
                             <th>Estado</th>
                             <th>Acción</th>
                         </tr>
                         
                             @foreach($detallePendienteEquipos as $equipo)
                         <tr style="border: 1px solid black;">
-                        <td>{{$equipo->equipoSistema}}</td>
-                        <td>{{$equipo->equipoAlmacenamiento}}</td>
+                        <td>{{$equipo->recepcionFecha}}</td>
+                        <td>{{$equipo->recepcionHora}}</td>
+                        <td>{{$equipo->tecnicoNombre}} {{$equipo->tecnicoApellido}}</td>
                         <td>{{$equipo->equipoDetalle}}</td>
                         <td>{{$equipo->detalleEstado}}</td>
-                        
                         <td>
-                        <x-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded">
-                        <a href="{{ route('distribuidor_equipo_show', $equipo->equipoId ) }}">Editar</a>
+                        <x-button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded">
+                        <a href="{{ route('distribuidor_agenda_show_equipo', $equipo->recepcionId ) }}">Editar</a>
                         </x-button>
+                        </td>
+                        <td>
+                        <form action="{{ route('distribuidor_agenda_destroy_equipo', $equipo->recepcionId ) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <x-button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded">
+                        Eliminar
+                        </x-button>
+                    </form>
                         </td>
                     
                         </tr>
@@ -114,22 +124,35 @@
                         @if (count($detallePendientePiezas) > 0)
                         <table style="border: 1px solid black;">
                         <tr style="border: 1px solid black;">
-                            <th>Nombre</th>
-                            <th>Detalle</th>
+                            <th>Fecha entrega</th>
+                            <th>Hora entrega</th>
+                            <th>Técnico</th>
+                            <th>Pieza detalle</th>
                             <th>Estado</th>
                             <th>Acción</th>
                         </tr>
                         
                             @foreach($detallePendientePiezas as $pieza)
                         <tr style="border: 1px solid black;">
-                        <td>{{$pieza->piezaNombre}}</td>
+                        <td>{{$pieza->recepcionFecha}}</td>
+                        <td>{{$pieza->recepcionHora}}</td>
+                        <td>{{$pieza->tecnicoNombre}} {{$pieza->tecnicoApellido}}</td>
                         <td>{{$pieza->piezaDetalle}}</td>
                         <td>{{$pieza->detalleEstado}}</td>
-
                         <td>
-                        <x-button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded">
-                        <a href="{{ route('distribuidor_pieza_show', $pieza->piezaId ) }}">Editar</a>
+                        <x-button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded">
+                        <a href="{{ route('distribuidor_agenda_show_pieza', $pieza->recepcionId ) }}">Editar</a>
                         </x-button>
+                        </td>
+                        <td>
+                        <form action="{{ route('distribuidor_agenda_destroy_pieza', $pieza->recepcionId )  }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+        
+                        <x-button type="submit"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded">
+                        Eliminar
+                        </x-button>
+                    </form>
                         </td>
                         </tr>
                             @endforeach
