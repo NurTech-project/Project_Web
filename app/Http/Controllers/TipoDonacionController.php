@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoDonacion;
 use Illuminate\Http\Request;
 
-class TecnicoController extends Controller
+class TipoDonacionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function vista()
-    {
-        return view('tecnico.dashboard');
-    }
-
     public function index()
     {
         //
+        $dates["tipoDonaciones"]=TipoDonacion::paginate(10);
+        return view('tipoDonacion.index', $dates);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +28,7 @@ class TecnicoController extends Controller
     public function create()
     {
         //
+        return view('tipoDonacion.create');
     }
 
     /**
@@ -40,6 +40,10 @@ class TecnicoController extends Controller
     public function store(Request $request)
     {
         //
+        $datosTipoDonaciones = $request()-> $except('_token');
+        TipoDonacion::insert($datosTipoDonaciones);
+        //return response()->json($datosTipoDonaciones);
+        return redirect('empleado')->with('mensaje','Tipo de Donación agregada con exito');
     }
 
     /**
@@ -62,6 +66,8 @@ class TecnicoController extends Controller
     public function edit($id)
     {
         //
+        $tipoDonacion = TipoDonacion::findOrFail($id);
+        return view('tipoDonacion.edit', compact('tipoDonacion'));
     }
 
     /**
@@ -74,6 +80,11 @@ class TecnicoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $datosTipoDonaciones = $request()-> $except('_token', '_method');
+        TipoDonacion::where('id','=',$id)->update($datosTipoDonaciones);
+
+        $tipoDonacion = TipoDonacion::findOrFail($id);
+        return view('tipoDonacion.edit', compact('tipoDonacion'));
     }
 
     /**
@@ -84,6 +95,7 @@ class TecnicoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TipoDonacion::destroy($id);
+        return redirect('typeDonation')->with('mensaje','Tipo de Donacion eliminada con exito');
     }
 }
