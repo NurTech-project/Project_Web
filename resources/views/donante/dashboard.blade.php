@@ -61,9 +61,6 @@
                                         <td>{{$pieza->nombre}}</td>
                                         <td>{{$pieza->detalle}}</td>
                                     </tr>
-                                
-                                
-                                
                                     <!--h2>No hay piezas donados</h2-->
                                 @endif 
                             @endforeach
