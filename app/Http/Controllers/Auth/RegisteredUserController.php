@@ -8,6 +8,8 @@ use App\Models\Role;
 use App\Models\Provincia;
 use App\Models\Canton;
 use App\Models\Distribuidor;
+use App\Models\Tecnico;
+use App\Models\Beneficiario;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -89,6 +91,10 @@ class RegisteredUserController extends Controller
                     $tecnico->user_id=$user->id;
                     $tecnico->disponibilidad='Activa';
                     $tecnico->save();
+                }else if($user->role_id == $role->id && $role->descripcion == 'Beneficiario'){
+                    $beneficiario=new Beneficiario();
+                    $beneficiario->user_id =$user->id;
+                    $beneficiario->save();
                 }
             }
             //colocar lo de beneficiario de ser el caso
