@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Donante;
+use App\Models\Pieza;
 
 class PiezaController extends Controller
 {
@@ -24,6 +26,7 @@ class PiezaController extends Controller
     public function create()
     {
         //
+        return view('donante.pieza');
     }
 
     /**
@@ -35,6 +38,15 @@ class PiezaController extends Controller
     public function store(Request $request)
     {
         //
+        $id_Donante = Donante::latest('id')->first()->id;
+        $datosPieza = new Pieza();
+        $datosPieza->donante_id = $id_Donante;
+        $datosPieza->nombre = $request->nombre;
+        $datosPieza->detalle = $request->detalle;
+        $datosPieza->estado = $request->estado;
+
+        $datosPieza->save();
+        return redirect('donante/dashboard');
     }
 
     /**

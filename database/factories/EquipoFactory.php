@@ -28,7 +28,7 @@ class EquipoFactory extends Factory
             'ram'=>$this->faker->sentence($nbWords =2, $variableNbWords = true),
             'almacenamiento'=>$this->faker->sentence($nbWords =2, $variableNbWords = true),
             'detalle'=>$this->faker->sentence($nbWords =5, $variableNbWords = true),
-            'estado'=>$this->faker->word
+            'estado'=>null,
         ];
     }
 }

@@ -15,8 +15,8 @@ class CreateDistribuidorsTable extends Migration
     {
         Schema::create('distribuidors', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('descripcion',200);
+            $table->unsignedBigInteger('user_id')->nullable();;
+            $table->string('descripcion',200)->nullable();;
             $table->string('disponibilidad')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');

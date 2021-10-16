@@ -78,7 +78,7 @@
               relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) 
               desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.</p>           
                <br>
-              <button class="bg-transparent hover:bg-purple-700 text-black py-2 px-4 border hover:text-white border-purple-700 hover:border-transparent rounded">Quiero Participar</button>           
+              <button class="bg-transparent hover:bg-purple-700 text-black py-2 px-4 border hover:text-white border-purple-700 hover:border-transparent rounded"> <a href="{{ url('/register') }}"> Quiero Participar</a></button>           
            
                  
           <li class=" p-20">
