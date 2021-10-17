@@ -17,7 +17,8 @@ class CreateCharlasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('administrador_id');
             $table->string('link_video')->nullable();
-            $table->string('descripcion',300);
+            $table->string('descripcion',300)->nullable();
+            $table->string('estado')->nullable();
 
             $table->foreign('administrador_id')->references('id')->on('administradors')->onUpdate('cascade');
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Historia;
 
 use Illuminate\Http\Request;
 
@@ -11,6 +12,13 @@ class HistoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function verHistoria(){
+
+        return view('historia', ["historias" => Historia::historiaMensaje()]);
+    }
+
+
     public function index()
     {
         //

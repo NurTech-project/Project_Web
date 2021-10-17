@@ -9,7 +9,12 @@ class Historia extends Model
 {
     use HasFactory;
 
-    public function administrador(){
-        return $this->belongsTo(Administrador::class);
+    public static function historiaMensaje(){
+        //return $this->belongsTo(Administrador::class);
+        //return "historias";
+        $historias = \DB::table('historias')
+                    ->select('historias.*')
+                    ->get();
+            return $historias;
     }
 }

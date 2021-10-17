@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Provincia;
 use App\Models\Canton;
+use App\Models\Administrador;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -24,9 +25,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $roles=DB::table('roles')->where([
-            ['descripcion', '<>', 'Administrador'],
-        ])->get();
+        $roles=DB::table('roles')->get();
         $provincias=DB::table('provincias')->get();
 
         $cantones = DB::table('provincias')
@@ -69,12 +68,21 @@ class RegisteredUserController extends Controller
         $user->direccion = $request->direccion;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        
+        $roles= DB::table('roles')->get();
         
         Auth::login($user);
         if($user->save()){
+            foreach ($roles as $role){
+                if($user->role_id == $role->id && $role->descripcion == 'Administrador'){
+                    $administrador= new Administrador();
+                    $administrador->user_id =$user->id;
+                    $administrador->estado='Activa';
+                    $administrador->save();
+                }
             return redirect(RouteServiceProvider::LOGIN);
+
         }
+    }
 
 
         

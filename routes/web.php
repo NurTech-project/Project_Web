@@ -15,6 +15,7 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\PiezaController;
 use App\Http\Controllers\TecnicoController;
+use App\Http\Controllers\Historia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,3 +51,8 @@ Route::get('/tecnico/dashboard', [TecnicoController::class, 'vista'])->middlewar
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
 
 require __DIR__.'/auth.php';
+
+//Rutas de las historias administrador
+Route::get('/historia', [HistoriaController::class, 'verHistoria'])->middleware(['auth'])->name('administrador_historia');
+//Rutas de las historias visitante
+Route::get('/historiaVisitante', [HistoriaController::class, 'verHistoria'])->middleware(['guest'])->name('visitante_historia');
