@@ -23,7 +23,7 @@ class AdministradorFactory extends Factory
     {
         return [
             'user_id'=>$this->faker->randomElement([1,2,3,4,5]),
-            'estado'=>$this->faker->word
+            'estado'=>null,
         ];
     }
 }
