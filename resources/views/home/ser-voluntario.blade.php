@@ -407,68 +407,73 @@
         .encabezado {
             background-color: rgb(153, 50, 204) ;
             text-align: left;
-            margin-left: 2%;
+            margin-top:180px;
             text-size-adjust: 15%;
             box-shadow: black;
             flex-wrap: nowrap;
-            height:250px;
-            width:1300px;
+            height:600px;
+            width:1361px;
             border-radius: 1%;
         }
 
         .encabezado h1 {
            font-family: 'Nunito', sans-serif;
            color:rgb(0, 0, 0);
-           font-size: 300%;
+           font-size: 600%;
            text-decoration-style: white;
            position:relative;
-           left:50px;
+           left:90px;
+           top: 25px;
         }
 
         .encabezado p {
           font-family: 'Nunito', sans-serif;
+          font-size:190%;
           color: whitesmoke;
           text-align: left;
-          margin-left: 5em;
-          text-decoration: black;
+          margin-left: 2em;
           position: relative;
-          bottom: 40px;
+          bottom: 15px;
         }
 
         .encabezado img {
             position: relative;
-            left: 970px;
-            bottom: 220px;
-            width: 245px;
-            height: 225px;
+            left: 800px;
+            bottom: 445px;
+            width: 525px;
+            height: 525px;
             border-radius: 5px;
         }
         
-        /* Titulo Encabezado */
+        /* Titulo Voluntarios */
 
         .titulo-voluntarios h1 {
             position: relative;
             font-family: 'Nunito', sans-serif;
-            left:420px;
-            font-size: 30px;
+            left: 300px;
+            top:150px;
+            height: 250px;
+            font-size: 40px;
+            border-radius: 1%;
         }
 
         /* Cuadros de Colaboradores */
 
         .voluntario-1 {
             position: relative;
-            margin-left: 2%;
-            width: 650px;
-            height: 320px;
+            top:110px;
+            width: 680px;
+            height: 500px;
             box-shadow: black;
             background-color: rgb(218, 165, 32);
+            border-radius: 1%;
         }
 
        .voluntario-1 img {
            position: relative;
-           width: 30%;
+           width: 35%;
            left: 20px;
-           top:  55px;
+           top:  95px;
         }
 
        .voluntario-1 h2 {
@@ -476,135 +481,134 @@
            font-size:200%;
            position: relative;
            bottom: 180px;
-           left: 300px;
+           left: 350px;
            color: rgb(75, 0, 130);
       }
 
       .voluntario-1 p {
-          font-size: 100%;
+          font-size: 110%;
           color: rgb(75, 0, 130);
           text-align: justify;
           position:relative;
-          left:230px;
+          left:280px;
           bottom: 190px;
       }
 
       .voluntario-2 {
             position: relative;
-            left:653px;
-            bottom:320px;
+            left:658px;
+            bottom:390px;
             margin-left: 2%;
-            width: 650px;
-            height: 320px;
+            width: 675px;
+            height: 500px;
             box-shadow: black;
             background-color: rgb(128, 128, 128);
+            border-radius: 1%;
       }
        .voluntario-2 img {
            position: relative;
-           width: 30%;
+           width: 35%;
            left: 20px;
-           top:  55px;
+           top:  95px;
       }
 
        .voluntario-2 h2 {
            font-family: 'Nunito', sans-serif;
            font-size:200%;
            position: relative;
-           bottom: 175px;
-           left: 300px;
+           bottom: 180px;
+           left: 350px;
            color: white;
       }
 
       .voluntario-2 p {
-          font-size: 100%;
+          font-size: 110%;
           color: white;
           text-align: justify;
           position:relative;
-          left:230px;
+          left:280px;
           bottom: 190px;
       }
 
      .voluntario-3 {
-        position: relative;
-        margin-left: 2%;
-         width: 650px;
-        height: 320px;
-        box-shadow: black;
-        bottom: 310px;
-        background-color: rgb(218, 112, 214);
+          position: relative;
+          bottom:310px;
+          width: 680px;
+          height: 500px;
+          box-shadow: black;
+          background-color: rgb(218, 112, 214);
+          border-radius: 1%;
      }
 
     .voluntario-3 img {
-        position: relative;
-        width: 30%;
-        left: 20px;
-        top:  55px;
+           position: relative;
+           width: 35%;
+           left: 20px;
+           top:  95px;
      }
 
     .voluntario-3 h2 {
-         font-family: 'Nunito', sans-serif;
-         font-size:200%;
-         position: relative;
-         bottom: 175px;
-         left: 300px;
-         color: rgb(25, 25, 112);
+           font-family: 'Nunito', sans-serif;
+           font-size:200%;
+           position: relative;
+           bottom: 180px;
+           left: 350px;
+           color: rgb(25, 25, 112);
      }
 
     .voluntario-3 p {
-         font-size: 100%;
-         color: rgb(25, 25, 112);
-         text-align: justify;
-         position:relative;
-         left:230px;
-         bottom: 190px;
+          font-size: 110%;
+          color: rgb(25, 25, 112);
+          text-align: justify;
+          position:relative;
+          left:280px;
+          bottom: 190px;
      }
 
      .voluntario-4 {
-         position: relative;
-         left:653px;
-         bottom:630px;
-         margin-left: 2%;
-         width: 650px;
-         height: 320px;
-         box-shadow: black;
-         background-color: rgb(255, 215, 0);
+            position: relative;
+            left:658px;
+            bottom:810px;
+            margin-left: 2%;
+            width: 675px;
+            height: 500px;
+            box-shadow: black;
+            background-color: rgb(255, 215, 0);
+            border-radius: 1%;
      }
 
      .voluntario-4 img {
-         position: relative;
-         width: 30%;
-         left: 20px;
-         top:  55px;
+           position: relative;
+           width: 35%;
+           left: 20px;
+           top:  95px;
 
      }
      
     .voluntario-4 h2 {
-         font-family: 'Nunito', sans-serif;
-         font-size:200%;
-         position: relative;
-         bottom: 175px;
-         left: 300px;
-         color: rgb(138, 43, 226);
+           font-family: 'Nunito', sans-serif;
+           font-size:200%;
+           position: relative;
+           bottom: 180px;
+           left: 350px;
+           color: rgb(138, 43, 226);
      }
 
     .voluntario-4 p {
-        font-size: 100%;
-        color: rgb(138, 43, 226);
-        text-align: justify;
-        position:relative;
-        left:230px;
-        bottom: 190px;
+          font-size: 110%;
+          color: rgb(138, 43, 226);
+          text-align: justify;
+          position:relative;
+          left:280px;
+          bottom: 190px;
      }
 
   /*Imagen de Fondo */
 
     .imagen-fondo{
         position: relative;
-        bottom: 590px;
-        margin-left: 2%;
-        width:1000em;
-        height:100%;
-        left:200px;
+        bottom: 600px;
+        height:700%;
      }
 
   /*Quiero un voluntario */
@@ -612,27 +616,27 @@
     .quiero-voluntario h1{
         position: relative;
         font-family: 'Nunito', sans-serif;
-        left:510px;
-        bottom: 1050px;
-        font-size: 30px;
+        left:410px;
+        bottom: 1250px;
+        font-size: 300%;
         color:rgb(0, 0, 0);
 
      }
 
     .quiero-voluntario p{
-       font-size: 125%;
+       font-size: 210%;
        text-align: left;
        position:relative;
-       bottom: 1030px;
-       left:280px;
+       bottom: 1200px;
+       left:50px;
        color:rgb(0, 0, 0);
      }
 
     .quiero-voluntario button {
       position: relative;
-      font-size: 100%;
+      font-size: 200%;
       left:635px;
-      bottom: 1000px;
+      bottom: 1150px;
       padding:0.99%;
     }
     </style>
@@ -643,11 +647,11 @@
     <div class="encabezado">
 
             <h1>NUR TECH </h1>
-            <p> NUR TECH es un proyecto que tiene como objetivo
-                entregar computadores refaccionados a estudiantes de Institutos </p>
-            <p> Tecnológicos Superiores de Quito y sus familias que al momento no disponen de equipos propios
-                ,tu puedes </p>
-            <p> ayudar a esta causa uniendote a nosotros como voluntario, donando equipos o piezas que no utilizes. </p>
+            <p> NUR TECH es un proyecto que tiene como objetivo <br>
+                entregar computadores refaccionados a estudiantes <br> 
+                de Institutos Tecnológicos Superiores de Quito y sus <br>
+                familias que al momento no disponen de equipos <br>
+                propios.  </p> 
             <img src="../imagenes/Imagen1.jpg" alt="">
     </div>
 </section>
@@ -655,7 +659,9 @@
 <!-- Voluntarios -->
 <section>
     <div class="titulo-voluntarios">
+    <table>
     <h1> VOLUNTARIOS DENTRO DE NUR TECH </h1>
+    </table>
     </div>
 </section>
 
@@ -665,10 +671,11 @@
    <table>
       <img src="../imagenes/Avatar.png" alt="">
        <h2> Paco Alcacer </h2>
-        <b> <p> Donante recurrente,colaborador de la institución ayuda<br> 
-        constantemente en lo que puede , dono diez equipos <br>
-        completamente funcionales, y a armar con piezas otras <br> 
-        maquinas que se encontraban en mal estado. </p></b>
+        <b> <p> Donante recurrente,colaborador de la institución <br> 
+        ayuda constantemente en lo que puede, dono <br> 
+        diez equipos completamente funcionales, y a <br>
+        armar con piezas otras maquinas que se estaban <br>
+        en mal estado. </p></b>
    </table>
 </section>
 
@@ -677,8 +684,8 @@
      <img src="../imagenes/Avatar.png" alt="">
      <h2> Luis Mendoza </h2>
      <b> <p> Gerente de la empresa Innovando es un gran <br>
-     colaborador aporto al proyecto un gran número de <br> 
-     partes y equipos para donar. </p> </b>
+     colaborador aporto al proyecto un gran <br>
+     número de partes y equipos para donar. </p> </b>
   </table>
 </section>
     
@@ -686,9 +693,10 @@
            <table>
                <img src="../imagenes/Avatar.png" alt="">
                <h2> Gonzalo Gallo </h2>
-               <b> <p> Administrador encargado de almacenar los equipos <br>
-               que llegan a nuestras manos, posteriormente procede <br>
-               a asignar el computador a un Técnico para su revision. </p> </b>
+               <b> <p> Administrador encargado de almacenar los <br>
+               equipos que llegan a nuestras manos, <br> 
+               posteriormente procede a asignar el computador  <br> 
+               a un Técnico para su revision. </p> </b>
            </table>
 </section>
 
@@ -696,9 +704,10 @@
      <table>
         <img src="../imagenes/Avatar.png" alt="">
          <h2> Javier Hernandez </h2>
-         <b><p> Dueño de Incorporer.Inc ayudo en la distribucion de <br>
-         mas de cien equipos de segunda mano para su futuro <br>
-         reacondicionamiento y reparación. </p></b>
+         <b><p> Dueño de Incorporer.Inc nos ayudo en el <br>
+         proceso de la distribución dono mas de cien <br>
+         equipos de segunda mano para su futura <br>
+         reparación. </p></b>
      </table>
 </section>
 
@@ -713,10 +722,10 @@
 <div class="quiero-voluntario">
   <table>
      <b> <h1> ¡QUIERO SER VOLUNTARIO!</h1></b>
-        <b><p>Para ser voluntario y formar parte de este gran proyecto de apoyo para jovenes estudiantes <br>
-         solamente hace falta tener voluntad de ayudar y comunicarte con nosostros a traves del <br>
-         siguiente formulario al cual podras acceder de forma inmediata pulsando el botón de inscripción <br> 
-         que se encuentra en la parte inferior. </p> </br>
+        <b><p>Para ser voluntario y formar parte de este gran proyecto de apoyo para jovenes estudiantes 
+         solamente hace falta tener voluntad de ayudar y comunicarte con nosostros a traves del 
+         siguiente formulario al cual podras acceder de forma  <br> 
+         inmediata pulsando el botón de inscripción que se encuentra en la parte inferior. </p> 
         
          <button > Inscripción </button>
 </div> 
