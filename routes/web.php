@@ -32,18 +32,25 @@ use App\Http\Controllers\PiezaController;
 Route::get('/', function () {
     return view('home.home');
 });
-//>Tecnic rute's 
-/*
-Route::get('/tecnic', function(){
-    return view('tecnico.index');
-});
 Route::get('tecnic/create', [TecnicoController::class,'create']);
-*/
+
 ;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/home/quiero-computador', function () {
+    return view('home.quiero-computador');
+});
+
+Route::get('/home/ser-voluntario', function () {
+    return view('home.ser-voluntario');
+});
+
+Route::get('/home/quienes-somos', function () {
+    return view('home.quienes-somos');
+});
 
 //Rutas de Donante
 Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middleware(['auth'])->name('donante_dashboard');
