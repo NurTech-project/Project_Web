@@ -66,10 +66,22 @@ Route::get('/distribuidor/edit/pieza/{id}', [DistribuidorController::class, 'pie
 Route::put('/distribuidor/edit/pieza/{id}', [DistribuidorController::class, 'piezaEdit'])->middleware(['auth'])->name('distribuidor_pieza_edit');
 
 Route::get('/distribuidor/agenda', [DistribuidorController::class, 'agenda'])->middleware(['auth'])->name('distribuidor_agenda');
+
 Route::get('/distribuidor/create/equipo/agenda/{id}', [DistribuidorController::class, 'agendaEquipoCreate'])->middleware(['auth'])->name('distribuidor_agenda_create_equipo');
 Route::get('/distribuidor/create/pieza/agenda/{id}', [DistribuidorController::class, 'agendaPiezaCreate'])->middleware(['auth'])->name('distribuidor_agenda_create_pieza');
+
 Route::post('/distribuidor/create/equipo/agenda', [DistribuidorController::class, 'agendaEquipoStore'])->middleware(['auth'])->name('distribuidor_agenda_post_equipo');
 Route::post('/distribuidor/create/pieza/agenda', [DistribuidorController::class, 'agendaPiezaStore'])->middleware(['auth'])->name('distribuidor_agenda_post_pieza');
+
+Route::get('/distribuidor/edit/equipo/agenda/{id}', [DistribuidorController::class, 'agendaEquipoShow'])->middleware(['auth'])->name('distribuidor_agenda_show_equipo');
+Route::get('/distribuidor/edit/pieza/agenda/{id}', [DistribuidorController::class, 'agendaPiezaShow'])->middleware(['auth'])->name('distribuidor_agenda_show_pieza');
+
+Route::put('/distribuidor/edit/equipo/agenda/{id}', [DistribuidorController::class, 'agendaEquipoEdit'])->middleware(['auth'])->name('distribuidor_agenda_edit_equipo');
+Route::put('/distribuidor/edit/pieza/agenda/{id}', [DistribuidorController::class, 'agendaPiezaEdit'])->middleware(['auth'])->name('distribuidor_agenda_edit_pieza');
+
+Route::delete('/distribuidor/delete/equipo/agenda/{id}', [DistribuidorController::class, 'agendaEquipoDestroy'])->middleware(['auth'])->name('distribuidor_agenda_destroy_equipo');
+Route::delete('/distribuidor/delete/pieza/agenda/{id}', [DistribuidorController::class, 'agendaPiezaDestroy'])->middleware(['auth'])->name('distribuidor_agenda_destroy_pieza');
+
 
 //Rutas de Tecnico
 Route::get('/tecnico/dashboard', [TecnicoController::class, 'vista'])->middleware(['auth'])->name('tecnico_dashboard');

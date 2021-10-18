@@ -187,11 +187,18 @@ class DistribuidorController extends Controller
         ->where('equipos.id','=',$id)
         ->get();
 
-        $detalle_donacion= DB::table('detalle_donacions')->get();
+        $detalle_donacion= DB::table('detalle_donacions')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
+        ->join('users','users.id','=','distribuidors.user_id')
+        ->select('detalle_donacions.id as detalleId',
+        'detalle_donacions.equipo_id as detalleEquipoId',
+        'detalle_donacions.distribuidor_id as detalleDistribuidorId','distribuidors.user_id as distribuidorUserId')
+        ->get();
+        
         $detalleD=array();
         
             foreach($detalle_donacion as $detalle){
-                if($detalle->equipo_id == $id){
+                if($detalle->detalleEquipoId == $id && $detalle->distribuidorUserId == Auth::user()->id){
                     $detalleD[]=$detalle;
                     //dd($detalleD);
                 }
@@ -217,11 +224,18 @@ class DistribuidorController extends Controller
         ->where('piezas.id','=',$id)
         ->get();
         
-        $detalle_donacion= DB::table('detalle_donacions')->get();
+        $detalle_donacion= DB::table('detalle_donacions')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
+        ->join('users','users.id','=','distribuidors.user_id')
+        ->select('detalle_donacions.id as detalleId',
+        'detalle_donacions.pieza_id as detallePiezaId',
+        'detalle_donacions.distribuidor_id as detalleDistribuidorId','distribuidors.user_id as distribuidorUserId')
+        ->get();
+        
         $detalleD=array();
         
             foreach($detalle_donacion as $detalle){
-                if($detalle->pieza_id == $id){
+                if($detalle->detallePiezaId == $id && $detalle->distribuidorUserId == Auth::user()->id){
                     $detalleD[]=$detalle;
                     //dd($detalleD);
                 }
@@ -279,9 +293,19 @@ class DistribuidorController extends Controller
         ->where('detalle_donacions.estado','=','Aceptado')
         ->get();
         //detalleRecepcion los campos
+        $detalleRecepcionEquipos=DB::table('detalle_recepcion_tecnicos')
+        ->join('tecnicos','tecnicos.id','=','detalle_recepcion_tecnicos.tecnico_id')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
+        ->join('equipos','equipos.id','=','detalle_donacions.equipo_id')
+        ->select('detalle_recepcion_tecnicos.fecha as recepcionFecha','detalle_recepcion_tecnicos.hora as recepcionHora',
+        'users.nombre as tecnicoNombre','users.apellido as tecnicoApellido','equipos.detalle as equipoDetalle',
+        'detalle_recepcion_tecnicos.estado as detalleEstado','detalle_recepcion_tecnicos.id as recepcionId')
+        ->get();
+
         $detallePendienteEquipos=array();
-        foreach($detalle_donacion_equipos as $detalleEquipo){
-            if($detalleEquipo->detalleEstado == 'Pendiente'){
+        foreach($detalleRecepcionEquipos as $detalleEquipo){
+            if($detalleEquipo->detalleEstado == 'Agendado'){
                 $detallePendienteEquipos[]=$detalleEquipo;
             }
         }
@@ -294,9 +318,19 @@ class DistribuidorController extends Controller
         ->where('detalle_donacions.estado','=','Aceptado')
         ->get();
         //detalleRecepcion los campos
+        $detalleRecepcionPiezas=DB::table('detalle_recepcion_tecnicos')
+        ->join('tecnicos','tecnicos.id','=','detalle_recepcion_tecnicos.tecnico_id')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
+        ->join('piezas','piezas.id','=','detalle_donacions.pieza_id')
+        ->select('detalle_recepcion_tecnicos.fecha as recepcionFecha','detalle_recepcion_tecnicos.hora as recepcionHora',
+        'users.nombre as tecnicoNombre','users.apellido as tecnicoApellido','piezas.detalle as piezaDetalle',
+        'detalle_recepcion_tecnicos.estado as detalleEstado','detalle_recepcion_tecnicos.id as recepcionId')
+        ->get();
+
         $detallePendientePiezas=array();
-        foreach($detalle_donacion_piezas as $detallePieza){
-            if($detallePieza->detalleEstado == 'Pendiente'){
+        foreach($detalleRecepcionPiezas as $detallePieza){
+            if($detallePieza->detalleEstado == 'Agendado'){
                 $detallePendientePiezas[]=$detallePieza;
             }
         }
@@ -417,14 +451,100 @@ class DistribuidorController extends Controller
         return redirect('distribuidor/agenda');
     }
 
+    public function agendaEquipoShow($id){
+        $recepciones=DB::table('detalle_recepcion_tecnicos')
+        ->join('tecnicos','tecnicos.id','=','detalle_recepcion_tecnicos.tecnico_id')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('detalle_recepcion_tecnicos.id as recepcionId','detalle_recepcion_tecnicos.fecha as recepcionFecha',
+        'detalle_recepcion_tecnicos.hora as recepcionHora','detalle_recepcion_tecnicos.tecnico_id as recepcionTecnicoId',
+        'users.nombre as userNombre','users.apellido as userApellido','users.email as userEmail')
+        ->where('detalle_recepcion_tecnicos.id','=',$id)
+        ->get();
+
+        $tecnicos=DB::table('tecnicos')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('users.email as userEmail','tecnicos.id as tecnicoId',
+        'users.nombre as userNombre','users.apellido as userApellido')
+        ->where('tecnicos.disponibilidad','=','Activa')
+        ->get();
+
+        return view('distribuidor.edit-agenda-equipo',compact('recepciones','tecnicos'));
+    }
+
+    public function agendaPiezaShow($id){
+        $recepciones=DB::table('detalle_recepcion_tecnicos')
+        ->join('tecnicos','tecnicos.id','=','detalle_recepcion_tecnicos.tecnico_id')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('detalle_recepcion_tecnicos.id as recepcionId','detalle_recepcion_tecnicos.fecha as recepcionFecha',
+        'detalle_recepcion_tecnicos.hora as recepcionHora','detalle_recepcion_tecnicos.tecnico_id as recepcionTecnicoId',
+        'users.nombre as userNombre','users.apellido as userApellido','users.email as userEmail')
+        ->where('detalle_recepcion_tecnicos.id','=',$id)
+        ->get();
+
+        $tecnicos=DB::table('tecnicos')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('users.email as userEmail','tecnicos.id as tecnicoId',
+        'users.nombre as userNombre','users.apellido as userApellido')
+        ->where('tecnicos.disponibilidad','=','Activa')
+        ->get();
+
+        return view('distribuidor.edit-agenda-pieza',compact('recepciones','tecnicos'));
+    }
+
+    public function agendaEquipoEdit(Request $request, $id){
+        $detalle_recepcion=DetalleRecepcionTecnico::findOrFail($id);
+        $detalle_recepcion->fecha=$request->fecha;
+        $detalle_recepcion->hora=$request->hora;
+        $detalle_recepcion->tecnico_id=$request->tecnico_id;
+        $detalle_recepcion->estado=$request->estado;
+        $detalle_recepcion->save();
+
+        return redirect('distribuidor/agenda');
+    }
+
+    public function agendaPiezaEdit(Request $request, $id){
+        $detalle_recepcion=DetalleRecepcionTecnico::findOrFail($id);
+        $detalle_recepcion->fecha=$request->fecha;
+        $detalle_recepcion->hora=$request->hora;
+        $detalle_recepcion->tecnico_id=$request->tecnico_id;
+        $detalle_recepcion->estado=$request->estado;
+        $detalle_recepcion->save();
+
+        return redirect('distribuidor/agenda');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function agendaEquipoDestroy($id)
     {
-        //
+        //Cambiar el estado a Aceptado en equipo, detalledonacion y eliminar detalle recepcion
+        $detalle_recepcion=DetalleRecepcionTecnico::findOrFail($id);
+        $detalle_donacion=DetalleDonacion::findOrFail($detalle_recepcion->detalle_donacion_id);
+        $equipo=Equipo::findOrFail($detalle_donacion->equipo_id);
+        $detalle_donacion->estado='Aceptado';
+        $equipo->estado='Aceptado';
+        $detalle_recepcion->delete();
+        $detalle_donacion->save();
+        $equipo->save();
+        return redirect('distribuidor/agenda');
+
+    }
+
+    public function agendaPiezaDestroy($id)
+    {
+        //Cambiar el estado a Aceptado en pieza, detalledonacion y eliminar detalle recepcion
+        $detalle_recepcion=DetalleRecepcionTecnico::findOrFail($id);
+        $detalle_donacion=DetalleDonacion::findOrFail($detalle_recepcion->detalle_donacion_id);
+        $pieza=Pieza::findOrFail($detalle_donacion->pieza_id);
+        $detalle_donacion->estado='Aceptado';
+        $pieza->estado='Aceptado';
+        $detalle_recepcion->delete();
+        $detalle_donacion->save();
+        $pieza->save();
+        return redirect('distribuidor/agenda');
     }
 }
