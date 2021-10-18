@@ -27,9 +27,11 @@ use App\Http\Controllers\TecnicoController;
 */
 
 Route::get('/home/quiero-computador', function () {
-    return view('home.quiero-computador');
+  return view('home.quiero-computador');
 });
-
+//Route::get('/home/register', function () {
+//   return view('home.register');
+//});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
