@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TipoDonacion;
 use Illuminate\Http\Request;
-use App\Models\Donante;
-use App\Models\Pieza;
 
-class PiezaController extends Controller
+class TipoDonacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,11 @@ class PiezaController extends Controller
     public function index()
     {
         //
+        $dates["tipoDonaciones"]=TipoDonacion::paginate(10);
+        return view('tipoDonacion.index', $dates);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +28,7 @@ class PiezaController extends Controller
     public function create()
     {
         //
-        return view('donante.pieza');
+        return view('tipoDonacion.create');
     }
 
     /**
@@ -38,15 +40,10 @@ class PiezaController extends Controller
     public function store(Request $request)
     {
         //
-        $id_Donante = Donante::latest('id')->first()->id;
-        $datosPieza = new Pieza();
-        $datosPieza->donante_id = $id_Donante;
-        $datosPieza->nombre = $request->nombre;
-        $datosPieza->detalle = $request->detalle;
-        $datosPieza->estado = $request->estado;
-
-        $datosPieza->save();
-        return redirect('donante/dashboard')->with('mensaje','Pieza agregada con éxito');;
+        $datosTipoDonaciones = $request()-> $except('_token');
+        TipoDonacion::insert($datosTipoDonaciones);
+        //return response()->json($datosTipoDonaciones);
+        return redirect('empleado')->with('mensaje','Tipo de Donación agregada con exito');
     }
 
     /**
@@ -69,6 +66,8 @@ class PiezaController extends Controller
     public function edit($id)
     {
         //
+        $tipoDonacion = TipoDonacion::findOrFail($id);
+        return view('tipoDonacion.edit', compact('tipoDonacion'));
     }
 
     /**
@@ -81,6 +80,11 @@ class PiezaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $datosTipoDonaciones = $request()-> $except('_token', '_method');
+        TipoDonacion::where('id','=',$id)->update($datosTipoDonaciones);
+
+        $tipoDonacion = TipoDonacion::findOrFail($id);
+        return view('tipoDonacion.edit', compact('tipoDonacion'));
     }
 
     /**
@@ -91,15 +95,7 @@ class PiezaController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $piezaDestroy = Pieza::findOrFail($id);
-        #condicionamos
-        if($piezaDestroy->estado != null){
-            return redirect('donante/dashboard')->with('mensaje','La pieza ha sido procesado, no se puede eliminar');
-        }else{
-            $piezaDestroy->delete();
-            return redirect('donante/dashboard')->with('mensaje','Pieza eliminada con éxito');
-        }
-
+        TipoDonacion::destroy($id);
+        return redirect('typeDonation')->with('mensaje','Tipo de Donacion eliminada con exito');
     }
 }

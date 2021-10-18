@@ -24,7 +24,7 @@ class TecnicoFactory extends Factory
         return [
             'user_id'=>$this->faker->randomElement([1,2,3,4,5]),
             'descripcion'=>$this->faker->sentence($nbWords =3, $variableNbWords = true),
-            'disponibilidad'=>$this->faker->word
+            'disponibilidad'=>'Activa'
         ];
     }
 }

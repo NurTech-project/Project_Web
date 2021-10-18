@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Equipo;
+use App\Models\Donante;
+use Illuminate\Support\Facades\Auth;
+
 
 class EquipoController extends Controller
 {
@@ -24,6 +28,7 @@ class EquipoController extends Controller
     public function create()
     {
         //
+        return view('donante.equipo');
     }
 
     /**
@@ -35,6 +40,20 @@ class EquipoController extends Controller
     public function store(Request $request)
     {
         //
+        //recuperamos el ultimo id creado. 
+        $id_Donante = Donante::latest('id')->first()->id;
+        $datosEquipo = new Equipo();
+        $datosEquipo->donante_id = $id_Donante;
+        $datosEquipo->sistema_operativo = $request->sistema_operativo;
+        $datosEquipo->procesador = $request->procesador;
+        $datosEquipo->ram = $request->ram;
+        $datosEquipo->almacenamiento = $request->almacenamiento;
+        $datosEquipo->detalle = $request->detalle;
+        $datosEquipo->estado = $request->estado;
+
+        $datosEquipo->save();
+        return redirect('donante/dashboard')->with('mensaje','Equipo agregado con éxito');;
+
     }
 
     /**
@@ -80,5 +99,16 @@ class EquipoController extends Controller
     public function destroy($id)
     {
         //
+        #traemos los equipos
+        $equipoDestroy = Equipo::findOrFail($id);
+        #condicionamos
+        if($equipoDestroy->estado != null){
+            return redirect('donante/dashboard')->with('mensaje','El equipo ha sido procesado, no se puede eliminar');
+        }else{
+            $equipoDestroy->delete();
+            return redirect('donante/dashboard')->with('mensaje','Equipo eliminado con éxito');
+        }
+    
+        
     }
 }
