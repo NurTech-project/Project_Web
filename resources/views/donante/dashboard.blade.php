@@ -4,19 +4,23 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="mb-4 text-lg text-center">Donaciones realizadas a Nur Tech</h2>
+                    <!--Mensaje de confirmación-->
+                    <b>
+                        @if(Session::has('mensaje'))
+                            {{ Session::get('mensaje') }}
+                        @endif
+                    </b>
                     <x-button class="ml-4">
                         <a href="{{url('donante/create')}}">
                             Donar a Nur Tech
                         </a>
                     </x-button>
                     <h2 class="text-base font-semibold">Equipos</h2>
-                   
                     <table style="border: 1px solid black;">
                     <tr style="border: 1px solid black;">
                         <th>Sistema operativo</th>
@@ -36,6 +40,14 @@
                                         <td>{{$equipo->ram}}</td>
                                         <td>{{$equipo->almacenamiento}}</td>
                                         <td>{{$equipo->detalle}}</td>
+                                        <td>
+                                            <form action="{{url('/donante/equipo/'.$equipo->id)}}" method="post">
+                                                @csrf
+                                                {{method_field('DELETE')}}
+                                                <input type="submit" onclick="return confirm('¿Quieres eliminar el Equipo?')" 
+                                                    value="Eliminar" >
+                                            </form>
+                                        </td>
                                     </tr>    
                                     <!--h2>No hay equipos donados</h2-->
                                 @endif
@@ -46,7 +58,7 @@
                     
 
                     <h2 class="text-base font-semibold">Piezas</h2>
-                  
+
                     <table style="border: 1px solid black;">
                     <tr style="border: 1px solid black;">
                         <th>Nombre de pieza</th>
@@ -60,6 +72,14 @@
                                     <tr style="border: 1px solid black;">
                                         <td>{{$pieza->nombre}}</td>
                                         <td>{{$pieza->detalle}}</td>
+                                        <td>
+                                            <form action="{{url('/donante/pieza/'.$pieza->id)}}" method="post">
+                                                @csrf
+                                                {{method_field('DELETE')}}
+                                                <input type="submit" onclick="return confirm('¿Quieres eliminar la pieza?')" 
+                                                value="Eliminar" >
+                                            </form>
+                                        </td>
                                     </tr>
                                     <!--h2>No hay piezas donados</h2-->
                                 @endif 

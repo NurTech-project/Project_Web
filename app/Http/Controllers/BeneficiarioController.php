@@ -133,6 +133,7 @@ class BeneficiarioController extends Controller
         $datosBeneficiario->save();
         #Redireccionamiento hacia el dashboard
         return redirect('beneficiario/dashboard');
+        #dd($request);
     }
 
     /**

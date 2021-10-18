@@ -62,7 +62,7 @@ class DonanteController extends Controller
 
         //Traemos el tipo de donación que se va a realizar
         $tipoDonaciones = DB::table('donantes')
-            ->where('hora_entrega', '=',$datosDonante->hora_entrega)
+            ->where('tipo_donacion_id', '=',$datosDonante->tipo_donacion_id)
             ->join('tipo_donacions', 'tipo_donacions.id','=', 'tipo_donacion_id')
             ->select('tipo_donacions.descripcion')
             ->get();

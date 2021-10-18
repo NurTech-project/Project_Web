@@ -23,8 +23,10 @@
                         @csrf
                         {{method_field('PATCH')}}
                         <label for="descripcion">Agregar Descripción</label> <br/>
-                        <textarea type="text" name="descripcion" id="descripcion" cols="70" rows="10" value="{{$beneficiario->descripcion}}"> </textarea>
-                        <div id="contador" name="contador">0</div> <br/><br/>
+                        <textarea type="text" name="descripcion" id="descripcion" cols="70" rows="10">{{$beneficiario->descripcion}}</textarea>
+                        <br/>
+                        <label for="contador">Longitud</label> <br/>
+                        <textarea id="contador" name="contador" cols="6" rows="1" readonly="True">0</textarea> <br/><br/>
                         <x-button class="ml-4">
                         {{ __('Agregar Descripción') }}
                         </x-button> 
@@ -32,6 +34,7 @@
                     <script>
                         const descripcion = document.getElementById('descripcion');
                         const contador = document.getElementById('contador');
+                        
                         descripcion.addEventListener('input', function(e){
                             const target = e.target;
                             const longitudAct = target.value.length;
