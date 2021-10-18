@@ -15,6 +15,11 @@
             </x-slot>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
+                    <b>
+                        @if(Session::has('mensaje'))
+                            {{ Session::get('mensaje') }}
+                        @endif
+                    </b>
                     <form action="{{route('equipo.store')}}" method="POST">
                     @csrf
                         <div class="mb-3">
