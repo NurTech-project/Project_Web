@@ -17,6 +17,15 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
 Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 
+//Ruta provincia
+/*Route::get('/provincias', [RegisteredUserController::class, 'provincias'])
+                ->middleware('guest')
+                ->name('regiter.provincia');*/
+//Ruta cantón 
+Route::post('/cantones', [RegisteredUserController::class, 'cantones'])
+                ->middleware('guest')
+                ->name('regiter.canton');
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');
