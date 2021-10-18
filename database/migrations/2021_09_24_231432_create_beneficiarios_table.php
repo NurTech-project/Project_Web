@@ -15,10 +15,10 @@ class CreateBeneficiariosTable extends Migration
     {
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('descripcion',150);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->text('descripcion')->nullable();
             $table->string('estado')->nullable();
-            $table->string('prioridad',50);
+            $table->string('prioridad',50)->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
 
