@@ -96,5 +96,7 @@ Route::resource('/donante', DonanteController::class);
 Route::resource('/donante/equipo', EquipoController::class)->middleware(['auth']);
 //Ruta pieza
 Route::resource('/donante/pieza', PiezaController::class)->middleware(['auth']);
+//Ruta Beneficiario
+Route::resource('/beneficiario', BeneficiarioController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';

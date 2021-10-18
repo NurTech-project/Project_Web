@@ -16,7 +16,7 @@ class CreateBeneficiariosTable extends Migration
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('descripcion')->nullable();
+            $table->text('descripcion')->nullable();
             $table->string('estado')->nullable();
             $table->string('prioridad',50)->nullable();
 
