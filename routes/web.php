@@ -37,10 +37,6 @@ Route::get('/home/ser-voluntario', function () {
     return view('home.ser-voluntario');
 });
 
-Route::get('/donante/equipo', function () {
-    return view('donante.equipo');
-});
-
 
 Route::get('tecnic/create', [TecnicoController::class,'create']);
 
