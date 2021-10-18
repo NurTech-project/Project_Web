@@ -53,6 +53,10 @@ Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middlewar
 Route::get('/beneficiario/dashboard',[BeneficiarioController::class, 'vista'])->middleware(['auth'])->name('beneficiario_dashboard');
 
 //Rutas de Distribuidor
+Route::get('/distribuidor/perfil/{distribuidor}', [DistribuidorController::class, 'perfilDistribuidor'])->middleware(['auth'])->name('distribuidor_perfil');
+Route::get('/distribuidor/edit/perfil/{distribuidor}', [DistribuidorController::class, 'editPerfilDistribuidor'])->middleware(['auth'])->name('distribuidor_perfil_edit');
+Route::patch('/distribuidor/perfil/{distribuidor}/edit', [DistribuidorController::class, 'updateDescripcionDistribuidor'])->middleware(['auth'])->name('distribuidor_perfil_put');
+
 Route::get('/distribuidor/dashboard', [DistribuidorController::class, 'vista'])->middleware(['auth'])->name('distribuidor_dashboard');
 Route::get('/distribuidor/create/equipo/{id}', [DistribuidorController::class, 'equipoCreate'])->middleware(['auth'])->name('distribuidor_equipo_create');
 Route::post('/distribuidor/create/equipo', [DistribuidorController::class, 'equipoStore'])->middleware(['auth'])->name('distribuidor_equipo_post');
@@ -98,6 +102,8 @@ Route::resource('/donante/equipo', EquipoController::class)->middleware(['auth']
 Route::resource('/donante/pieza', PiezaController::class)->middleware(['auth']);
 //Ruta Beneficiario
 Route::resource('/beneficiario', BeneficiarioController::class)->middleware(['auth']);
+//Ruta Tecnico
+Route::resource('/tecnico', TecnicoController::class)->middleware(['auth']);
 
 
 

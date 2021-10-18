@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Tecnico;
 
 class TecnicoController extends Controller
 {
@@ -13,7 +16,14 @@ class TecnicoController extends Controller
      */
     public function vista()
     {
-        return view('tecnico.dashboard');
+        $perfilTecnico = DB::table('tecnicos')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('tecnicos.descripcion', 'tecnicos.id', 'tecnicos.disponibilidad', 
+                    'users.nombre', 'users.apellido'
+                )
+        ->where('user_id', '=', Auth::user()->id)
+        ->get();
+        return view('tecnico.dashboard', compact('perfilTecnico'));
     }
 
     public function index()
@@ -51,6 +61,14 @@ class TecnicoController extends Controller
     public function show($id)
     {
         //
+        $perfilTecnico = DB::table('tecnicos')
+        ->join('users', 'users.id', '=', 'tecnicos.user_id')
+        ->select('tecnicos.descripcion','tecnicos.disponibilidad','tecnicos.id',
+                    'users.nombre', 'users.apellido', 'users.celular','users.direccion','users.email'
+                )
+        ->where('tecnicos.id','=',$id)
+        ->get();
+        return view('tecnico.perfil', compact('perfilTecnico'));
     }
 
     /**
@@ -62,6 +80,13 @@ class TecnicoController extends Controller
     public function edit($id)
     {
         //
+        $tecnico = DB::table('tecnicos')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('users.nombre', 'users.apellido', 'users.celular','users.direccion','users.email',
+                    'tecnicos.descripcion', 'tecnicos.disponibilidad','tecnicos.id')
+        ->where('tecnicos.id','=',$id)
+        ->get();
+        return view('tecnico.edit', compact('tecnico'));
     }
 
     /**
@@ -74,6 +99,10 @@ class TecnicoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $tecnico = Tecnico::findOrFail($id);
+        $tecnico->descripcion = $request->descripcion;
+        $tecnico->update();
+        return redirect('/tecnico/dashboard')->with('mensaje','Descripcion editada con éxito');
     }
 
     /**
