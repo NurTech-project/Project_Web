@@ -52,7 +52,7 @@ class EquipoController extends Controller
         $datosEquipo->estado = $request->estado;
 
         $datosEquipo->save();
-        return redirect('donante/dashboard');
+        return redirect('donante/dashboard')->with('mensaje','Equipo agregado con éxito');;
 
     }
 
@@ -99,5 +99,16 @@ class EquipoController extends Controller
     public function destroy($id)
     {
         //
+        #traemos los equipos
+        $equipoDestroy = Equipo::findOrFail($id);
+        #condicionamos
+        if($equipoDestroy->estado != null){
+            return redirect('donante/dashboard')->with('mensaje','El equipo ha sido procesado, no se puede eliminar');
+        }else{
+            $equipoDestroy->delete();
+            return redirect('donante/dashboard')->with('mensaje','Equipo eliminado con éxito');
+        }
+    
+        
     }
 }
