@@ -21,7 +21,6 @@
         </button>
       </div>
 
-<<<<<<< HEAD
 <!-- navigation bar -->
 <nav class="bg-yellow-300 py-2 md:py-4">
     <div class="container px-4 mx-auto md:flex md:items-center">
@@ -33,8 +32,6 @@
         </button>
       </div>
 
-=======
->>>>>>> cbc180f84c68609384137048f4f512de50bf9e0a
       <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
         <a href="{{url('/')}}" class="p-2 lg:px-4 md:mx-2 text-black rounded bg-yellow-200">Home</a>
         <a href="{{url('/home/quienes-somos')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">¿Quienes Somos?</a>
@@ -45,13 +42,10 @@
       </div>
     </div>
   </nav>
-<<<<<<< HEAD
   <!-- navigation bar  -->
 
 
   <br><br>
-=======
->>>>>>> cbc180f84c68609384137048f4f512de50bf9e0a
     <div class="lg-flex bg-cover bg-center  h-auto text-black py-36 px-10 object-fill" style="background-image: url(http://nur.yavirac.edu.ec/images/slide_4.png)">
 
       <div class="md:w-1/2">
@@ -219,7 +213,6 @@
             <button class="bg-transparent hover:bg-purple-700 text-black border-2 hover:text-white border-purple-700 hover:border-transparent font-serif py-2 px-24 rounded "  > <a class=" content-center bg-purple-500 py-4 px-64 font-serif uppercase text-sm rounded hover:bg-gray-200 hover:text-gray-800" href="{{ url('/register') }}"> DONAR UN COMPUTADOR</a></button>
           </li>
         </ul>
-<<<<<<< HEAD
         <!-- FOOTER -->
         
         <footer class="bg-black py-2 md:py-4">
@@ -297,10 +290,6 @@
 
  <!-- FOOTER -->
     
-=======
-
-
->>>>>>> cbc180f84c68609384137048f4f512de50bf9e0a
     </body>
 
     <footer class="bg-black py-2 md:py-4">
