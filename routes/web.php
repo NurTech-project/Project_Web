@@ -36,18 +36,10 @@ Route::get('/', function () {
 Route::get('/home/quiero-computador', function () {
     return view('home.quiero-computador');
 });
-//>Tecnic rute's 
-/*
-Route::get('/tecnic', function(){
-    return view('tecnico.index');
-});
-Route::get('tecnic/create', [TecnicoController::class,'create']);
-*/
-;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/home/quienes-somos', function () {
+    return view('home.quienes-somos');
+});
 
 //Rutas de Donante
 Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middleware(['auth'])->name('donante_dashboard');
@@ -125,7 +117,7 @@ Route::delete('/tecnico/delete/pieza/diagnostico/{id}', [TecnicoController::clas
 //Rutas de Administrador
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
 
-//Ruta Donación 
+//Ruta Donación
 
 Route::resource('/donante', DonanteController::class);
 //Ruta equipo
