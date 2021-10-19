@@ -24,14 +24,9 @@ class BeneficiarioFactory extends Factory
         return [
             'user_id'=>$this->faker->randomElement([1,2,3,4,5]),
             'descripcion'=>$this->faker->sentence($nbWords = 10, $variableNbWords = true),
-<<<<<<< HEAD
-            'estado'=>$this->faker->word,
-            'prioridad'=>$this->faker->word
-=======
             'estado'=>null,
             'prioridad'=>$this->faker->word,
 
->>>>>>> 03e2d907624a229a2f68a656ffa898d7543beaa2
         ];
     }
 }

@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard  |  ') }} 
             @foreach($perfilBeneficiario as $beneficiario)
-                <x-button class="ml-4">
+                <x-button class="ml-4 bg-yellow-400 hover:bg-gray-800 duration-700 ease-in-out">
                     <a href="{{url('beneficiario/'.$beneficiario->id)}}">
                         Perfil
                     </a>
@@ -28,7 +28,7 @@
                                 </a>
                             </p>
                         @else
-                            <h4>Tu del proceso estado es <b>{{$beneficiario->estado}}</b></h4>
+                            <h4 class="border-b-4 border-purple-800">Tu estado del proceso esta <b>{{$beneficiario->estado}}</b></h4>
                         @endif
                     @endforeach
                 </div>
