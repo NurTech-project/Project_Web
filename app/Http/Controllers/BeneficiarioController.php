@@ -130,9 +130,9 @@ class BeneficiarioController extends Controller
             $datosBeneficiario->prioridad = 'Baja';
         };
         #Guardado de los cambios
-        $datosBeneficiario->save();
+        $datosBeneficiario->update();
         #Redireccionamiento hacia el dashboard
-        return redirect('beneficiario/dashboard');
+        return redirect('beneficiario/dashboard')->with('mensaje','Descripción editada con exito');
         #dd($request);
     }
 

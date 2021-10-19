@@ -1,7 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Dashboard  |  ') }}
+            @foreach($perfilDistribuidors as $distribuidor)
+                <x-button class="ml-4">
+                    <a href="{{url('distribuidor/perfil/'.$distribuidor->id)}}">
+                        Perfil
+                    </a>
+                </x-button>     
+            @endforeach
         </h2>
     </x-slot>
 
@@ -10,6 +17,24 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                                    
+                    @foreach($perfilDistribuidors as $distribuidor)
+                        
+                        Bienvenido {{$distribuidor->nombre}} {{$distribuidor->apellido}} <br/>
+                        @if(Session::has('mensaje'))
+                        {{ Session::get('mensaje') }}
+                        @endif
+                        @if ($distribuidor->descripcion == null)
+                            <p>
+                                Agrega una descripción a tu perfil. 
+                                <a href="{{url('distribuidor/perfil/'.$distribuidor->id.'/edit')}}" > 
+                                    Click Aquí para agregar 
+                                </a>
+                            </p>
+                        @else
+                            <h4>Tu del disponibilidas es <b>{{$distribuidor->disponibilidad}}</b></h4>
+                        @endif
+                    @endforeach
                     <h2 class="mb-4 text-xl font-medium text-center ">Entregas por recoger</h2>
                     <h2 class="text-base font-semibold">Equipos</h2>
                     @if (count($equiposDonados) > 0)

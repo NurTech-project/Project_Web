@@ -70,8 +70,15 @@ class DistribuidorController extends Controller
                 $piezasAceptadas[]=$piezas;
             }
         }
+        $perfilDistribuidors = DB::table('distribuidors')
+        ->join('users','users.id','=','distribuidors.user_id')
+        ->select('distribuidors.descripcion', 'distribuidors.id', 'distribuidors.disponibilidad', 
+                    'users.nombre', 'users.apellido'
+                )
+        ->where('user_id', '=', Auth::user()->id)
+        ->get();
         
-        return view('distribuidor.dashboard',compact('equiposDonados','equiposAceptados','piezasDonadas','piezasAceptadas'));
+        return view('distribuidor.dashboard',compact('equiposDonados','equiposAceptados','piezasDonadas','piezasAceptadas','perfilDistribuidors'));
     }
 
     /**
@@ -547,4 +554,48 @@ class DistribuidorController extends Controller
         $pieza->save();
         return redirect('distribuidor/agenda');
     }
+     #Perfil distribuidor
+    public function perfilDistribuidor($id)
+    {
+         //
+        $perfilDistribuidor = DB::table('distribuidors')
+        ->join('users', 'users.id', '=', 'distribuidors.user_id')
+        ->select('distribuidors.descripcion','distribuidors.disponibilidad','distribuidors.id',
+                     'users.nombre', 'users.apellido', 'users.celular','users.direccion','users.email'
+                 )
+        ->where('distribuidors.id','=',$id)
+        ->get();
+        return view('distribuidor.perfil', compact('perfilDistribuidor'));
+    }
+
+    #Edición de descripcion 
+    public function editPerfilDistribuidor($id)
+    {
+        //
+        $perfilDistribuidor = DB::table('distribuidors')
+        ->join('users', 'users.id', '=', 'distribuidors.user_id')
+        ->select('distribuidors.descripcion','distribuidors.disponibilidad','distribuidors.id',
+                    'users.nombre', 'users.apellido', 'users.celular','users.direccion','users.email'
+                )
+        ->where('distribuidors.id','=',$id)
+        ->get();
+        return view('distribuidor.edit-perfil', compact('perfilDistribuidor'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateDescripcionDistribuidor(Request $request, $id)
+    {
+        //
+        $distribuidor = Distribuidor::findOrFail($id);
+        $distribuidor->descripcion = $request->descripcion;
+        $distribuidor->update();
+        return redirect('/distribuidor/dashboard')->with('mensaje','Descripcion editada con éxito');
+    }
+
 }

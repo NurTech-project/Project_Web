@@ -19,7 +19,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
-{
+{ 
     /**
      * Display the registration view.
      *
@@ -40,6 +40,31 @@ class RegisteredUserController extends Controller
              ->get();
         //dd($roles);
         return view('auth.register',compact('roles', 'provincias','cantones'));
+    }
+
+
+     #Metodo para traer los cantones, condicionadas
+     public function cantones(Request $request){
+        #condicionamos 
+        if (isset($request->texto)) {
+            # code...
+            $cantones=Canton::whereProvincia_id($request->texto)->get();
+            return response()->json(
+                #$data, 200, $headers
+                [
+                    'lista'=>$cantones,
+                    'success'=>true,
+                ]
+            );
+        } else {
+            # code...
+            return response()->json(
+                #$data, 200, $headers
+                [
+                    'success'=>false,
+                ]
+            );
+        }
     }
 
     /**
@@ -105,11 +130,4 @@ class RegisteredUserController extends Controller
 
         
     }
-
-    // public function capturarProvincia(Request $request){
-    //     $cantones=DB::table('cantons')->get();
-    //     if($reques == cantones->provincia_id){
-            
-    //     }
-    // }
 }

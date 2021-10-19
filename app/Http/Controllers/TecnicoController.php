@@ -37,6 +37,15 @@ class TecnicoController extends Controller
         'equipos.procesador as equipoProcesador','equipos.ram as equipoRam','equipos.almacenamiento as equipoAlmacenamiento',
         'equipos.detalle as equipoDetalle','equipos.estado as equipoEstado')
         ->get();
+        $perfilTecnico = DB::table('tecnicos')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('tecnicos.descripcion', 'tecnicos.id', 'tecnicos.disponibilidad', 
+                    'users.nombre', 'users.apellido'
+                )
+        ->where('user_id', '=', Auth::user()->id)
+        ->get();
+        
+    
 
         $tecnicos=DB::table('tecnicos')
         ->join('users', 'users.id','=','tecnicos.user_id')
@@ -83,7 +92,8 @@ class TecnicoController extends Controller
             }
          }
         
-        return view('tecnico.dashboard',compact('equiposAgendados','equiposAceptados','piezasAgendadas','piezasAceptadas'));
+        return view('tecnico.dashboard',
+        compact('equiposAgendados','equiposAceptados','piezasAgendadas','piezasAceptadas','perfilTecnico'));
         
     }
 
@@ -255,6 +265,19 @@ class TecnicoController extends Controller
             }
         
         return view('tecnico.edit-pieza',compact('piezaGet','detalleD'));
+        //
+    }
+        
+        public function show($id)
+    {
+        $perfilTecnico = DB::table('tecnicos')
+        ->join('users', 'users.id', '=', 'tecnicos.user_id')
+        ->select('tecnicos.descripcion','tecnicos.disponibilidad','tecnicos.id',
+                    'users.nombre', 'users.apellido', 'users.celular','users.direccion','users.email'
+                )
+        ->where('tecnicos.id','=',$id)
+        ->get();
+        return view('tecnico.perfil', compact('perfilTecnico'));
     }
 
     /**
@@ -285,6 +308,17 @@ class TecnicoController extends Controller
 
          //dd($detalle);
          return redirect('tecnico/dashboard');
+        //
+    }
+    public function edit( $id)
+        {
+        $tecnico = DB::table('tecnicos')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->select('users.nombre', 'users.apellido', 'users.celular','users.direccion','users.email',
+                    'tecnicos.descripcion', 'tecnicos.disponibilidad','tecnicos.id')
+        ->where('tecnicos.id','=',$id)
+        ->get();
+        return view('tecnico.edit', compact('tecnico'));
     }
 
 
@@ -524,6 +558,15 @@ class TecnicoController extends Controller
         $detalle_recepcion->save();
 
         return redirect('tecnico/diagnostico');
+    }
+    
+    public function update(Request $request, $id)
+    {
+        //
+        $tecnico = Tecnico::findOrFail($id);
+        $tecnico->descripcion = $request->descripcion;
+        $tecnico->update();
+        return redirect('/tecnico/dashboard')->with('mensaje','Descripcion editada con éxito');
     }
 
     /**
