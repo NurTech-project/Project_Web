@@ -18,15 +18,15 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach($perfilBeneficiario as $beneficiario)
                         
-                        Bienvenido {{$beneficiario->nombre}} {{$beneficiario->apellido}}
+                        <a class="text-xl font-semibold">Bienvenido {{$beneficiario->nombre}} {{$beneficiario->apellido}}</a>
                         @if ($beneficiario->descripcion == null)
-                            <p>
+                        <p>
                                 Para entrar en el proceso de selección, debes agregar una descripción 
                                 a tu perfil. 
                                 <a class="text-blue-400 hover:text-blue-800 duration-700 easy-in-out" href="{{url('beneficiario/'.$beneficiario->id.'/edit')}}" > 
                                     Click Aquí para agregar descripción
                                 </a>
-                            </p>
+                        </p>
                             <div class="border-b-4 border-purple-800"></div>
                         @else
                             <h4 class="border-b-4 border-purple-800">Tu estado del proceso esta <b>{{$beneficiario->estado}}</b></h4>
