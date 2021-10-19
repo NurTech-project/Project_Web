@@ -33,6 +33,18 @@ Route::get('/', function () {
     return view('home.home');
 });
 
+Route::get('/home/quiero-computador', function () {
+    return view('home.quiero-computador');
+});
+//>Tecnic rute's 
+/*
+Route::get('/tecnic', function(){
+    return view('tecnico.index');
+});
+Route::get('tecnic/create', [TecnicoController::class,'create']);
+*/
+;
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

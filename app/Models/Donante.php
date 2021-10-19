@@ -24,5 +24,4 @@ class Donante extends Model
     public function tipoDonacion(){
         return $this->belongsTo(TipoDonacion::class);
     }
-
 }
