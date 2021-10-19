@@ -16,7 +16,6 @@
     <div class="py-12 px-20">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-<<<<<<< HEAD
                 <div class="p-6 bg-white border-b border-gray-200">
                                     
                     @foreach($perfilDistribuidors as $distribuidor)
@@ -28,7 +27,7 @@
                         @if ($distribuidor->descripcion == null)
                             <p>
                                 Agrega una descripción a tu perfil. 
-                                <a href="{{url('distribuidor/perfil/'.$distribuidor->id.'/edit')}}" > 
+                                <a href="{{url('distribuidor/edit/perfil/'.$distribuidor->id)}}" > 
                                     Click Aquí para agregar 
                                 </a>
                             </p>
@@ -38,13 +37,6 @@
                     @endforeach
                     <h2 class="mb-4 text-xl font-medium text-center ">Entregas por recoger</h2>
                     <h2 class="text-base font-semibold">Equipos</h2>
-=======
-                <div class="p-16 bg-white border-b border-gray-200"><br>
-                    <h2 class=" mb-4 font-black text-4xl  text-center ">Entregas por Recoger</h2>
-                    <h2 class="text-3xl font-semibold">Equipos</h2>
-                    <hr>
-                    <br>
->>>>>>> fc0ea31290341acb348fa49e4e865429fb80e878
                     @if (count($equiposDonados) > 0)
                         <table class="w-full text-left border-separate " >
                         <tr >
