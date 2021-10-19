@@ -16,6 +16,11 @@
                         {{ __('Tecnico') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('tecnico_diagnostico')" :active="request()->routeIs('diagnostico')">
+                        {{ __('Diagnósticos') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

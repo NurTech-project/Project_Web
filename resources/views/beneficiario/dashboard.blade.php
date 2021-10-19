@@ -28,7 +28,7 @@
                                 </a>
                             </p>
                         @else
-                            <h4>Tu del proceso estado es <b>{{$beneficiario->estado}}</b></h4>
+                            <h4>Tu estado del proceso es <b>{{$beneficiario->estado}}</b></h4>
                         @endif
                     @endforeach
                 </div>

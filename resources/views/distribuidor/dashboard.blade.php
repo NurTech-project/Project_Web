@@ -32,7 +32,7 @@
                                 </a>
                             </p>
                         @else
-                            <h4>Tu del disponibilidas es <b>{{$distribuidor->disponibilidad}}</b></h4>
+                            <h4>Tu disponibilidad es <b>{{$distribuidor->disponibilidad}}</b></h4>
                         @endif
                     @endforeach
                     <h2 class="mb-4 text-xl font-medium text-center ">Entregas por recoger</h2>
