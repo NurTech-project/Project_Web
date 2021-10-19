@@ -1,8 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-<<<<<<< HEAD
-=======
 /***/ "./node_modules/alpinejs/dist/alpine.js":
 /*!**********************************************!*\
   !*** ./node_modules/alpinejs/dist/alpine.js ***!
@@ -1961,7 +1959,6 @@
 
 /***/ }),
 
->>>>>>> 03e2d907624a229a2f68a656ffa898d7543beaa2
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -4023,11 +4020,8 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-<<<<<<< HEAD
-=======
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
->>>>>>> 03e2d907624a229a2f68a656ffa898d7543beaa2
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
