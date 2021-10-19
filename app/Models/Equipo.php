@@ -12,7 +12,6 @@ class Equipo extends Model
     public function donante(){
         return $this->belongsTo(Donante::class);
     }
-
     public function detalleDonaciones(){
         return $this->hasMany(DetalleDonacion::class);
     }
