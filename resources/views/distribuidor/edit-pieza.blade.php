@@ -6,43 +6,29 @@
     </x-slot>
 
    
-    <div class="py-12 px-32">
+    <div class="py-12 px-60">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-16 bg-white border-b border-gray-200">
                     <h2 class="mb-4 font-black text-3xl  text-center ">Rechazar pieza</h2><br>
                     @foreach ($piezaGet as $pieza)
-                    <br><hr>
-                    <ul class="flex">
-                        <li>
-                            <div>
-                                <x-label class="text-xl font-semibold " for="nombre" :value="__('Nombre')" />
-                                <p class="px-8">{{$pieza->userNombre}}</p>
-                                </div>
-                        </li>
-                        <li>
-                            <div class="px-80">
-                                <x-label class="text-xl font-semibold " for="nombre" :value="__('Apellido')" />
-                                <p>{{$pieza->userApellido}}</p>
-                                </div>
-                        </li>
-                    </ul>
-                    <br><hr>
-                    <ul class="flex">
-                        <li>
-                            <div>
-                                <x-label class="text-xl font-semibold" for="nombre" :value="__('Provincia')" />
-                                <p class="px-8">{{$pieza->provinciaDescripcion}}</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="px-72">
-                                <x-label class="text-xl font-semibold" for="nombre" :value="__('Cantón')" />
-                                <p>{{$pieza->cantonDescripcion}}</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <br><hr>
+                    <hr>     
+                    <div>
+                    <x-label class="text-xl font-semibold " for="nombre" :value="__('Nombre')" />
+                    <p class="px-8">{{$pieza->userNombre}}</p>
+                    </div><br><hr>
+                    <div>
+                    <x-label class="text-xl font-semibold " for="nombre" :value="__('Apellido')" />
+                    <p  class="px-8">{{$pieza->userApellido}}</p>
+                    </div><br><hr>
+                    <div>
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Provincia')" />
+                    <p class="px-8">{{$pieza->provinciaDescripcion}}</p>
+                    </div><br><hr>
+                    <div>
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Cantón')" />
+                    <p class="px-8">{{$pieza->cantonDescripcion}}</p>
+                    </div><br><hr>
                     <div>
                     <x-label class="text-xl font-semibold" for="nombre" :value="__('Dirección')" />
                     <p class="px-8">{{$pieza->userDireccion}}</p>

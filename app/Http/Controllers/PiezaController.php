@@ -46,7 +46,7 @@ class PiezaController extends Controller
         $datosPieza->estado = $request->estado;
 
         $datosPieza->save();
-        return redirect('donante/dashboard');
+        return redirect('donante/dashboard')->with('mensaje','Pieza agregada con éxito');;
     }
 
     /**
@@ -92,5 +92,14 @@ class PiezaController extends Controller
     public function destroy($id)
     {
         //
+        $piezaDestroy = Pieza::findOrFail($id);
+        #condicionamos
+        if($piezaDestroy->estado != null){
+            return redirect('donante/dashboard')->with('mensaje','La pieza ha sido procesado, no se puede eliminar');
+        }else{
+            $piezaDestroy->delete();
+            return redirect('donante/dashboard')->with('mensaje','Pieza eliminada con éxito');
+        }
+
     }
 }

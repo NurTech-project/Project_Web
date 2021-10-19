@@ -32,6 +32,10 @@ use App\Http\Controllers\PiezaController;
 Route::get('/', function () {
     return view('home.home');
 });
+
+Route::get('/home/quiero-computador', function () {
+    return view('home.quiero-computador');
+});
 //>Tecnic rute's 
 /*
 Route::get('/tecnic', function(){
@@ -96,5 +100,7 @@ Route::resource('/donante', DonanteController::class);
 Route::resource('/donante/equipo', EquipoController::class)->middleware(['auth']);
 //Ruta pieza
 Route::resource('/donante/pieza', PiezaController::class)->middleware(['auth']);
+//Ruta Beneficiario
+Route::resource('/beneficiario', BeneficiarioController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
