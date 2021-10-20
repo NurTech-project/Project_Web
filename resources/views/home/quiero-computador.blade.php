@@ -30,30 +30,21 @@
     </div>
   </nav>
   <!-- navigation bar  -->
-    <div class="bg-purple-700 h-72 mt-12 flex">
-        <div class="flex-1">
-            <div>
-            <br>
-            <br>
-            <h1 class="ml-56 text-white text-4xl">Nur-Tech</h1>
-            </div>
-            <div class="border-b-4 border-yellow-400 mt-4 mb-4 ml-56 mr-80">
 
-            </div>
-            <div class="flex-1">
-                <h1 class="ml-56 text-white">
-                        El proyecto es gestionado por un grupo de voluntarios que son
-                        docentes del IST Benito Juárez y activistas locales. Nuestro proceso tiene tres pasos: recolectar,acondicionar y
-                        entregar. En el primer paso nos ponemos en contacto con las personas que desean donar equipos, y se define una cita para
-                        recolectar.
-                </h1><br>
-            </div>
-        </div>
-        <div class="flex-1">
-           <img src="../imagenes/carousel2.jpg" alt="" width="200" class="ml-80">
-        </div>
-    </div>
-    <div class=" xl\:bg-white bg-white text-center">
+    <div class="lg-flex  bg-cover bg-center  h-auto text-black py-36 px-10 object-fill" style="background-image: url(https://lh3.googleusercontent.com/proxy/gKtdZzVaGNu5rpNCdD5ne5E-_W0J7kpVXmru3kU4EQWrRy-7usmIiCqNOhmsv7ckXM6iBzKPysBvh2evlBLn_OGgbHw) ">
+
+        <div class="text-center ml-96">
+         <p class="text-5xl font-serif text-white">NUR-TECH</p><br>
+         <p class="text-2xl font-serif mb-10 leading-none">El proyecto es gestionado <br>
+          por un grupo de voluntarios <br>
+          que son docentes del IST Benito <br>
+           Juárez y activistas locales.
+         </p>
+         <br><br>
+        </div>  
+      </div>
+      <br>
+    <div class="xl\:bg-white bg-white text-center">
             <br>
             <br>
             <br>
@@ -85,12 +76,14 @@
     <br>
     <br>
 
-    <div class="ml-28">
-    <a class="px-6 py-2 bg-gray-800 ml-96 shadow-sm font-medium text-white hover:bg-yellow-400 duration-700 ease-in-out"> 🤍 INSCRIBETE PARA UN COMPUTADOR</a>
+    <center>
+    <div class="lg-flex">
+      <button class="text-white bg-gray-800 py-4 px-12 font-serif text-sm hover:bg-purple-800 duration-700 ease-in-out">🤍 INSCRIBETE PARA UN COMPUTADOR</button>      
     </div>
-    <div class="h-64 ml-48 mt-12">
-    <img src="../imagenes/comp.jpg" alt="" width="200" class="ml-96">
+    <div class="h-64 mt-12">
+    <img src="../imagenes/comp.jpg" alt="" width="200">
     </div>
+    </center>
     <!-- FOOTER -->
         
     <footer class="bg-black py-2 md:py-4">
