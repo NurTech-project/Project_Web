@@ -1,731 +1,352 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../public/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     <title>Nur Tech</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
 
-    <!-- Styles -->
-    <style>
-        /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-        html {
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%
+<style>
+       *{
+         margin:0;
+         padding:0;
+         box-sizing:border-box;
         }
-
-        body {
-            margin: 0
-        }
-
-        a {
-            background-color: transparent
-        }
-
-        [hidden] {
-            display: none
-        }
-
-        html {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-            line-height: 1.5
-        }
-
-        *,
-        :after,
-        :before {
-            box-sizing: border-box;
-            border: 0 solid #e2e8f0
-        }
-
-        a {
-            color: inherit;
-            text-decoration: inherit
-        }
-
-        svg,
-        video {
-            display: block;
-        }
-
-        video {
-            max-width: 100%;
-            height: auto
-        }
-
-        .bg-white {
-            --bg-opacity: 1;
-            background-color: #fff;
-            background-color: rgba(255, 255, 255, var(--bg-opacity))
-        }
-
-        .bg-gray-100 {
-            --bg-opacity: 1;
-            background-color: #f7fafc;
-            background-color: rgba(247, 250, 252, var(--bg-opacity))
-        }
-
-        .border-gray-200 {
-            --border-opacity: 1;
-            border-color: #edf2f7;
-            border-color: rgba(237, 242, 247, var(--border-opacity))
-        }
-
-        .border-t {
-            border-top-width: 1px
-        }
-
-        .flex {
-            display: flex
-        }
-
-        .grid {
-            display: grid
-        }
-
-        .hidden {
-            display: none
-        }
-
-        .items-center {
-            align-items: center
-        }
-
-        .justify-center {
-            justify-content: center
-        }
-
-        .font-semibold {
-            font-weight: 600
-        }
-
-        .h-5 {
-            height: 1.25rem
-        }
-
-        .h-8 {
-            height: 2rem
-        }
-
-        .h-16 {
-            height: 4rem
-        }
-
-        .text-sm {
-            font-size: .875rem
-        }
-
-        .text-lg {
-            font-size: 1.125rem
-        }
-
-        .leading-7 {
-            line-height: 1.75rem
-        }
-
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto
-        }
-
-        .ml-1 {
-            margin-left: .25rem
-        }
-
-        .mt-2 {
-            margin-top: .5rem
-        }
-
-        .mr-2 {
-            margin-right: .5rem
-        }
-
-        .ml-2 {
-            margin-left: .5rem
-        }
-
-        .mt-4 {
-            margin-top: 1rem
-        }
-
-        .ml-4 {
-            margin-left: 1rem
-        }
-
-        .mt-8 {
-            margin-top: 2rem
-        }
-
-        .ml-12 {
-            margin-left: 3rem
-        }
-
-        .-mt-px {
-            margin-top: -1px
-        }
-
-        .max-w-6xl {
-            max-width: 72rem
-        }
-
-        .min-h-screen {
-            min-height: 100vh
-        }
-
-        .overflow-hidden {
-            overflow: hidden
-        }
-
-        .p-6 {
-            padding: 1.5rem
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem
-        }
-
-        .px-6 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem
-        }
-
-        .pt-8 {
-            padding-top: 2rem
-        }
-
-        .fixed {
-            position: fixed
-        }
-
-        .relative {
-            position: relative
-        }
-
-        .top-0 {
-            top: 0
-        }
-
-        .right-0 {
-            right: 0
-        }
-
-        .shadow {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06)
-        }
-
-        .text-center {
-            text-align: center
-        }
-
-        .text-gray-200 {
-            --text-opacity: 1;
-            color: #edf2f7;
-            color: rgba(237, 242, 247, var(--text-opacity))
-        }
-
-        .text-gray-300 {
-            --text-opacity: 1;
-            color: #e2e8f0;
-            color: rgba(226, 232, 240, var(--text-opacity))
-        }
-
-        .text-gray-400 {
-            --text-opacity: 1;
-            color: #cbd5e0;
-            color: rgba(203, 213, 224, var(--text-opacity))
-        }
-
-        .text-gray-500 {
-            --text-opacity: 1;
-            color: #a0aec0;
-            color: rgba(160, 174, 192, var(--text-opacity))
-        }
-
-        .text-gray-600 {
-            --text-opacity: 1;
-            color: #718096;
-            color: rgba(113, 128, 150, var(--text-opacity))
-        }
-
-        .text-gray-700 {
-            --text-opacity: 1;
-            color: #4a5568;
-            color: rgba(74, 85, 104, var(--text-opacity))
-        }
-
-        .text-gray-900 {
-            --text-opacity: 1;
-            color: #1a202c;
-            color: rgba(26, 32, 44, var(--text-opacity))
-        }
-
-        .underline {
-            text-decoration: underline
-        }
-
-        .antialiased {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
-        }
-
-        .w-5 {
-            width: 1.25rem
-        }
-
-        .w-8 {
-            width: 2rem
-        }
-
-        .w-auto {
-            width: auto
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr))
-        }
-
-        @media (min-width:640px) {
-            .sm\:rounded-lg {
-                border-radius: .5rem
-            }
-
-            .sm\:block {
-                display: block
-            }
-
-            .sm\:items-center {
-                align-items: center
-            }
-
-            .sm\:justify-start {
-                justify-content: flex-start
-            }
-
-            .sm\:justify-between {
-                justify-content: space-between
-            }
-
-            .sm\:h-20 {
-                height: 5rem
-            }
-
-            .sm\:ml-0 {
-                margin-left: 0
-            }
-
-            .sm\:px-6 {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem
-            }
-
-            .sm\:pt-0 {
-                padding-top: 0
-            }
-
-            .sm\:text-left {
-                text-align: left
-            }
-
-            .sm\:text-right {
-                text-align: right
-            }
-        }
-
-        @media (min-width:768px) {
-            .md\:border-t-0 {
-                border-top-width: 0
-            }
-
-            .md\:border-l {
-                border-left-width: 1px
-            }
-
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr))
-            }
-        }
-
-        @media (min-width:1024px) {
-            .lg\:px-8 {
-                padding-left: 2rem;
-                padding-right: 2rem
-            }
-        }
-
-        @media (prefers-color-scheme:dark) {
-            .dark\:bg-gray-800 {
-                --bg-opacity: 1;
-                background-color: #2d3748;
-                background-color: rgba(45, 55, 72, var(--bg-opacity))
-            }
-
-            .dark\:bg-gray-900 {
-                --bg-opacity: 1;
-                background-color: #1a202c;
-                background-color: rgba(26, 32, 44, var(--bg-opacity))
-            }
-
-            .dark\:border-gray-700 {
-                --border-opacity: 1;
-                border-color: #4a5568;
-                border-color: rgba(74, 85, 104, var(--border-opacity))
-            }
-
-            .dark\:text-white {
-                --text-opacity: 1;
-                color: #fff;
-                color: rgba(255, 255, 255, var(--text-opacity))
-            }
-
-            .dark\:text-gray-400 {
-                --text-opacity: 1;
-                color: #cbd5e0;
-                color: rgba(203, 213, 224, var(--text-opacity))
-            }
-
-            .dark\:text-gray-500 {
-                --tw-text-opacity: 1;
-                color: #6b7280;
-                color: rgba(107, 114, 128, var(--tw-text-opacity))
-            }
-        }
-    </style>
-
-    <style>
 
         body {
             font-family: 'Nunito', sans-serif;
+            display: block;
+            justify-content: space-around;
         }
 
         /* Encabezado */
         .encabezado {
             background-color: rgb(153, 50, 204) ;
             text-align: left;
-            margin-left: 2%;
-            text-size-adjust: 15%;
-            box-shadow: black;
-            flex-wrap: nowrap;
-            height:250px;
-            width:1300px;
-            border-radius: 1%;
+            margin-top:5%;
+            display: flex;
+            height:600px;
+            width:1350px;
+            justify-content: space-around;
         }
-
         .encabezado h1 {
-           font-family: 'Nunito', sans-serif;
-           color:rgb(0, 0, 0);
-           font-size: 300%;
-           text-decoration-style: white;
-           position:relative;
-           left:50px;
+            font-size: 45px;
+            position:relative;
+            top: 120px;
+            left:250px;
+            text-align: center;
         }
 
-        .encabezado p {
-          font-family: 'Nunito', sans-serif;
-          color: whitesmoke;
-          text-align: left;
-          margin-left: 5em;
-          text-decoration: black;
-          position: relative;
-          bottom: 40px;
+        .encabezado p{
+          font-size: 25px;
+          position:relative;
+          top:250px;
+          right:210px;
+          color:white;
+          text-align: center;
         }
 
         .encabezado img {
-            position: relative;
-            left: 970px;
-            bottom: 220px;
-            width: 245px;
-            height: 225px;
-            border-radius: 5px;
+          position:relative;
+          right:50px;
+          top: 16px;
+          width: 30%;
+          height: 90%;
+          
         }
-        
-        /* Titulo Encabezado */
-
-        .titulo-voluntarios h1 {
-            position: relative;
-            font-family: 'Nunito', sans-serif;
-            left:420px;
-            font-size: 30px;
+        /* Voluntarios */
+        .titulo-voluntarios h1{
+          font-size: 300%;
+          display: block;
+          text-align:center;
+          position:relative;
+          top:100px; 
         }
 
         /* Cuadros de Colaboradores */
-
         .voluntario-1 {
             position: relative;
-            margin-left: 2%;
-            width: 650px;
+            width: 660px;
             height: 320px;
             box-shadow: black;
             background-color: rgb(218, 165, 32);
+            top:250px;
+            display:flex;
         }
-
        .voluntario-1 img {
-           position: relative;
+        position: relative;
            width: 30%;
+           height:60%;
            left: 20px;
            top:  55px;
         }
-
        .voluntario-1 h2 {
            font-family: 'Nunito', sans-serif;
-           font-size:200%;
+           font-size:160%;
            position: relative;
-           bottom: 180px;
-           left: 300px;
+           top: 30px;
+           left: 150px;
            color: rgb(75, 0, 130);
       }
-
       .voluntario-1 p {
-          font-size: 100%;
+          font-size: 85%;
           color: rgb(75, 0, 130);
           text-align: justify;
           position:relative;
-          left:230px;
-          bottom: 190px;
+          right:100px;
+          top:100px;
       }
 
       .voluntario-2 {
             position: relative;
-            left:653px;
-            bottom:320px;
-            margin-left: 2%;
-            width: 650px;
+            width: 660px;
             height: 320px;
-            box-shadow: black;
-            background-color: rgb(128, 128, 128);
-      }
+            background-color:  rgb(128, 128, 128);
+            bottom:70px;
+            left:690px;
+            display:flex;
+        }
        .voluntario-2 img {
            position: relative;
            width: 30%;
+           height:60%;
            left: 20px;
            top:  55px;
-      }
+        }
 
-       .voluntario-2 h2 {
+        .voluntario-2 h2 {
            font-family: 'Nunito', sans-serif;
-           font-size:200%;
+           font-size:160%;
            position: relative;
-           bottom: 175px;
-           left: 300px;
+           top: 30px;
+           left: 150px;
            color: white;
       }
-
       .voluntario-2 p {
-          font-size: 100%;
+          font-size: 85%;
           color: white;
           text-align: justify;
           position:relative;
-          left:230px;
-          bottom: 190px;
+          right:100px;
+          top:100px;
       }
 
-     .voluntario-3 {
+      
+      .voluntario-3 {
+            position: relative;
+            width: 660px;
+            height: 320px;
+            box-shadow: black;
+            background-color: rgb(218, 112, 214);
+            bottom:1px;
+            display:flex;
+        }
+       .voluntario-3 img {
         position: relative;
-        margin-left: 2%;
-         width: 650px;
-        height: 320px;
-        box-shadow: black;
-        bottom: 310px;
-        background-color: rgb(218, 112, 214);
-     }
+           width: 30%;
+           height:60%;
+           left: 20px;
+           top:  55px;
+        }
+       .voluntario-3 h2 {
+           font-family: 'Nunito', sans-serif;
+           font-size:160%;
+           position: relative;
+           top: 30px;
+           left: 150px;
+           color: rgb(25, 25, 112);
+      }
+      .voluntario-3 p {
+          font-size: 80%;
+          color: rgb(75, 0, 130);
+          text-align: justify;
+          position:relative;
+          right:100px;
+          top:100px;
+      }
 
-    .voluntario-3 img {
+      .voluntario-4 {
+            position: relative;
+            width: 660px;
+            height: 320px;
+            background-color: rgb(255, 215, 0);
+            bottom:320px;
+            left:690px;
+            display:flex;
+        }
+       .voluntario-4 img {
+           position: relative;
+           width: 30%;
+           height:60%;
+           left: 20px;
+           top:  55px;
+        }
+
+        .voluntario-4 h2 {
+           font-family: 'Nunito', sans-serif;
+           font-size:150%;
+           position: relative;
+           top: 30px;
+           left: 150px;
+           color: rgb(138, 43, 226);
+      }
+      .voluntario-4 p {
+          font-size: 85%;
+          color: rgb(138, 43, 226);
+          text-align: justify;
+          position:relative;
+          right:100px;
+          top:100px;
+      }
+       
+      /*Imagen de Fondo */
+       .imagen-fondo {
+        display:block;
+        display:inline-block;
+       }
+
+
+      /*Quiero un Computador */
+      .quiero-voluntario h1 {
+        font-size: 200%;
         position: relative;
-        width: 30%;
-        left: 20px;
-        top:  55px;
-     }
+        bottom: 650px;
+        text-align: center;
+      }
 
-    .voluntario-3 h2 {
-         font-family: 'Nunito', sans-serif;
-         font-size:200%;
-         position: relative;
-         bottom: 175px;
-         left: 300px;
-         color: rgb(25, 25, 112);
-     }
-
-    .voluntario-3 p {
-         font-size: 100%;
-         color: rgb(25, 25, 112);
-         text-align: justify;
-         position:relative;
-         left:230px;
-         bottom: 190px;
-     }
-
-     .voluntario-4 {
-         position: relative;
-         left:653px;
-         bottom:630px;
-         margin-left: 2%;
-         width: 650px;
-         height: 320px;
-         box-shadow: black;
-         background-color: rgb(255, 215, 0);
-     }
-
-     .voluntario-4 img {
-         position: relative;
-         width: 30%;
-         left: 20px;
-         top:  55px;
-
-     }
-     
-    .voluntario-4 h2 {
-         font-family: 'Nunito', sans-serif;
-         font-size:200%;
-         position: relative;
-         bottom: 175px;
-         left: 300px;
-         color: rgb(138, 43, 226);
-     }
-
-    .voluntario-4 p {
-        font-size: 100%;
-        color: rgb(138, 43, 226);
-        text-align: justify;
-        position:relative;
-        left:230px;
-        bottom: 190px;
-     }
-
-  /*Imagen de Fondo */
-
-    .imagen-fondo{
+      .quiero-voluntario h4 {
+        font-size: 200%;
         position: relative;
-        bottom: 590px;
-        margin-left: 2%;
-        width:1000em;
-        height:100%;
-        left:200px;
-     }
+        bottom: 550px;
+        text-align: center;
+      }
 
-  /*Quiero un voluntario */
-
-    .quiero-voluntario h1{
-        position: relative;
-        font-family: 'Nunito', sans-serif;
-        left:510px;
-        bottom: 1050px;
-        font-size: 30px;
-        color:rgb(0, 0, 0);
-
-     }
-
-    .quiero-voluntario p{
-       font-size: 125%;
-       text-align: left;
-       position:relative;
-       bottom: 1030px;
-       left:280px;
-       color:rgb(0, 0, 0);
-     }
-
-    .quiero-voluntario button {
+      .quiero-voluntario button {
       position: relative;
       font-size: 100%;
-      left:635px;
-      bottom: 1000px;
-      padding:0.99%;
-    }
+      left:550px;
+      bottom: 450px;
+      padding:2% 5%;
+      color:white;
+      }
+
     </style>
-</head>
+
+
+<body>
+<!-- navigation bar -->
+<nav class="bg-yellow-300 py-2 md:py-4">
+    <div class="container px-4 mx-auto md:flex md:items-center">
+
+      <div class="flex justify-between items-center">
+        <img src="imagenes/logo_menu.png" alt="">
+        <button class="border border-solid border-gray-600 px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden" id="navbar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
+        <a href="{{url('/')}}" class="p-2 lg:px-4 md:mx-2 text-black rounded bg-yellow-200">Home</a>
+        <a href="{{url('/home/quienes-somos')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">¿Quienes Somos?</a>
+        <a href="{{url('/home/quiero-computador')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Quiero un Computador</a>
+        <a href="{{url('/home/ser-voluntario')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Ser Voluntario</a>
+        <a href="{{url('/login')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 text-center border border-solid border-purple-500 rounded hover:bg-purple-500 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Login</a>
+        <a href="{{url('/register')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 text-center border border-solid border-purple-500 rounded hover:bg-purple-500 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Register</a>
+      </div>
+    </div>
+  </nav>
+  <!-- navigation bar  -->
+
 
 <body>
     
 <!-- Encabezado -->
-<section>
-    
 
     <div class="encabezado">
-
-            <h1>NUR TECH </h1>
-            <p> NUR TECH es un proyecto que tiene como objetivo
-                entregar computadores refaccionados a estudiantes de Institutos </p>
-            <p> Tecnológicos Superiores de Quito y sus familias que al momento no disponen de equipos propios
-                ,tu puedes </p>
-            <p> ayudar a esta causa uniendote a nosotros como voluntario, donando equipos o piezas que no utilizes. </p>
+            <b><h1>NUR TECH </h1></b>
+            <b><p> NUR TECH es un proyecto que tiene como objetivo entregar <br>
+            computadores refaccionados a estudiantes de Institutos <br>
+            Tecnológicos Superiores de Quito y sus familias que <br>
+            al momento no disponen de equipos propios.  </p> </b>
             <img src="../imagenes/Imagen1.jpg" alt="">
     </div>
-</section>
 
 <!-- Voluntarios -->
-<section>
     <div class="titulo-voluntarios">
-    <h1> VOLUNTARIOS DENTRO DE NUR TECH </h1>
+    <table>
+     <b><h1> VOLUNTARIOS DENTRO DE NUR TECH </h1></b>
+    </table>
     </div>
-</section>
 
 
 <!-- Sección Colaboradores -->
-<section class="voluntario-1">
+<div class="voluntario-1">
    <table>
       <img src="../imagenes/Avatar.png" alt="">
-       <h2> Paco Alcacer </h2>
-        <b> <p> Donante recurrente,colaborador de la institución ayuda<br> 
-        constantemente en lo que puede , dono diez equipos <br>
-        completamente funcionales, y a armar con piezas otras <br> 
-        maquinas que se encontraban en mal estado. </p></b>
+       <b><h2> Paco Alcacer </h2></b>
+        <b> <p> Donante recurrente,colaborador de la institución <br> 
+        ayuda constantemente en lo que puede, dono <br> 
+        diez equipos completamente funcionales, y a <br>
+        armar con piezas otras maquinas que se estaban <br>
+        en mal estado. </p></b>
    </table>
-</section>
+</div>
 
-<section class="voluntario-2">
+<div class="voluntario-2">
    <table>
      <img src="../imagenes/Avatar.png" alt="">
-     <h2> Luis Mendoza </h2>
+     <b><h2> Luis Mendoza </h2></b>
      <b> <p> Gerente de la empresa Innovando es un gran <br>
-     colaborador aporto al proyecto un gran número de <br> 
-     partes y equipos para donar. </p> </b>
+     colaborador aporto al proyecto un gran <br> 
+     número de partes y equipos para donar. </p> </b>
   </table>
-</section>
+</div>
     
-<section class="voluntario-3">
+<div class="voluntario-3">
            <table>
                <img src="../imagenes/Avatar.png" alt="">
-               <h2> Gonzalo Gallo </h2>
-               <b> <p> Administrador encargado de almacenar los equipos <br>
-               que llegan a nuestras manos, posteriormente procede <br>
-               a asignar el computador a un Técnico para su revision. </p> </b>
+               <b><h2> Gonzalo Gallo </h2></b>
+               <b> <p> Administrador encargado de almacenar los <br>
+               equipos que llegan a nuestras manos, <br> 
+               posteriormente procede a asignar el computador  <br> 
+               a un Técnico para su revision. </p> </b>
            </table>
-</section>
+</div>
 
-<section class="voluntario-4">
+<div class="voluntario-4">
      <table>
         <img src="../imagenes/Avatar.png" alt="">
          <h2> Javier Hernandez </h2>
-         <b><p> Dueño de Incorporer.Inc ayudo en la distribucion de <br>
-         mas de cien equipos de segunda mano para su futuro <br>
-         reacondicionamiento y reparación. </p></b>
+         <b><p> Dueño de Incorporer.Inc nos ayudo en el <br>
+         proceso de la distribución dono mas de cien <br>
+         equipos de segunda mano para su futura <br>
+         reparación. </p></b>
      </table>
-</section>
+</div>
+
 
 <!--Imagen de Fondo -->
-<section>
- <div class="imagen-fondo">
- <img src="../imagenes/background.jpg" alt="">
- </div>
-</section>
+ <nav class="imagen-fondo">
+ <img src="../imagenes/background.jpg" alt=""/>
 
-<section>
 <div class="quiero-voluntario">
   <table>
      <b> <h1> ¡QUIERO SER VOLUNTARIO!</h1></b>
-        <b><p>Para ser voluntario y formar parte de este gran proyecto de apoyo para jovenes estudiantes <br>
-         solamente hace falta tener voluntad de ayudar y comunicarte con nosostros a traves del <br>
-         siguiente formulario al cual podras acceder de forma inmediata pulsando el botón de inscripción <br> 
-         que se encuentra en la parte inferior. </p> </br>
+        <b><h4>Para ser voluntario y formar parte de este gran proyecto de apoyo para jovenes estudiantes 
+         solamente hace falta tener voluntad de ayudar y comunicarte con nosostros a traves del 
+         siguiente formulario al cual podras acceder de forma  <br> 
+         inmediata pulsando el botón de inscripción que se encuentra en la parte inferior. </h4> 
         
-         <button > Inscripción </button>
+         <button type="button" class="bg-purple-900 hover:bg-purple-600"> Inscripción </button>
 </div> 
-</section>
+
+
  <!-- FOOTER -->
         
  <footer class="bg-black py-2 md:py-4">
@@ -792,15 +413,19 @@
                 </svg>
             </a>
         </div>
+    
         <p class="mt-8 text-base leading-6 text-center text-gray-400">
             © 2021 PROYECTO NUR TECH.
         </p>
+    
     </div>
 </section>
     
   </div>
 </footer>
 
- <!-- FOOTER -->
+ 
+
   </body>
+ 
 </html>

@@ -545,8 +545,13 @@ audio,
 iframe,
 embed,
 object {
+<<<<<<< HEAD
+  display: block;
+  vertical-align: middle; 
+=======
   display: block; /* 1 */
   vertical-align: middle; /* 2 */
+>>>>>>> bc05b1e0eea8ba88108d49c8b954816cf573ad7f
 }
 
 /**
