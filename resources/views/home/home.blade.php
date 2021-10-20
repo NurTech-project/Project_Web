@@ -33,6 +33,8 @@
     </div>
   </nav>
   <!-- navigation bar  -->
+  
+  
 
   
 
@@ -231,7 +233,7 @@
       </div>
       
       
-      </nav>
+      
       <div class="flex justify-center mt-8 space-x-6">
             <a href="https://www.facebook.com/profile.php?id=100068516903329" class="text-blue-600 hover:text-yellow-500">
                 <span class="sr-only">Facebook</span>
@@ -276,7 +278,7 @@
             © 2021 PROYECTO NUR TECH.
         </p>
     </div>
-</section>
+
     
   </div>
 </footer>

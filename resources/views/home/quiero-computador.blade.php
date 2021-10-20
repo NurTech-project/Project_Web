@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="flex-1">
-           <img src="../imagenes/carousel2.jpg" alt="" width="200" class="ml-80">
+           <img src="../imagenes/carousel2.jpg" alt="" width="200" class="ml-80 ">
         </div>
     </div>
     <div class=" xl\:bg-white bg-white text-center">
@@ -64,8 +64,8 @@
     </div>
     <div class="bg-yellow-400 h-72 mt-12 flex">
         <div class="flex-1">
-            <div class="flex-1">
-            <img src="../imagenes/carousel3.jpg" alt="" width="280" class="ml-32">
+            <div class="center">
+            <img src="../imagenes/carousel3.jpg" alt="" width="280" class="">
             </div>
         </div>
         <div class="flex-1">
