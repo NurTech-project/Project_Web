@@ -32,9 +32,20 @@ use App\Http\Controllers\PiezaController;
 Route::get('/', function () {
     return view('home.home');
 });
+Route::get('tecnic/create', [TecnicoController::class,'create']);
+
+;
+
+Route::get('/home/quienes-somos', function () {
+    return view('home.quienes-somos');
+});
 
 Route::get('/home/quiero-computador', function () {
     return view('home.quiero-computador');
+});
+
+Route::get('/home/ser-voluntario', function () {
+    return view('home.ser-voluntario');
 });
 
 Route::get('/home/quienes-somos', function () {
