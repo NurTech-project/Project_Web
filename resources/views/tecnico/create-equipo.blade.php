@@ -10,41 +10,43 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
-                    <h2 class="mb-4 text-xl text-center font-semibold">Detalle equipo</h2>
+                    <h2 class=" mb-4 font-black text-3xl  text-center ">Detalle equipo</h2>
+                    <br><hr>
                     @foreach ($equipoGet as $equipo)
                     <div class="mt-4">
-                <x-label for="nombre" :value="__('Sistema operativo')" />
+                <x-label class="text-xl font-semibold" for="nombre" :value="__('Sistema operativo')" />
                 <p>{{$equipo->equipoSistema}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Procesador')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Procesador')" />
                     <p>{{$equipo->equipoProcesador}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Ram')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Ram')" />
                     <p>{{$equipo->equipoRam}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Almacenamiento')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Almacenamiento')" />
                     <p>{{$equipo->equipoAlmacenamiento}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Detalle del equipo')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Detalle del equipo')" />
                     <p>{{$equipo->equipoDetalle}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Fecha de recepción')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Fecha de recepción')" />
                     <p>{{$equipo->recepcionFecha}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Hora de recepción')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Hora de recepción')" />
                     <p>{{$equipo->recepcionHora}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4 mb-4">
-                    <x-label for="nombre" :value="__('Distribuidor')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Distribuidor')" />
                     <p>Nombre/Apellido: {{$equipo->userNombre}} {{$equipo->userApellido}}</p>
                     <p>Email: {{$equipo->userEmail}}</p>
-                    </div>
+                    </div><br><hr>
+                    <br><br>
 
                     <form action="{{ url('/tecnico/recibir/equipo/' . $equipo->recepcionId) }}" method="POST">
                     @csrf
@@ -55,15 +57,17 @@
                     <input type="hidden" name="estado" value="Mantenimiento"/>
 
                     <x-button type="submit" 
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded">Aceptar</x-button>
+                    class="bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-2 px-2 rounded">Aceptar</x-button>
+                    <x-button class="bg-purple-900 hover:bg-purple-600 text-white font-bold py-2 px-2 rounded">
+                        <a href="{{ url('/tecnico/dashboard') }}">Regresar</a>
+                        </x-button>
+                        <br><br>
                     </form>
 
                     @endforeach
                     
                    
-                    <x-button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">
-                        <a href="{{ url('/tecnico/dashboard') }}">Regresar</a>
-                        </x-button>
+                    
                 </div>
             </div>
         </div>
