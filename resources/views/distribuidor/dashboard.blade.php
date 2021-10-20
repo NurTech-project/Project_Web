@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="px-20 font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard  |  ') }}
             @foreach($perfilDistribuidors as $distribuidor)
-                <x-button class="ml-4">
-                    <a href="{{url('distribuidor/perfil/'.$distribuidor->id)}}">
+                <x-button class="bg-purple-900 hover:bg-purple-600 ml-4">
+                    <a  href="{{url('distribuidor/perfil/'.$distribuidor->id)}}">
                         Perfil
-                    </a>
+                    </a>                    
                 </x-button>     
             @endforeach
         </h2>
@@ -16,27 +16,35 @@
     <div class="py-12 px-20">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-16 bg-white border-b border-gray-200">
                                     
-                    @foreach($perfilDistribuidors as $distribuidor)
+                    <div class="text-center text-3xl font-semibold">
+                        @foreach($perfilDistribuidors as $distribuidor)
                         
-                        Bienvenido {{$distribuidor->nombre}} {{$distribuidor->apellido}} <br/>
+                        Bienvenido {{$distribuidor->nombre}} {{$distribuidor->apellido}} <br/><hr>
                         @if(Session::has('mensaje'))
                         {{ Session::get('mensaje') }}
                         @endif
                         @if ($distribuidor->descripcion == null)
-                            <p>
+                            <p class="text-left text-xl" ><br>
                                 Agrega una descripción a tu perfil. 
-                                <a href="{{url('distribuidor/edit/perfil/'.$distribuidor->id)}}" > 
-                                    Click Aquí para agregar 
-                                </a>
+                                <br><br>
+                                <button class="text-sm  bg-yellow-300 hover:bg-yellow-200 border hover:text-white text-white  py-2 px-2 rounded">
+                                    <a  href="{{url('distribuidor/edit/perfil/'.$distribuidor->id)}}" > 
+                                        CLIC AQUI PARA AGREGAR 
+                                    </a>
+                                </button>
                             </p>
                         @else
-                            <h4>Tu disponibilidad es <b>{{$distribuidor->disponibilidad}}</b></h4>
+                            <h4>Tu disponibilidad es <b>{{$distribuidor->disponibilidad}}</b></h4><br>
                         @endif
                     @endforeach
-                    <h2 class="mb-4 text-xl font-medium text-center ">Entregas por recoger</h2>
-                    <h2 class="text-base font-semibold">Equipos</h2>
+                    </div>
+                    <br><br>
+                    <br>
+                    <br><br>
+                    <h2 class="mb-4 text-4xl font-black text-center ">Entregas por recoger</h2>
+                    <h2 class="text-3xl font-semibold">Equipos</h2><hr><br>
                     @if (count($equiposDonados) > 0)
                         <table class="w-full text-left border-separate " >
                         <tr >
