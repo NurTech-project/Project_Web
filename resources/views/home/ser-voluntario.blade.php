@@ -336,7 +336,6 @@
  <img src="../imagenes/background.jpg" alt=""/>
 
 <div class="quiero-voluntario">
-  <table>
      <b> <h1> ¡QUIERO SER VOLUNTARIO!</h1></b>
         <b><h4>Para ser voluntario y formar parte de este gran proyecto de apoyo para jovenes estudiantes 
          solamente hace falta tener voluntad de ayudar y comunicarte con nosostros a traves del 
@@ -424,7 +423,6 @@
   </div>
 </footer>
 
- 
 
   </body>
  
