@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('donante_dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <img src="/imagenes/NurLogo.png" alt="" class="block h-10 w-auto fill-current text-gray-600" >
+                         <!-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" /> -->
                     </a>
                 </div>
 

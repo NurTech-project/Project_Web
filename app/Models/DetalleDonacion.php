@@ -24,5 +24,4 @@ class DetalleDonacion extends Model
     public function detalleRecepcionTecnicos(){
         return $this->hasMany(DetalleRecepcionTecnico::class);
     }
-
 }

@@ -10,34 +10,36 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
-                    <h2 class="mb-4 text-xl text-center font-semibold">Diagnóstico para equipo</h2>
+                    <h2 class=" mb-4 font-black text-3xl  text-center ">Diagnóstico para equipo</h2>
+                    <br><hr>
                     @foreach ($detallesRepcion as $equipo)
                     <div class="mt-4">
-                <x-label for="nombre" :value="__('Sistema operativo')" />
+                <x-label class="text-xl font-semibold" for="nombre" :value="__('Sistema operativo')" />
                 <p>{{$equipo->equipoSistema}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Procesador')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Procesador')" />
                     <p>{{$equipo->equipoProcesador}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Ram')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Ram')" />
                     <p>{{$equipo->equipoRam}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Almacenamiento')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Almacenamiento')" />
                     <p>{{$equipo->equipoAlmacenamiento}}</p>
-                    </div>
+                    </div><br><hr>
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Detalle del equipo')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Detalle del equipo')" />
                     <p>{{$equipo->equipoDetalle}}</p>
-                    </div>
+                    </div><br><hr>
                    
                     <form action="{{ url('/tecnico/create/equipo/diagnostico') }}" method="POST">
                     @csrf
                     @method('POST')
                     <div class="mt-4">
-                    <x-label for="nombre" :value="__('Detalle del diagnóstico')" />
+                    <x-label class="text-xl font-semibold" for="nombre" :value="__('Detalle del diagnóstico')" />
+                    <br>
                     <textarea type="text" name="detalle" id="detalle" cols="70" rows="10"></textarea>
                     </div>
                     <input type="hidden" name="equipo_id" value="{{$equipo->equipoId}}"/>
@@ -45,17 +47,21 @@
                     <input type="hidden" name="detalle_donacion_id" value="{{$equipo->donacionId}}"/>
                     <input type="hidden" name="detalle_recepcion_id" value="{{$equipo->recepcionId}}"/>
                     <input type="hidden" name="estado" value="Diagnosticado"/>
+                    <br><hr>
+                    <br><br>
 
                     <x-button type="submit" 
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded">Aceptar</x-button>
+                    class="bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-2 px-2 rounded">Aceptar</x-button>
+                    <x-button class="bg-purple-900 hover:bg-purple-600 text-white font-bold py-2 px-2 rounded">
+                        <a href="{{ url('/tecnico/dashboard') }}">Regresar</a>
+                        </x-button>
+                        <br><br>
                     </form>
 
                     @endforeach
                     
                    
-                    <x-button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">
-                        <a href="{{ url('/tecnico/dashboard') }}">Regresar</a>
-                        </x-button>
+                    
                 </div>
             </div>
         </div>

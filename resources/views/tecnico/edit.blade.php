@@ -14,19 +14,25 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach($tecnico as $tecnico)
                         <p><b>Nombre y Apellidos: </b> {{$tecnico->nombre}} {{$tecnico->apellido}}</p>
+                        <br>
                         <p><b>Celular: </b> {{$tecnico->celular}} </p>
+                        <br>
                         <p><b>Dirección: </b> {{$tecnico->direccion}} </p>
+                        <br>
                         <p><b>Correo Electrónico: </b> {{$tecnico->email}} </p>
+                        <br>
                     @endforeach
                     <hr/>
                     <form action="{{url('/tecnico/'.$tecnico->id)}}" method="post">
                         @csrf
                         {{method_field('PATCH')}}
-                        <label for="descripcion">Agregar Descripción</label> <br/>
+                        <br>
+                        <label for="descripcion"><b>Agregar Descripción</b></label> 
+                        <br><br/>
                         <textarea type="text" name="descripcion" id="descripcion" cols="70" rows="10">{{$tecnico->descripcion}}</textarea>
                         <br/>
                         <div id="contador">0</div> <br/><br/>
-                        <x-button class="ml-4">
+                        <x-button class="bg-yellow-300 p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">
                         {{ __('Agregar Descripción') }}
                         </x-button> 
                     </form>

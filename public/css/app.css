@@ -545,8 +545,13 @@ audio,
 iframe,
 embed,
 object {
+<<<<<<< HEAD
+  display: block;
+  vertical-align: middle; 
+=======
   display: block; /* 1 */
   vertical-align: middle; /* 2 */
+>>>>>>> bc05b1e0eea8ba88108d49c8b954816cf573ad7f
 }
 
 /**
@@ -908,6 +913,7 @@ select {
 }
 
 .sticky {
+  position: -webkit-sticky;
   position: sticky;
 }
 
@@ -32273,6 +32279,7 @@ select {
   }
 
   .sm\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -63560,6 +63567,7 @@ select {
   }
 
   .md\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -94847,6 +94855,7 @@ select {
   }
 
   .lg\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -126134,6 +126143,7 @@ select {
   }
 
   .xl\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 
@@ -157421,6 +157431,7 @@ select {
   }
 
   .\32xl\:sticky {
+    position: -webkit-sticky;
     position: sticky;
   }
 

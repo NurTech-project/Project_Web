@@ -36,7 +36,7 @@
                                 </button>
                             </p>
                         @else
-                            <h4>Tu disponibilidad es <b>{{$distribuidor->disponibilidad}}</b></h4><br>
+                            <h4 class="mt-4">Tu disponibilidad es <b>{{$distribuidor->disponibilidad}}</b></h4><br>
                         @endif
                     @endforeach
                     </div>
