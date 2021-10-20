@@ -33,6 +33,9 @@ Route::get('/', function () {
     return view('home.home');
 });
 
+Route::get('/home/ser-voluntario', function () {
+    return view('home.ser-voluntario');
+});
 
 Route::get('tecnic/create', [TecnicoController::class,'create']);
 
