@@ -31,7 +31,10 @@
                             </div>
                             <div class="flex flex-col mb-4">
                                 <label class="mb-2 font-bold text-lg text-gray-900" for="estado">estado</label>
-                                <input class="border py-2 px-3 text-grey-800" type="text" name="estado" id="estado">
+                                <select name="estado" id="estado" class="form-control mb-2">
+                                <option value="activo">Activo</option>
+                                <option value="inactivo">Inactivo</option>
+                            </select>
                             </div>
                             <input type="submit" value="crear" class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">
                             <x-button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">

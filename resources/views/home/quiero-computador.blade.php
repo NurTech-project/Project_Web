@@ -24,6 +24,8 @@
         <a href="{{url('/home/quienes-somos')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">¿Quienes Somos?</a>
         <a href="{{url('/home/quiero-computador')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Quiero un Computador</a>
         <a href="{{url('/home/ser-voluntario')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Ser Voluntario</a>
+        <a href="{{url('/historia/visitante')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Historias</a>
+        <a href="{{url('/charla/visitante')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Charlas</a>
         <a href="{{url('/login')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 text-center border border-solid border-purple-500 rounded hover:bg-purple-500 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Login</a>
         <a href="{{url('/register')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 text-center border border-solid border-purple-500 rounded hover:bg-purple-500 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Register</a>
       </div>
@@ -39,7 +41,6 @@
             </div>
             <div class="border-b-4 border-yellow-400 mt-4 mb-4 ml-56 mr-80">
 
-<<<<<<< HEAD
             </div>
             <div class="flex-1">
                 <h1 class="ml-56 text-white">
@@ -48,8 +49,6 @@
                         entregar. En el primer paso nos ponemos en contacto con las personas que desean donar equipos, y se define una cita para
                         recolectar.
                 </h1><br>
-=======
->>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
             </div>
             <div class="flex-1">
                 <h1 class="ml-56 text-white">
@@ -168,7 +167,6 @@
                 </svg>
             </a>
         </div>
-<<<<<<< HEAD
         <div class="flex-1">
            <img src="../imagenes/carousel2.jpg" alt="" width="200" class="ml-80">
         </div>
@@ -277,8 +275,6 @@
                 </svg>
             </a>
         </div>
-=======
->>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
         <p class="mt-8 text-base leading-6 text-center text-gray-400">
             © 2021 PROYECTO NUR TECH.
         </p>
@@ -290,9 +286,5 @@
 
  <!-- FOOTER -->
 </body>
-<<<<<<< HEAD
 </html>
 
-=======
-</html>
->>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
