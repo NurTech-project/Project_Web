@@ -33,7 +33,6 @@ Route::get('/', function () {
     return view('home.home');
 });
 
-Route::get('tecnic/create', [TecnicoController::class,'create']);
 
 Route::get('/home/quienes-somos', function () {
     return view('home.quienes-somos');
@@ -47,9 +46,6 @@ Route::get('/home/ser-voluntario', function () {
     return view('home.ser-voluntario');
 });
 
-Route::get('/home/quienes-somos', function () {
-    return view('home.quienes-somos');
-});
 
 //Rutas de Donante
 Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middleware(['auth'])->name('donante_dashboard');
