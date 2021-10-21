@@ -35,8 +35,6 @@ Route::get('/', function () {
 
 Route::get('tecnic/create', [TecnicoController::class,'create']);
 
-
-
 Route::get('/home/quienes-somos', function () {
     return view('home.quienes-somos');
 });
