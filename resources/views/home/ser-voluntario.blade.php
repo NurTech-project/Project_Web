@@ -249,87 +249,97 @@
   <!-- navigation bar  -->
 
 
-<body>
-    
 <!-- Encabezado -->
-
-    <div class="encabezado">
-            <b><h1>NUR TECH </h1></b>
-            <b><p> NUR TECH es un proyecto que tiene como objetivo entregar <br>
-            computadores refaccionados a estudiantes de Institutos <br>
-            Tecnológicos Superiores de Quito y sus familias que <br>
-            al momento no disponen de equipos propios.  </p> </b>
-            <img src="../imagenes/Imagen1.jpg" alt="">
-    </div>
-
-<!-- Voluntarios -->
-    <div class="titulo-voluntarios">
-    <table>
-     <b><h1> VOLUNTARIOS DENTRO DE NUR TECH </h1></b>
-    </table>
-    </div>
-
-
-<!-- Sección Colaboradores -->
-<div class="voluntario-1">
-   <table>
-      <img src="../imagenes/Avatar.png" alt="">
-       <b><h2> Paco Alcacer </h2></b>
-        <b> <p> Donante recurrente,colaborador de la institución <br> 
-        ayuda constantemente en lo que puede, dono <br> 
-        diez equipos completamente funcionales, y a <br>
-        armar con piezas otras maquinas que se estaban <br>
-        en mal estado. </p></b>
-   </table>
-</div>
-
-<div class="voluntario-2">
-   <table>
-     <img src="../imagenes/Avatar.png" alt="">
-     <b><h2> Luis Mendoza </h2></b>
-     <b> <p> Gerente de la empresa Innovando es un gran <br>
-     colaborador aporto al proyecto un gran <br> 
-     número de partes y equipos para donar. </p> </b>
-  </table>
-</div>
-    
-<div class="voluntario-3">
-           <table>
-               <img src="../imagenes/Avatar.png" alt="">
-               <b><h2> Gonzalo Gallo </h2></b>
-               <b> <p> Administrador encargado de almacenar los <br>
-               equipos que llegan a nuestras manos, <br> 
-               posteriormente procede a asignar el computador  <br> 
-               a un Técnico para su revision. </p> </b>
-           </table>
-</div>
-
-<div class="voluntario-4">
-     <table>
-        <img src="../imagenes/Avatar.png" alt="">
-         <h2> Javier Hernandez </h2>
-         <b><p> Dueño de Incorporer.Inc nos ayudo en el <br>
-         proceso de la distribución dono mas de cien <br>
-         equipos de segunda mano para su futura <br>
-         reparación. </p></b>
-     </table>
-</div>
-
-
-<!--Imagen de Fondo -->
- <nav class="imagen-fondo">
- <img src="../imagenes/background.jpg" alt=""/>
-
-<div class="quiero-voluntario">
-     <b> <h1> ¡QUIERO SER VOLUNTARIO!</h1></b>
-        <b><h4>Para ser voluntario y formar parte de este gran proyecto de apoyo para jovenes estudiantes 
-         solamente hace falta tener voluntad de ayudar y comunicarte con nosostros a traves del 
-         siguiente formulario al cual podras acceder de forma  <br> 
-         inmediata pulsando el botón de inscripción que se encuentra en la parte inferior. </h4> 
+<div class="bg-purple-700 mt-12 lg:flex">
+                <div class="flex-1">
+                    <div>
+                    <br>
+                    <br>
+                    <h1 class="ml-56 text-black text-6xl text-center">NUR-TECH</h1>
+                    </div>
+                  
+                    <div class="flex-1">
+                        <br>
+                        <h1 class="ml-56 text-white text-2xl md:text-center">
+                    Es un proyecto que tiene como objetivo entregar 
+                    computadores refaccionados a estudiantes de Institutos
+                    Tecnológicos Superiores de Quito y sus familias que 
+                    al momento no disponen de equipos propios. 
+                        </h1><br>
+                    </div>
+                </div>
+                <div class="flex-1" >
+                   <img src="../imagenes/Imagen1.jpg" alt="" width="450" class="ml-44 pt-7 pb-7">
+                </div>
+            </div>
+          <!-- Encabezado -->
         
-         <button type="button" class="bg-purple-900 hover:bg-purple-600"> Inscripción </button>
-</div> 
+        <!-- Voluntarios -->
+        <br>
+        <br>
+        <section class="h-50">
+            <div class=" text-center text-3xl py-12 bg-cover bg-center  h-auto text-black px-10 object-fill" >
+              <b><h2>VOLUNTARIOS DENTRO DE NUR TECH</h2></b>
+          </div>
+        </section>
+        <!-- Voluntarios -->
+        
+        <!-- Sección Colaboradores -->
 
+<section class="container px-6 py-4 mx-auto">
+    <div class="grid gap-6 mb-8 md:grid-cols-1 lg:grid-cols-2">
+      <!-- Card 1 -->
+      <div class="flex items-center p-4 bg-yellow-400 rounded-lg shadow-sm dark:bg-gray-800">
+          <img alt="mountain" class="w-32 rounded-md " src="../imagenes/Avatar.png" />
+           <div id="body" class="flex flex-col ml-5">
+              <h4 id="name" class="text-xl font-semibold mb-2">Juan Cruz</h4>
+              <p id="job" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="flex items-center p-4 bg-gray-300  rounded-lg shadow-sm dark:bg-gray-800">
+             <img alt="mountain" class="w-32 rounded-md " src="../imagenes/Avatar.png" />
+           <div id="body" class="flex flex-col ml-5">
+              <h4 id="name" class="text-xl font-semibold mb-2">Juan Cruz</h4>
+              <p id="job" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="flex items-center p-4 bg-red-200  rounded-lg shadow-sm dark:bg-gray-800">
+              <img alt="mountain" class="w-32 rounded-md " src="../imagenes/Avatar.png" />
+           <div id="body" class="flex flex-col ml-5">
+              <h4 id="name" class="text-xl font-semibold mb-2">Juan Cruz</h4>
+              <p id="job" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="flex items-center p-4 bg-yellow-200  rounded-lg shadow-sm dark:bg-gray-800">
+         <img alt="mountain" class="w-32 rounded-md " src="../imagenes/Avatar.png" />
+           <div id="body" class="flex flex-col ml-5">
+              <h4 id="name" class="text-xl font-semibold mb-2">Juan Cruz</h4>
+              <p id="job" class="text-gray-800 mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           </div>
+      </div>
+    </div>
+  </section>
+    <!-- Sección Colaboradores -->
+        
+        
+        <!--Quiero ser Voluntario -->
+
+        <div class="w-full bg-cover bg-center" style="height:32rem; background-image: url(https://p4.wallpaperbetter.com/wallpaper/324/285/270/polygonal-triangles-shades-yellow-wallpaper-preview.jpg);">
+            <div class="flex items-center justify-center h-full w-full ">
+                <div class="text-center">
+                    <h1 class="text-black text-4xl font-semibold uppercase pb-20">¡QUIERO SER VOLUNTARIO! </h1>
+                    <p class="text-2xl pb-10">Para ser voluntario y formar parte de este gran proyecto de apoyo para jovenes estudiantes 
+                        solamente hace falta tener voluntad de ayudar y comunicarte con nosostros a traves del 
+                        siguiente formulario al cual podras acceder de forma inmediata pulsando el botón de inscripción que se encuentra en la parte inferior.</p>
+                   <a href="{{url('/register')}}"><button class="mt-4 px-10 py-5 bg-purple-600 text-white text-sm uppercase font-medium rounded hover:bg-red-600">Inscripción</button></a>
+                </div>
+            </div>
+        </div>
+
+        <!--Quiero ser Voluntario -->
 
  <!-- FOOTER -->
         

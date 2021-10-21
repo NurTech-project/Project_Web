@@ -24,6 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('direccion',50)->nullable();
             $table->string('email',50)->unique();
             $table->string('password');
+            //confirmacion
+            $table->boolean('confirmed')->default(0);
+            $table->string('confirmation_code')->nullable();
 
             //foreign keys
             $table->foreign('role_id')->references('id')->on('roles')

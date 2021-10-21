@@ -18,6 +18,9 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\PiezaController;
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +54,11 @@ Route::get('/home/ser-voluntario', function () {
 Route::get('/home/quienes-somos', function () {
     return view('home.quienes-somos');
 });
+
+
+
+
+
 
 //Rutas de Donante
 Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middleware(['auth'])->name('donante_dashboard');

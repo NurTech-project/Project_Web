@@ -247,61 +247,61 @@ footer {
     </div>
   </nav>
   <!-- navigation bar  -->
-    <section>
+  <section>
 
-        <div id="banner">
-            <img class="imagenuno" src="/imagenes/img1.png">
+<div id="banner">
+    <img class="imagenuno" src="/imagenes/img1.png">
 
 
-            <center>
-                <div class="texto-encima"><img src="/imagenes/logo_nur_tech.png" alt=""></div>
-                <div class="centrado">Bienvenido a nuestro sitio en este lugar podrás ayudar a la comunidad con tus donaciones o en caso de necesitar aquí te donaremos un equipo</div>
-            </center>
-        </div>
-        <div class="mision">
-            Misión
-            <center>
-                <p class="parrafo">Nuestra misión es dar una segunda oportunidad a equipos que las personas ya no utilizan para darles mantenimiento y donárselos a gente que lo necesite</p>
-                <img class="donacionimagen" src="/imagenes/impulsan-donacion-de-equipos-electricos-imagen-1-_20200920101938-2000x2000.jpg" width="300" height="200">
-            </center>
+    <center>
+        <div class="texto-encima"><img src="/imagenes/logo_nur_tech.png" alt=""></div>
+        <div class="centrado">Bienvenido a nuestro sitio en este lugar podrás ayudar a la comunidad con tus donaciones o en caso de necesitar aquí te donaremos un equipo</div>
+    </center>
+</div>
+<div class="mision">
+    Misión
+    <center>
+        <p class="parrafo">Nuestra misión es dar una segunda oportunidad a equipos que las personas ya no utilizan para darles mantenimiento y donárselos a gente que lo necesite</p>
+        <img class="donacionimagen" src="/imagenes/impulsan-donacion-de-equipos-electricos-imagen-1-_20200920101938-2000x2000.jpg" width="300" height="200">
+    </center>
 
-        </div>
-        <div>
-            <img class="imagendos" src="/imagenes/call-out-bg.jpg" >
-            <div class="card">
-                <div class="frase1">Una donación es un paso al progreso</div>
-            </div>
-        </div>
+</div>
+<div>
+    <img class="imagendos" src="/imagenes/call-out-bg.jpg" >
+    <div class="card">
+        <div class="frase1">Una donación es un paso al progreso</div>
+    </div>
+</div>
 
-        <div class="vision">
-            Visión
-            <center>
-                <p class="parrafo2">Nuestra visión es que los computadores o partes de equipos que unas personas no necesitan para nosotros con un poco de mantenimiento son útiles para otras</p>
-                <img class="reparacionimagen" src="/imagenes/mantenimiento-y-reparacion-de-laptop-corporacionti.jpg" width="300" height="200">
-            </center>
+<div class="vision">
+    Visión
+    <center>
+        <p class="parrafo2">Nuestra visión es que los computadores o partes de equipos que unas personas no necesitan para nosotros con un poco de mantenimiento son útiles para otras</p>
+        <img class="reparacionimagen" src="/imagenes/mantenimiento-y-reparacion-de-laptop-corporacionti.jpg" width="300" height="200">
+    </center>
 
-        </div>
+</div>
 
-        <div>
-            <img class="imagentres" src="/imagenes/call-out-bg.jpg">
-            <div class="card2">
-                <div class="frase2">Cada donación es una ayuda</div>
-            </div>
-        </div>
+<div>
+    <img class="imagentres" src="/imagenes/call-out-bg.jpg">
+    <div class="card2">
+        <div class="frase2">Cada donación es una ayuda</div>
+    </div>
+</div>
 
-        <div class="donar">
-            ! QUIERO DONAR¡
-            <center>
-                <p class="parrafo3">Para donar da clic en el siguiente botón que te dirigirá a una pestaña para donar gracias por donar y visítanos pronto</p>
+<div class="donar">
+    ! QUIERO DONAR¡
+    <center>
+        <p class="parrafo3">Para donar da clic en el siguiente botón que te dirigirá a una pestaña para donar gracias por donar y visítanos pronto</p>
 
-            </center>
+    </center>
 
-        </div>
-        <a href="{{url('/register')}}" class="btn">
-        Donar ahora
-    </a>
+</div>
+<a href="{{url('/register')}}" class="btn">
+Donar ahora
+</a>
 
-    </section>
+</section>
    <!-- FOOTER -->
 
    <footer class="bg-black py-2 md:py-4">

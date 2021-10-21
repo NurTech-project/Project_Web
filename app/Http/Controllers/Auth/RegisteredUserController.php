@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 { 
+    
     /**
      * Display the registration view.
      *
@@ -121,13 +122,16 @@ class RegisteredUserController extends Controller
                     $beneficiario->user_id =$user->id;
                     $beneficiario->save();
                 }
+                
             }
             //colocar lo de beneficiario de ser el caso
             return redirect(RouteServiceProvider::LOGIN);
             
         }
+        
 
 
         
     }
+   
 }
