@@ -29,6 +29,11 @@ class RegisteredUserController extends Controller
     public function create()
     {
         $roles=DB::table('roles')->get();
+
+        // $roles=DB::table('roles')->where([
+        //     ['descripcion', '<>', 'Administrador'],
+        // ])->get();
+
         $provincias=DB::table('provincias')->get();
 
         $cantones = DB::table('provincias')
