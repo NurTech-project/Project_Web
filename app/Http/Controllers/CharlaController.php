@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Charla;
+use App\Models\Administrador;
+use Illuminate\Support\Facades\DB;
+
+
+
 use Illuminate\Http\Request;
 
 class CharlaController extends Controller
@@ -11,6 +17,23 @@ class CharlaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function verCharlaAdministrador(){
+        $charlas = DB::table('charlas')
+        ->select('*')
+        ->get();
+       // $url = asset('storage/uploads/'.$historias->historiaImagen);
+        //dd($historias);
+        return view('charlas.index',compact('charlas'));
+    }
+    public function verCharlaVisitante(){
+        $charlas = Charla::where("estado","=","activo")
+        ->select('*')
+        ->get();
+       // $url = asset('storage/uploads/'.$historias->historiaImagen);
+        //dd($historias);
+        return view('home.charlas',compact('charlas'));
+    }
+
     public function index()
     {
         //
@@ -23,7 +46,7 @@ class CharlaController extends Controller
      */
     public function create()
     {
-        //
+        return view('charlas.create');
     }
 
     /**
@@ -34,7 +57,19 @@ class CharlaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('imagen')){
+            $datosHistoria['imagen']= $request->file('imagen')->store('uploads','public');
+        }
+        $id_administrador = Administrador::latest('id')->first()->id;
+        $datosCharla = new Charla();
+        $datosCharla->administrador_id = $id_administrador;
+        $datosCharla->link_video = $request->link_video;
+        $datosCharla->descripcion = $request->descripcion;
+        $datosCharla->estado = $request->estado;
+        
+
+        $datosCharla->save();
+        return redirect('/charla')->with('mensaje','charla agregada con éxito');;
     }
 
     /**
@@ -56,7 +91,8 @@ class CharlaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $charla = Charla::findOrFail($id);
+        return view('charlas.edit', compact('charla'));
     }
 
     /**
@@ -68,7 +104,12 @@ class CharlaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $charla = Charla::findOrFail($id);
+        $charla->link_video = $request->link_video;
+        $charla->descripcion = $request->descripcion;
+        $charla->estado = $request->estado;
+        $charla->update();
+        return redirect('/charla')->with('mensaje','charla editada con éxito');
     }
 
     /**
@@ -79,6 +120,8 @@ class CharlaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $eliminarCharla = Charla::findOrFail($id);
+        $eliminarCharla->delete();
+        return redirect('/charla');
     }
 }
