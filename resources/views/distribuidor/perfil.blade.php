@@ -20,7 +20,8 @@
                     <p><b>Dirección: </b> {{$distribuidor->direccion}} </p>
                     <p><b>Correo Electrónico: </b> {{$distribuidor->email}} </p>
                     <p><b>Disponibilidad: </b> {{$distribuidor->disponibilidad}} </p>
-                    <p><b>Descripcion: </b> {{$distribuidor->descripcion}} </p>
+                    <p><b>Descripcion: </b>  </p>
+                    <p>{{$distribuidor->descripcion}}</p>
                     @endforeach
                     <a href="{{url('/distribuidor/dashboard')}}"><b>Regresar</b></a>
                 </div>

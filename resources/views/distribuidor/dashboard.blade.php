@@ -27,7 +27,7 @@
                         @if ($distribuidor->descripcion == null)
                             <p>
                                 Agrega una descripción a tu perfil. 
-                                <a href="{{url('distribuidor/perfil/'.$distribuidor->id.'/edit')}}" > 
+                                <a href="{{url('distribuidor/edit/perfil/'.$distribuidor->id)}}" > 
                                     Click Aquí para agregar 
                                 </a>
                             </p>

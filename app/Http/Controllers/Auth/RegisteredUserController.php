@@ -101,7 +101,7 @@ class RegisteredUserController extends Controller
         $roles= DB::table('roles')->get();
 
         //dd($roles);
-        
+
         Auth::login($user);
         if($user->save()){
             
