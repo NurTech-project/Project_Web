@@ -19,7 +19,10 @@
     margin: 0;
     padding: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 body {
     background-image: linear-gradient(rgba(255, 255, 255, 0.911), rgba(255, 255, 255, 0.911)), url("/imagenes/fondo.jpg");
     background-size: cover;
@@ -30,6 +33,7 @@ body {
     padding: 0;
     height: 100vh;
 }
+<<<<<<< HEAD
 
 
 /* ------------------------- */
@@ -40,6 +44,11 @@ body {
 
 /* ------------------------- */
 
+=======
+/* ------------------------- */
+/* Separador */
+/* ------------------------- */
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 #banner {
     width: 100%;
     max-height: 670px;
@@ -50,17 +59,26 @@ body {
     background: #fff;
     background-size: cover;
 }
+<<<<<<< HEAD
 
 #banner img {
     width: 100%;
 }
 
+=======
+#banner img {
+    width: 100%;
+}
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .texto-encima {
     position: absolute;
     top: 160px;
     left: 1000px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .centrado {
     position: absolute;
     margin-right: 5%;
@@ -71,12 +89,18 @@ body {
     -webkit-text-stroke: 1.3px rgb(0, 0, 0);
     font-family: 'Noto Serif', serif;
 }
+<<<<<<< HEAD
 
 
 /*
 MISION
 */
 
+=======
+/*
+MISION
+*/
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .mision {
     position: absolute;
     width: 100%;
@@ -88,30 +112,43 @@ MISION
     -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .parrafo {
     position: absolute;
     left: 10%;
     right: 40%;
     font-family: 'Noto Serif', serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .donacionimagen {
     position: absolute;
     top: 1%;
     left: 70%;
 }
+<<<<<<< HEAD
 
 
 /* FRASE*/
 
+=======
+/* FRASE*/
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .imagendos {
     position: absolute;
     top: 130%;
     height: 27%;
     width: 100%;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .frase1 {
     position: absolute;
     margin-right: 5%;
@@ -122,10 +159,14 @@ MISION
     -webkit-text-stroke: 0.5px #fff;
     font-family: 'Noto Serif', serif;
 }
+<<<<<<< HEAD
 
 
 /*VISION*/
 
+=======
+/*VISION*/
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .vision {
     position: absolute;
     width: 100%;
@@ -137,30 +178,43 @@ MISION
     -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .parrafo2 {
     position: absolute;
     left: 10%;
     right: 40%;
     font-family: 'Noto Serif', serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .reparacionimagen {
     position: absolute;
     top: 1%;
     left: 70%;
 }
+<<<<<<< HEAD
 
 
 /* FRASE 2*/
 
+=======
+/* FRASE 2*/
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .imagentres {
     position: absolute;
     top: 195%;
     height: 27%;
     width: 100%;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .frase2 {
     position: absolute;
     margin-right: 5%;
@@ -171,10 +225,14 @@ MISION
     -webkit-text-stroke: 0.5px #fff;
     font-family: 'Noto Serif', serif;
 }
+<<<<<<< HEAD
 
 
 /* Donar*/
 
+=======
+/* Donar*/
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .donar {
     position: absolute;
     width: 100%;
@@ -186,14 +244,20 @@ MISION
     -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .parrafo3 {
     position: absolute;
     left: 17%;
     right: 40%;
     font-family: 'Noto Serif', serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .btn {
     background: #B061DF;
     top: 240%;
@@ -209,15 +273,22 @@ MISION
     text-decoration: none;
     box-shadow: 5px 3px 0pc #373c3c;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 .btn:hover {
     box-shadow: 0px 0px 0px;
     padding-top: 7px
 }
+<<<<<<< HEAD
 
 
 /*PIE DE PAGINA*/
 
+=======
+/*PIE DE PAGINA*/
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
 footer {
     position: relative;
     top: 280%;
@@ -270,6 +341,7 @@ footer {
             <img class="imagendos" src="/imagenes/call-out-bg.jpg" >
             <div class="card">
                 <div class="frase1">Una donación es un paso al progreso</div>
+<<<<<<< HEAD
             </div>
         </div>
 
@@ -289,6 +361,27 @@ footer {
             </div>
         </div>
 
+=======
+            </div>
+        </div>
+
+        <div class="vision">
+            Visión
+            <center>
+                <p class="parrafo2">Nuestra visión es que los computadores o partes de equipos que unas personas no necesitan para nosotros con un poco de mantenimiento son útiles para otras</p>
+                <img class="reparacionimagen" src="/imagenes/mantenimiento-y-reparacion-de-laptop-corporacionti.jpg" width="300" height="200">
+            </center>
+
+        </div>
+
+        <div>
+            <img class="imagentres" src="/imagenes/call-out-bg.jpg">
+            <div class="card2">
+                <div class="frase2">Cada donación es una ayuda</div>
+            </div>
+        </div>
+
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5
         <div class="donar">
             ! QUIERO DONAR¡
             <center>
@@ -382,4 +475,8 @@ footer {
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> e91b71990d3a5e53fcbb6d0df494efe642701aa5

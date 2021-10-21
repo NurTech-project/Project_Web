@@ -17,7 +17,7 @@ use App\Http\Controllers\DonanteController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\PiezaController;
-
+use App\Http\Controllers\Historia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +28,6 @@ use App\Http\Controllers\PiezaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('home.home');
 });
@@ -44,6 +43,9 @@ Route::get('/home/quiero-computador', function () {
 
 Route::get('/home/ser-voluntario', function () {
     return view('home.ser-voluntario');
+});
+Route::get('/home/historias', function () {
+    return view('home.historias');
 });
 
 
@@ -138,3 +140,34 @@ Route::resource('/tecnico', TecnicoController::class)->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';
+
+//Rutas de las historias administrador
+Route::get('/historia', [HistoriaController::class, 'verHistoriaAdministrador'])->middleware(['auth'])->name('administrador_historia');
+//Rutas de las historias visitante
+Route::get('/historia/visitante', [HistoriaController::class, 'verHistoriaVisitante'])->middleware(['guest'])->name('visitante_historia');
+
+Route::get('/historia/create', [HistoriaController::class, 'create'])->middleware(['auth'])->name('administrador_crear_historia');
+Route::post('/historia/create', [HistoriaController::class, 'store'])->middleware(['auth'])->name('administrador_crear_post_historia');
+
+Route::delete('/historia/delete/{id}', [HistoriaController::class, 'destroy'])->middleware(['auth'])->name('historia_delete');
+
+Route::get('/historia/edit/{id}', [HistoriaController::class, 'edit'])->middleware(['auth'])->name('historia_edit');
+
+
+Route::put('/historia/edit/{id}', [HistoriaController::class, 'update'])->middleware(['auth'])->name('historia_update');
+//Route::resource('/historia', HistoriaController::class);
+
+//rutas charlas 
+Route::get('/charla', [CharlaController::class, 'verCharlaAdministrador'])->middleware(['auth'])->name('administrador_charla');
+
+Route::get('/charla/visitante', [CharlaController::class, 'verCharlaVisitante'])->middleware(['guest'])->name('visitante_charla');
+
+Route::get('/charla/create', [CharlaController::class, 'create'])->middleware(['auth'])->name('administrador_crear_charla');
+Route::post('/charla/create', [CharlaController::class, 'store'])->middleware(['auth'])->name('administrador_crear_post_charla');
+
+Route::delete('/charla/delete/{id}', [CharlaController::class, 'destroy'])->middleware(['auth'])->name('charla_delete');
+
+Route::get('/charla/edit/{id}', [CharlaController::class, 'edit'])->middleware(['auth'])->name('charla_edit');
+
+
+Route::put('/charla/edit/{id}', [CharlaController::class, 'update'])->middleware(['auth'])->name('charla_update');
