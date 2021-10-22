@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
-    <title>Nur Tech</title>
+    <title>Home</title>
 </head>
 
 <body>
@@ -200,10 +200,7 @@
           </li>
         </ul>
 
-
-    </body>
-
-    <footer class="bg-black py-2 md:py-4">
+<footer class="bg-black py-2 md:py-4">
       <div class="text-center container mx-auto px-4">
         <div class="sm:center sm:flex-wrap sm:-mx-4 md:py-4">
           <div class="px-4 ">
@@ -274,5 +271,9 @@
         
       </div>
     </footer>
+
+    </body>
+
+    
 
 </html>
