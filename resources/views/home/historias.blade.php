@@ -1,193 +1,16 @@
+
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Nur Tech</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-        </style>
-
-        <style>
-            * {
-    margin: 0;
-    padding: 0;
-}
-body {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.911), rgba(255, 255, 255, 0.911)), url("/imagenes/fondo.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-}
-/* ------------------------- */
-/* Separador */
-/* ------------------------- */
-#banner {
-    width: 100%;
-    max-height: 670px;
-    position: absolute;
-    overflow: hidden;
-    margin-top: -5px;
-    z-index: 99;
-    background: #fff;
-    background-size: cover;
-}
-#banner img {
-    width: 100%;
-}
-.texto-encima {
-    position: absolute;
-    top: 160px;
-    left: 1000px;
-}
-.centrado {
-    position: absolute;
-    margin-right: 5%;
-    top: 35%;
-    left: 50%;
-    color: rgb(255, 255, 255);
-    font-size: 40px;
-    -webkit-text-stroke: 1.3px rgb(0, 0, 0);
-    font-family: 'Noto Serif', serif;
-}
-/*
-MISION
-*/
-.mision {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 100%;
-    left: 5%;
-    color: rgb(0, 0, 0);
-    font-size: 33px;
-    -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.parrafo {
-    position: absolute;
-    left: 10%;
-    right: 40%;
-    font-family: 'Noto Serif', serif;
-}
-.donacionimagen {
-    position: absolute;
-    top: 1%;
-    left: 70%;
-}
-/* FRASE*/
-.imagendos {
-    position: absolute;
-    top: 130%;
-    height: 27%;
-    width: 100%;
-}
-.frase1 {
-    position: absolute;
-    margin-right: 5%;
-    top: 140%;
-    left: 30%;
-    color: rgb(10, 1, 58);
-    font-size: 40px;
-    -webkit-text-stroke: 0.5px #fff;
-    font-family: 'Noto Serif', serif;
-}
-/*VISION*/
-.vision {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 160%;
-    left: 5%;
-    color: rgb(0, 0, 0);
-    font-size: 33px;
-    -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.parrafo2 {
-    position: absolute;
-    left: 10%;
-    right: 40%;
-    font-family: 'Noto Serif', serif;
-}
-.reparacionimagen {
-    position: absolute;
-    top: 1%;
-    left: 70%;
-}
-/* FRASE 2*/
-.imagentres {
-    position: absolute;
-    top: 195%;
-    height: 27%;
-    width: 100%;
-}
-.frase2 {
-    position: absolute;
-    margin-right: 5%;
-    top: 205%;
-    left: 35%;
-    color: rgb(10, 1, 58);
-    font-size: 40px;
-    -webkit-text-stroke: 0.5px #fff;
-    font-family: 'Noto Serif', serif;
-}
-/* Donar*/
-.donar {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 235%;
-    left: 5%;
-    color: rgb(0, 0, 0);
-    font-size: 33px;
-    -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.parrafo3 {
-    position: absolute;
-    left: 17%;
-    right: 40%;
-    font-family: 'Noto Serif', serif;
-}
-.btn {
-    background: #B061DF;
-    top: 240%;
-    left: 70%;
-    position: absolute;
-    color: #fff;
-    display: inline-block;
-    font-size: 1.25em;
-    margin: 20px;
-    padding: 10px 20px;
-    text-align: center;
-    width: 200px;
-    text-decoration: none;
-    box-shadow: 5px 3px 0pc #373c3c;
-}
-.btn:hover {
-    box-shadow: 0px 0px 0px;
-    padding-top: 7px
-}
-/*PIE DE PAGINA*/
-footer {
-    position: relative;
-    top: 280%;
-}
-        </style>
-    </head>
-    <body>
-        <!-- navigation bar -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- navigation bar -->
 <nav class="bg-yellow-300 py-2 md:py-4">
     <div class="container px-4 mx-auto md:flex md:items-center">
 
@@ -211,64 +34,59 @@ footer {
     </div>
   </nav>
   <!-- navigation bar  -->
-    <section>
+  <div class="bg-purple-700 h-72 mt-12 flex">
+        <div class="flex-1">
+            <div>
+            <br>
+            <br>
+            <h1 class="ml-56 text-white text-4xl">Nur-Tech</h1>
+            </div>
+            <div class="border-b-4 border-yellow-400 mt-4 mb-4 ml-56 mr-80">
 
-        <div id="banner">
-            <img class="imagenuno" src="/imagenes/img1.png">
-
-
-            <center>
-                <div class="texto-encima"><img src="/imagenes/logo_nur_tech.png" alt=""></div>
-                <div class="centrado">Bienvenido a nuestro sitio en este lugar podrás ayudar a la comunidad con tus donaciones o en caso de necesitar aquí te donaremos un equipo</div>
-            </center>
-        </div>
-        <div class="mision">
-            Misión
-            <center>
-                <p class="parrafo">Nuestra misión es dar una segunda oportunidad a equipos que las personas ya no utilizan para darles mantenimiento y donárselos a gente que lo necesite</p>
-                <img class="donacionimagen" src="/imagenes/impulsan-donacion-de-equipos-electricos-imagen-1-_20200920101938-2000x2000.jpg" width="300" height="200">
-            </center>
-
-        </div>
-        <div>
-            <img class="imagendos" src="/imagenes/call-out-bg.jpg" >
-            <div class="card">
-                <div class="frase1">Una donación es un paso al progreso</div>
+            </div>
+            <div class="flex-1">
+                <h1 class="ml-56 text-white">
+                        El proyecto es gestionado por un grupo de voluntarios que son
+                        docentes del IST Benito Juárez y activistas locales con el objetivo de dar una mejor experiencia 
+                        hemos recolectado historias que te motivaran a seguirnos y participar con nosotros
+                </h1><br>
             </div>
         </div>
-
-        <div class="vision">
-            Visión
-            <center>
-                <p class="parrafo2">Nuestra visión es que los computadores o partes de equipos que unas personas no necesitan para nosotros con un poco de mantenimiento son útiles para otras</p>
-                <img class="reparacionimagen" src="/imagenes/mantenimiento-y-reparacion-de-laptop-corporacionti.jpg" width="300" height="200">
-            </center>
-
+        <div class="flex-1">
+           <img src="../imagenes/historias.jpg" alt="" width="300" class="ml-80">
         </div>
-
-        <div>
-            <img class="imagentres" src="/imagenes/call-out-bg.jpg">
-            <div class="card2">
-                <div class="frase2">Cada donación es una ayuda</div>
+    </div>
+<!-- component -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+        <div class="w-full text-center pb-8">
+            <svg class="mx-auto" width="48" height="42" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.6153 19.154H10.1537C9.38437 19.154 8.73037 18.8849 8.19185 18.3463C7.65363 17.8078 7.38417 17.154 7.38417 16.3845V15.4619C7.38417 13.4233 8.10546 11.6831 9.54795 10.2406C10.9903 8.79859 12.7309 8.0773 14.7693 8.0773H16.6153C17.1152 8.0773 17.5477 7.89453 17.9133 7.52929C18.2786 7.16384 18.4613 6.73131 18.4613 6.23128V2.53864C18.4613 2.03872 18.2785 1.60578 17.9133 1.24034C17.5478 0.875398 17.1153 0.692322 16.6153 0.692322H14.7693C12.7691 0.692322 10.8608 1.08212 9.04327 1.86059C7.22595 2.63958 5.65404 3.69257 4.32694 5.01967C2.99994 6.34616 1.94726 7.91817 1.16837 9.7357C0.389491 11.553 0 13.4618 0 15.4618V35.769C0 37.3083 0.538216 38.6152 1.61515 39.6926C2.69219 40.7693 4.00019 41.3076 5.53856 41.3076H16.616C18.1542 41.3076 19.4618 40.7693 20.539 39.6926C21.6157 38.6152 22.1542 37.3083 22.1542 35.769V24.6926C22.1542 23.1536 21.6157 21.8466 20.5383 20.7692C19.4616 19.6925 18.1535 19.154 16.6153 19.154Z" fill="#2865E9"/>
+                <path d="M46.3856 20.7692C45.309 19.6925 44.0013 19.154 42.4626 19.154H36.0011C35.2322 19.154 34.5776 18.8849 34.04 18.3463C33.5012 17.8078 33.2323 17.154 33.2323 16.3845V15.4619C33.2323 13.4233 33.9536 11.6831 35.3954 10.2406C36.8372 8.79859 38.5777 8.0773 40.6171 8.0773H42.4627C42.9627 8.0773 43.3955 7.89453 43.7608 7.52929C44.1258 7.16384 44.3092 6.73131 44.3092 6.23128V2.53864C44.3092 2.03872 44.1259 1.60578 43.7608 1.24034C43.3956 0.875398 42.9628 0.692322 42.4627 0.692322H40.6171C38.6158 0.692322 36.7079 1.08212 34.8899 1.86059C33.0729 2.63958 31.5015 3.69257 30.1744 5.01967C28.8473 6.34616 27.7941 7.91817 27.0155 9.7357C26.2368 11.553 25.8468 13.4618 25.8468 15.4618V35.769C25.8468 37.3083 26.3855 38.6152 27.4622 39.6926C28.5389 40.7693 29.8466 41.3076 31.3852 41.3076H42.462C44.0006 41.3076 45.3082 40.7693 46.3849 39.6926C47.4623 38.6152 47.9999 37.3083 47.9999 35.769V24.6926C48 23.1535 47.4623 21.8466 46.3856 20.7692Z" fill="#2865E9"/>
+            </svg>
+        
+            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900 pb-2">
+                historias
+            </h1>
+        </div>
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+        @foreach($historias as $historia)
+            <div class="bg-white rounded-lg p-6">
+                
+                <div class="flex items-center space-x-6 mb-4">
+                <img class="object-cover w-20 h-20 square-20" src="{{asset ('storage').'/'.$historia->imagen }}" width="1"/>
+                  
+                </div>
+                <div>
+                    <p class="text-gray-400 leading-loose font-normal text-base">{{$historia->descripcion}}</p>
+                </div>
+               
+            </div>
+            @endforeach
             </div>
         </div>
-
-        <div class="donar">
-            ! QUIERO DONAR¡
-            <center>
-                <p class="parrafo3">Para donar da clic en el siguiente botón que te dirigirá a una pestaña para donar gracias por donar y visítanos pronto</p>
-
-            </center>
-
-        </div>
-        <a href="{{url('/register')}}" class="btn">
-        Donar ahora
-    </a>
-
     </section>
-   <!-- FOOTER -->
 
-   <footer class="bg-black py-2 md:py-4">
+    <footer class="bg-black py-2 md:py-4">
   <div class="text-center container mx-auto px-4">
     <div class="sm:center sm:flex-wrap sm:-mx-4 md:py-4">
       <div class="px-4 ">
@@ -286,11 +104,11 @@ footer {
           <li class="mb-2">
             <a href="http://yavirac.edu.ec/" class="text-gray-400 border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">ITS YAVIRAC</a>
           </li>
-
+          
         </ul>
       </div>
-
-
+      
+      
       </nav>
       <div class="flex justify-center mt-8 space-x-6">
             <a href="https://www.facebook.com/profile.php?id=100068516903329" class="text-blue-600 hover:text-yellow-500">
@@ -311,7 +129,7 @@ footer {
                     <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
                 </svg>
             </a>
-
+          
             <a href="https://www.youtube.com/channel/UCfqxcWb8HtyS45iCdJYz1eA" class="text-red-600 hover:text-yellow-500">
                 <span class="sr-only">YouTube</span>
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -337,13 +155,10 @@ footer {
         </p>
     </div>
 </section>
-
+    
   </div>
 </footer>
 
  <!-- FOOTER -->
-
-
 </body>
-
 </html>

@@ -10,6 +10,7 @@ use App\Models\Canton;
 use App\Models\Distribuidor;
 use App\Models\Tecnico;
 use App\Models\Beneficiario;
+use App\Models\Administrador;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -27,9 +28,12 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $roles=DB::table('roles')->where([
-            ['descripcion', '<>', 'Administrador'],
-        ])->get();
+        $roles=DB::table('roles')->get();
+
+        // $roles=DB::table('roles')->where([
+        //     ['descripcion', '<>', 'Administrador'],
+        // ])->get();
+
         $provincias=DB::table('provincias')->get();
 
         $cantones = DB::table('provincias')
@@ -120,12 +124,18 @@ class RegisteredUserController extends Controller
                     $beneficiario=new Beneficiario();
                     $beneficiario->user_id =$user->id;
                     $beneficiario->save();
+                }else if($user->role_id == $role->id && $role->descripcion == 'Administrador'){
+                    $administrador= new Administrador();
+                    $administrador->user_id =$user->id;
+                    $administrador->estado='Activa';
+                    $administrador->save();
                 }
             }
             //colocar lo de beneficiario de ser el caso
             return redirect(RouteServiceProvider::LOGIN);
             
-        }
+        
+    }
 
 
         
