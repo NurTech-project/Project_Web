@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="flex-1">
-           <img src="../imagenes/historias.jpg" alt="" width="300" class="ml-80">
+           <img src="../imagenes/historias.jpg" alt="" width="450" class="ml-44 pt-4 pb-4">
         </div>
     </div>
 <!-- component -->
@@ -65,18 +65,18 @@
             </svg>
         
             <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900 pb-2">
-                charlas
+                Charlas
             </h1>
         </div>
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 ">
         @foreach($charlas as $charla)
-            <div class="bg-white rounded-lg p-6">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
                 
-                <div class="flex items-center space-x-6 mb-4">
+                <div class="flex items-center space-x-6 mb-4 ">
                 <iframe width="560" height="315" src="{{$charla->link_video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div>
-                    <p class="text-gray-400 leading-loose font-normal text-base">{{$charla->descripcion}}</p>
+                    <p class="text-black-400 leading-loose font-normal text-base text-justify">{{$charla->descripcion}}</p>
                 </div>
                
             </div>

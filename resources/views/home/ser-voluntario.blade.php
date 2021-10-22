@@ -10,7 +10,7 @@
     <body>
         <!-- navigation bar -->
         <nav class="bg-yellow-300 py-2 md:py-4">
-            <div class="container px-4 mx-auto md:flex md:items-center">
+            <div class="container px-4 mx-auto md:flex md:items-center ">
         
               <div class="flex justify-between items-center">
                 <img src="imagenes/logo_menu.png" alt="">
