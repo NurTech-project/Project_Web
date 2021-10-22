@@ -73,7 +73,7 @@
             <div class="bg-white rounded-lg p-6 shadow-lg">
                 
                 <div class="flex items-center space-x-6 mb-4">
-                <img class="object-cover w-20 h-20 square-20 " src="{{asset ('storage').'/'.$historia->imagen }}" width="1"/>
+                <img class="object-cover square-20 " src="{{asset ('storage').'/'.$historia->imagen }}" width="300px" height="300px"/>
                 <p class="text-black-400 leading-loose font-normal ">{{$historia->descripcion}}</p>
                 </div>
 
