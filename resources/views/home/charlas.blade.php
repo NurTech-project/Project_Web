@@ -74,7 +74,6 @@
                 
                 <div class="flex items-center space-x-6 mb-4">
                 <iframe width="560" height="315" src="{{$charla->link_video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  
                 </div>
                 <div>
                     <p class="text-gray-400 leading-loose font-normal text-base">{{$charla->descripcion}}</p>

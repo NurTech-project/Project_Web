@@ -36,8 +36,10 @@ class TecnicoController extends Controller
         'users.nombre as userNombre','users.apellido as userApellido',
         'users.email as userEmail','equipos.sistema_operativo as equipoSistema',
         'equipos.procesador as equipoProcesador','equipos.ram as equipoRam','equipos.almacenamiento as equipoAlmacenamiento',
-        'equipos.detalle as equipoDetalle','equipos.estado as equipoEstado')
+        'equipos.detalle as equipoDetalle','equipos.estado as equipoEstado',
+        'detalle_recepcion_tecnicos.estado as recepcionEstado','detalle_recepcion_tecnicos.tecnico_id as tecnicoId')
         ->get();
+        
         $perfilTecnico = DB::table('tecnicos')
         ->join('users','users.id','=','tecnicos.user_id')
         ->select('tecnicos.descripcion', 'tecnicos.id', 'tecnicos.disponibilidad', 
@@ -50,16 +52,18 @@ class TecnicoController extends Controller
 
         $tecnicos=DB::table('tecnicos')
         ->join('users', 'users.id','=','tecnicos.user_id')
+        ->select('tecnicos.id as tecnicoID')
+        ->where('tecnicos.user_id', '=', Auth::user()->id)
         ->get();
 
         $equiposAceptados=array();
         $equiposAgendados=array();
         foreach ($donancionEquipo as $equipos){
            foreach ($tecnicos as $tecnico){
-            if($equipos->equipoEstado == 'Agendado' && $tecnico->user_id == Auth::user()->id){
+            if($equipos->recepcionEstado == 'Agendado' && $tecnico->tecnicoID == $equipos->tecnicoId){
                 $equiposAgendados[]=$equipos;
                 //dd($equiposAgendados);
-            }elseif($equipos->equipoEstado == 'Mantenimiento' && $tecnico->user_id == Auth::user()->id){
+            }elseif($equipos->recepcionEstado == 'Mantenimiento' && $tecnico->tecnicoID == $equipos->tecnicoId){
                 $equiposAceptados[]=$equipos;
                 //dd($equiposAceptados);
             }
@@ -75,7 +79,8 @@ class TecnicoController extends Controller
         'piezas.id as piezaId','detalle_recepcion_tecnicos.id as recepcionId',
         'users.nombre as userNombre','users.apellido as userApellido',
         'users.email as userEmail','piezas.nombre as piezaNombre',
-        'piezas.detalle as piezaDetalle','piezas.estado as piezaEstado')
+        'piezas.detalle as piezaDetalle','piezas.estado as piezaEstado',
+        'detalle_recepcion_tecnicos.estado as recepcionEstado','detalle_recepcion_tecnicos.tecnico_id as tecnicoId')
         ->get();
         
 
@@ -84,10 +89,10 @@ class TecnicoController extends Controller
 
         foreach ($donancionPieza as $piezas){
             foreach ($tecnicos as $tecnico){
-             if($piezas->piezaEstado == 'Agendado' && $tecnico->user_id == Auth::user()->id){
+             if($piezas->recepcionEstado == 'Agendado' && $tecnico->tecnicoID == $piezas->tecnicoId){
                 $piezasAgendadas[]=$piezas;
                 //dd($piezasAgendadas);
-            }elseif($piezas->piezaEstado == 'Mantenimiento' && $tecnico->user_id == Auth::user()->id){
+            }elseif($piezas->recepcionEstado == 'Mantenimiento' && $tecnico->tecnicoID == $piezas->tecnicoId){
                 $piezasAceptadas[]=$piezas;
             }
             }

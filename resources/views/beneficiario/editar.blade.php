@@ -1,6 +1,5 @@
 <x-app-layout>
     <x-slot name="header">
-    <img src="../../imagenes/logo.jpg" alt="" width="70" class="-mt-20 ml-6"></a>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Editar Perfil') }}  
             <x-button class="ml-4 bg-yellow-400 hover:bg-gray-800 duration-700 ease-in-out">

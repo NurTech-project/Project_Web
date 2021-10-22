@@ -3,10 +3,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('beneficiario_dashboard') }}">
-                    <img src="../imagenes/logo.jpg" alt="" width="70" class="mt-8 ml-6"></a>
+                  <!-- Logo -->
+               <div class="flex-shrink-0 flex items-center">
+                    <a href="{{ route('tecnico_dashboard') }}">
+                        <img src="/imagenes/logo.png" class="block h-10 w-auto">
+                    </a>
                 </div>
 
                 <!-- Navigation Links -->

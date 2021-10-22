@@ -41,8 +41,6 @@
                     @endforeach
                     </div>
                     <br><br>
-                    <br>
-                    <br><br>
                     <h2 class="mb-4 text-4xl font-black text-center ">Entregas por recoger</h2>
                     <h2 class="text-3xl font-semibold">Equipos</h2><hr><br>
                     @if (count($equiposDonados) > 0)

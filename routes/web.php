@@ -124,6 +124,8 @@ Route::delete('/tecnico/delete/pieza/diagnostico/{id}', [TecnicoController::clas
 
 //Rutas de Administrador
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
+Route::get('/administrador/create/entrega', [AdministradorController::class, 'index'])->middleware(['auth'])->name('administrador_entrega_create');
+Route::post('/administrador/create/entregas', [AdministradorController::class, 'store'])->middleware(['auth'])->name('administrador_entrega_post');
 
 //Ruta Donación
 

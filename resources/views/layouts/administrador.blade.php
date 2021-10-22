@@ -3,10 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('administrador_dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+               <!-- Logo -->
+               <div class="flex-shrink-0 flex items-center">
+                    <a href="{{ route('tecnico_dashboard') }}">
+                        <img src="/imagenes/logo.png" class="block h-10 w-auto">
                     </a>
                 </div>
 
@@ -16,10 +16,10 @@
                         {{ __('Administrador') }}
                     </x-nav-link>
                     <x-nav-link :href="route('administrador_historia')" :active="request()->routeIs('dashboard')">
-                        {{ __('historias') }}
+                        {{ __('Historias') }}
                     </x-nav-link>
                     <x-nav-link :href="route('administrador_charla')" :active="request()->routeIs('dashboard')">
-                        {{ __('charlas') }}
+                        {{ __('Charlas') }}
                     </x-nav-link>
                 </div>
             </div>
