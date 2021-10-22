@@ -53,7 +53,7 @@
             </div>
         </div>
         <div class="flex-1">
-           <img src="../imagenes/historias.jpg" alt="" width="300" class="ml-80">
+           <img src="../imagenes/historias.jpg" alt="" width="450" class="ml-44 pt-4 pb-4">
         </div>
     </div>
 <!-- component -->
@@ -65,21 +65,19 @@
             </svg>
         
             <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900 pb-2">
-                historias
+                Historias
             </h1>
         </div>
-        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 ">
         @foreach($historias as $historia)
-            <div class="bg-white rounded-lg p-6">
+            <div class="bg-white rounded-lg p-6 shadow-lg">
                 
                 <div class="flex items-center space-x-6 mb-4">
-                <img class="object-cover w-20 h-20 square-20" src="{{asset ('storage').'/'.$historia->imagen }}" width="1"/>
+                <img class="object-cover w-20 h-20 square-20 " src="{{asset ('storage').'/'.$historia->imagen }}" width="1"/>
+                <p class="text-black-400 leading-loose font-normal ">{{$historia->descripcion}}</p>
+                </div>
+
                   
-                </div>
-                <div>
-                    <p class="text-gray-400 leading-loose font-normal text-base">{{$historia->descripcion}}</p>
-                </div>
-               
             </div>
             @endforeach
             </div>
