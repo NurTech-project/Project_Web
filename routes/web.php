@@ -126,6 +126,27 @@ Route::delete('/tecnico/delete/pieza/diagnostico/{id}', [TecnicoController::clas
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
 Route::get('/administrador/create/entrega', [AdministradorController::class, 'index'])->middleware(['auth'])->name('administrador_entrega_create');
 Route::post('/administrador/create/entregas', [AdministradorController::class, 'store'])->middleware(['auth'])->name('administrador_entrega_post');
+Route::get('/administrador/edit/entrega/{id}', [AdministradorController::class, 'show'])->middleware(['auth'])->name('administrador_entrega_show');
+Route::put('/administrador/edit/entrega/{id}', [AdministradorController::class, 'update'])->middleware(['auth'])->name('administrador_entrega_edit');
+Route::delete('/administrador/delete/entrega//{id}', [AdministradorController::class, 'destroy'])->middleware(['auth'])->name('administrador_entrega_destroy');
+
+//Rutas para la aceptación de una donación 
+//Beneficiario
+Route::get('/beneficiario/vista/entrega', [BeneficiarioController::class, 'vistaEntrega'])->middleware(['auth'])->name('beneficiario_entrega_dashboard');
+Route::get('/beneficiario/edit/entrega/{id}', [BeneficiarioController::class, 'aceptarEntrega'])->middleware(['auth'])->name('beneficiario_entrega_edit');
+Route::delete('/beneficiario/delete/entrega//{id}', [BeneficiarioController::class, 'rechazarEntrega'])->middleware(['auth'])->name('beneficiario_entrega_destroy');
+
+//Tecnico
+Route::get('/tecnico/vista/entrega', [TecnicoController::class, 'vistaEntrega'])->middleware(['auth'])->name('tecnico_entrega_dashboard');
+Route::get('/tecnico/edit/entrega/{id}', [TecnicoController::class, 'aceptarEntrega'])->middleware(['auth'])->name('tecnico_entrega_edit');
+Route::delete('/tecnico/delete/entrega//{id}', [TecnicoController::class, 'rechazarEntrega'])->middleware(['auth'])->name('tecnico_entrega_destroy');
+
+//Distribuidor
+Route::get('/distribuidor/vista/entrega', [DistribuidorController::class, 'vistaEntrega'])->middleware(['auth'])->name('distribuidor_entrega_dashboard');
+Route::get('/distribuidor/show/entrega/{id}', [DistribuidorController::class, 'showEntrega'])->middleware(['auth'])->name('distribuidor_entrega_show');
+Route::get('/distribuidor/edit/entrega/{id}', [DistribuidorController::class, 'aceptarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_edit');
+Route::delete('/distribuidor/delete/entrega//{id}', [DistribuidorController::class, 'rechazarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_destroy');
+
 
 //Ruta Donación
 

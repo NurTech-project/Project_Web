@@ -48,8 +48,8 @@
 
                     <br>
                     <div>
-                    <x-label for=distribuidor_id :value="__('Distribuidor')"/>
-                    <select class="w-full" id=distribuidor_id" name=distribuidor_id" class="form-control mb-2">
+                    <x-label for="distribuidor_id" :value="__('Distribuidor')"/>
+                    <select class="w-full" id="distribuidor_id" name="distribuidor_id" class="form-control mb-2">
                     <option>------Seleccionar------</option>
                     @foreach($distribuidors as $distribuidor)
                     <option value="{{ $distribuidor->distribuidorId }}" name="distribuidor_id">{{$distribuidor->userNombre}} {{$distribuidor->userApellido}} -- {{$distribuidor->userEmail}}</option>

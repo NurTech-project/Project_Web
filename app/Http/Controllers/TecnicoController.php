@@ -10,6 +10,7 @@ use App\Models\Equipo;
 use App\Models\Tecnico;
 use App\Models\DetalleDonacion;
 use App\Models\DetalleRecepcionTecnico;
+use App\Models\DetalleEntregaDonacion;
 use App\Models\Diagnostico;
 use App\Models\Distribuidor;
 use Illuminate\Support\Facades\Auth;
@@ -571,4 +572,88 @@ class TecnicoController extends Controller
         $pieza->save();
         return redirect('tecnico/diagnostico');
     }
+
+    public function vistaEntrega()
+    {
+        $entregaPendiente=DB::table('detalle_entrega_donacions')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.beneficiario_id')
+        ->join('tecnicos','tecnicos.id','=','diagnosticos.tecnico_id')
+        ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+        'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
+        ->where('tecnicos.user_id','=',Auth::user()->id)
+        ->where('detalle_entrega_donacions.estado_tecnico','=','Pendiente')
+        ->get();
+
+        $entregaAceptada=DB::table('detalle_entrega_donacions')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.beneficiario_id')
+        ->join('tecnicos','tecnicos.id','=','diagnosticos.tecnico_id')
+        ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+        'detalle_entrega_donacions.estado_beneficiario as estado')
+        ->where('tecnicos.user_id','=',Auth::user()->id)
+        ->where('detalle_entrega_donacions.estado_tecnico','=','Aceptado')
+        ->get();
+       //dd($entregaAceptada);
+         return view('tecnico.entrega-dashboard', compact('entregaPendiente','entregaAceptada'));
+    }
+
+    public function aceptarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+
+        $diagnostico=Diagnostico::findOrFail($entrega->diagnostico_id);
+        $diagnostico->estado = 'Entregado';
+
+        $recepcion=DetalleRecepcionTecnico::findOrFail($diagnostico->detalle_recepcion_id);
+        $recepcion->estado = 'Entregado';
+
+
+        $donacion=DetalleDonacion::findOrFail($recepcion->detalle_donacion_id);
+        $donacion->estado = 'Entregado';
+
+
+        $equipo=Equipo::findOrFail($donacion->equipo_id);
+        $equipo->estado = 'Entregado';
+
+
+        $entrega->estado_tecnico='Aceptado';
+
+        $entrega->save();
+        $diagnostico->save();
+        $recepcion->save();
+        $donacion->save();
+        $equipo->save();
+
+        return redirect('tecnico/vista/entrega');
+    }
+
+    public function rechazarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+
+        $diagnostico=Diagnostico::findOrFail($entrega->diagnostico_id);
+        $diagnostico->estado = 'Diagnosticado';
+
+        $recepcion=DetalleRecepcionTecnico::findOrFail($diagnostico->detalle_recepcion_id);
+        $recepcion->estado = 'Diagnosticado';
+
+
+        $donacion=DetalleDonacion::findOrFail($recepcion->detalle_donacion_id);
+        $donacion->estado = 'Diagnosticado';
+
+
+        $equipo=Equipo::findOrFail($donacion->equipo_id);
+        $equipo->estado = 'Diagnosticado';
+
+
+        $entrega->estado_tecnico='Rechazado';
+        $entrega->diagnostico_id=null;
+        $entrega->save();
+        $diagnostico->save();
+        $recepcion->save();
+        $donacion->save();
+        $equipo->save();
+
+        return redirect('tecnico/vista/entrega');
+    }
+    
 }

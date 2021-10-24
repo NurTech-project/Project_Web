@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('beneficiario_dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Beneficiario') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('beneficiario_entrega_dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Aceptación de equipo') }}
+                    </x-nav-link>
                 </div>
             </div>
 

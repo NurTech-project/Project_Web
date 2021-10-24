@@ -9,6 +9,7 @@ use App\Models\Pieza;
 use App\Models\Equipo;
 use App\Models\DetalleDonacion;
 use App\Models\DetalleRecepcionTecnico;
+use App\Models\DetalleEntregaDonacion;
 use App\Models\Distribuidor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -598,4 +599,88 @@ class DistribuidorController extends Controller
         return redirect('/distribuidor/dashboard')->with('mensaje','Descripcion editada con éxito');
     }
 
+    public function vistaEntrega()
+    {
+        $entregaPendiente=DB::table('detalle_entrega_donacions')
+        ->join('distribuidors','distribuidors.id','=','detalle_entrega_donacions.distribuidor_id')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
+        ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+        'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
+        ->where('detalle_entrega_donacions.estado_distribuidor','=','Pendiente')
+        ->get();
+
+        $entregaAceptada=DB::table('detalle_entrega_donacions')
+        ->join('distribuidors','distribuidors.id','=','detalle_entrega_donacions.distribuidor_id')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
+        ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+        'detalle_entrega_donacions.estado_beneficiario as estado')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
+        ->where('detalle_entrega_donacions.estado_distribuidor','=','Aceptado')
+        ->get();
+       //dd($entregaPendiente);
+        return view('distribuidor.entrega-dashboard', compact('entregaPendiente','entregaAceptada'));
+    }
+    
+    public function showEntrega($id)
+    {
+        $entregaPendiente=DB::table('detalle_entrega_donacions')
+        ->join('distribuidors','distribuidors.id','=','detalle_entrega_donacions.distribuidor_id')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
+        ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+        'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
+        ->where('detalle_entrega_donacions.estado_distribuidor','=','Pendiente')
+        ->get();
+
+        $infoTecnico= DB::table('tecnicos')
+        ->join('diagnosticos','diagnosticos.tecnico_id','=','tecnicos.id')
+        ->join('detalle_entrega_donacions','detalle_entrega_donacions.diagnostico_id','=','diagnosticos.id')
+        ->join('users','users.id','=','tecnicos.user_id')
+        ->join('cantons','cantons.id','=','users.canton_id')
+        ->join('provincias','provincias.id','=','cantons.provincia_id')
+        ->select('users.nombre as nombre','users.apellido as apellido','users.email as email',
+        'users.celular as celular','users.direccion as direccion','cantons.descripcion as canton',
+        'provincias.descripcion as provincia')
+        ->where('detalle_entrega_donacions.id', '=',$id)
+        ->get();
+
+        $infoBeneficiario=DB::table('beneficiarios')
+        ->join('detalle_entrega_donacions','detalle_entrega_donacions.beneficiario_id','=','beneficiarios.id')
+        ->join('users','users.id','=','beneficiarios.user_id')
+        ->join('cantons','cantons.id','=','users.canton_id')
+        ->join('provincias','provincias.id','=','cantons.provincia_id')
+        ->select('users.nombre as nombre','users.apellido as apellido','users.email as email',
+        'users.celular as celular','users.direccion as direccion','cantons.descripcion as canton',
+        'provincias.descripcion as provincia')
+        ->where('detalle_entrega_donacions.id', '=',$id)
+        ->get();
+
+        //dd($infoBeneficiario);
+        return view('distribuidor.entrega-show', compact('infoTecnico','infoBeneficiario','entregaPendiente'));
+    }
+
+    public function aceptarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+        $distribuidor=Distribuidor::findOrFail($entrega->distribuidor_id);
+
+        $entrega->estado_distribuidor='Aceptado';
+        $entrega->save();
+
+        return redirect('distribuidor/vista/entrega');
+    }
+
+    public function rechazarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+        $distribuidor=Distribuidor::findOrFail($entrega->distribuidor_id);
+
+        $entrega->estado_distribuidor='Rechazado';
+        $entrega->distribuidor_id=null;
+        $entrega->save();
+
+        return redirect('distribuidor/vista/entrega');
+    }
+    
 }

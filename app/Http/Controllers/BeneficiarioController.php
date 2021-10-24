@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Beneficiario;
+use App\Models\DetalleEntregaDonacion;
 
 class BeneficiarioController extends Controller
 {
@@ -142,8 +143,49 @@ class BeneficiarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function vistaEntrega()
     {
-        //
+         $entregaPendiente=DB::table('detalle_entrega_donacions')
+         ->join('beneficiarios','beneficiarios.id','=','detalle_entrega_donacions.beneficiario_id')
+         ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
+         ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+         'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
+         ->where('beneficiarios.user_id','=',Auth::user()->id)
+         ->where('detalle_entrega_donacions.estado_beneficiario','=','Pendiente')
+         ->get();
+
+         $entregaAceptada=DB::table('detalle_entrega_donacions')
+         ->join('beneficiarios','beneficiarios.id','=','detalle_entrega_donacions.beneficiario_id')
+         ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
+         ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+         'detalle_entrega_donacions.estado_beneficiario as estado')
+         ->where('beneficiarios.user_id','=',Auth::user()->id)
+         ->where('detalle_entrega_donacions.estado_beneficiario','=','Aceptado')
+         ->get();
+        //dd($entregaPendiente);
+          return view('beneficiario.entrega-dashboard', compact('entregaPendiente','entregaAceptada'));
+    }
+
+    public function aceptarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+        $beneficiario=Beneficiario::findOrFail($entrega->beneficiario_id);
+        $beneficiario->estado='Aceptado';
+        $entrega->estado_beneficiario='Aceptado';
+        $entrega->save();
+        $beneficiario->save();
+        return redirect('beneficiario/vista/entrega');
+    }
+
+    public function rechazarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+        $beneficiario=Beneficiario::findOrFail($entrega->beneficiario_id);
+        $beneficiario->estado='Pendiente';
+        $entrega->estado_beneficiario='Rechazado';
+        $entrega->beneficiario_id=null;
+        $entrega->save();
+        $beneficiario->save();
+        return redirect('beneficiario/vista/entrega');
     }
 }

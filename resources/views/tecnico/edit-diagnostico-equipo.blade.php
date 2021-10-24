@@ -38,6 +38,7 @@
                     @csrf
                     @method('PUT')
                     <div class="mt-4">
+                    <p>Detallar: Sistema operativo, ram, almacenamiento, procesador de equipo</p>
                     <x-label class="text-xl font-semibold" for="nombre" :value="__('Detalle del diagnóstico')" />
                     <br>
                     <textarea type="text" name="detalle" id="detalle" cols="70" rows="10">{{$equipo->diagnosticoDetalle}}</textarea>
@@ -45,7 +46,7 @@
                     <br><hr>
                     <br><br>
                    
-                    <input type="hidden" name="estado" value="Diagnosticado"/>
+                    <input type="hidden" name="estado" value="Diagnosticado" readonly/>
 
                     <x-button type="submit" 
                     class="bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-2 px-2 rounded">Aceptar</x-button>

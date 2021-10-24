@@ -44,7 +44,7 @@
             @csrf
             @method('DELETE')
                         
-            <x-button type="submit" onclick=" return confirm('quieres borrar?')" class="bg-purple-900 hover:bg-purple-600 text-white font-bold py-2  rounded">
+            <x-button type="submit" onclick=" return confirm('¿Deseas eliminar este registro?')" class="bg-purple-900 hover:bg-purple-600 text-white font-bold py-2  rounded">
                Eliminar
             </x-button>            
             </form>

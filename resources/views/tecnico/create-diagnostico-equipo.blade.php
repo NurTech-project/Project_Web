@@ -38,6 +38,7 @@
                     @csrf
                     @method('POST')
                     <div class="mt-4">
+                        <p>Detallar: Sistema operativo, ram, almacenamiento, procesador de equipo</p>
                     <x-label class="text-xl font-semibold" for="nombre" :value="__('Detalle del diagnóstico')" />
                     <br>
                     <textarea type="text" name="detalle" id="detalle" cols="70" rows="10"></textarea>

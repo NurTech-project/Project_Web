@@ -1,5 +1,3 @@
-
-<link rel="stylesheet" href="{{asset('css/app.css')}}">
 <x-app-layout>
     <x-slot name="header">
         <h1 class="font-semibold text-xl text-gray-800 leading-tight px-16">
@@ -38,7 +36,7 @@
             <td class="px-4 py-3 text-xs border">
               <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {{ $historia->estado }} </span>
             </td>
-          <td class="space-y-2 text-center p-2 md:border md:border-grey-500 text-left block md:table-cell">
+          <td class="space-y-2 text-center p-2 md:border md:border-grey-500  block md:table-cell">
 
             <x-button class="bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-2 px-6 rounded">
                 <a href="{{url('/historia/edit/'.$historia->id)}}">Editar</a>
@@ -48,7 +46,7 @@
             @csrf
             @method('DELETE')
 
-            <x-button type="submit" onclick=" return confirm('quieres borrar?')" class="bg-purple-900 hover:bg-purple-600 text-white font-bold py-2  rounded">
+            <x-button type="submit" onclick=" return confirm('¿Deseas eliminar este registro?')" class="bg-purple-900 hover:bg-purple-600 text-white font-bold py-2  rounded">
                Eliminar
             </x-button>
             </form>

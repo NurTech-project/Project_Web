@@ -19,6 +19,9 @@
                     <x-nav-link :href="route('distribuidor_agenda')" :active="request()->routeIs('agenda')">
                         {{ __('Agendar entrega a técnico') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('distribuidor_entrega_dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Entrega de donación') }}
+                    </x-nav-link>
                 </div>
             </div>
 

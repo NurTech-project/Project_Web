@@ -15,32 +15,36 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 <h2 class="mb-4 text-4xl font-black text-center ">Entregas pendientes</h2>
                 <hr><br>
+              
                     @if (count($entregaPendiente) > 0)
+                    @if(Session::has('mensaje'))
+                            {{ Session::get('mensaje') }}
+                        @endif
                         <table class="w-full text-left border-separate " >
                         <tr >
                             <th class="px-4 py-2">Fecha de entrega</th>
                             <th class="px-4 py-2">Hora de entrega</th>
-                            <th class="px-4 py-2">Estado distribuidor</th>
-                            <th class="px-4 py-2">Estado de técnico</th>
                             <th class="px-4 py-2">Estado de beneficiario</th>
+                            <th class="px-4 py-2">Estado de técnico</th>
+                            <th class="px-4 py-2">Estado distribuidor</th>
                             <th class="px-4 py-2">Acción</th>
                         </tr>
                         
                             @foreach($entregaPendiente as $equipo)
                         <tr>
-                        <td>{{$equipo->fecha}}</td>
-                        <td>{{$equipo->hora}}</td>
-                        <td>{{$equipo->estadoDistribuidor}}</td>
-                        <td>{{$equipo->estadoTecnico}}</td>
-                        <td>{{$equipo->estadoBeneficiario}}</td>
+                        <td class="px-4 py-2">{{$equipo->fecha}}</td>
+                        <td class="px-4 py-2">{{$equipo->hora}}</td>
+                        <td class="px-4 py-2">{{$equipo->estadoBeneficiario}}</td>
+                        <td class="px-4 py-2">{{$equipo->estadoTecnico}}</td>
+                        <td class="px-4 py-2">{{$equipo->estadoDistribuidor}}</td>
                         
                         <td>
                         <x-button class="bg-yellow-300 hover:bg-yellow-600 text-white font-bold py-2 px-2 rounded">
-                        <a href="{{ route('distribuidor_agenda_show_equipo', $equipo->entregaId ) }}">Editar</a>
+                        <a href="{{ route('administrador_entrega_show', $equipo->entregaId ) }}">Editar</a>
                         </x-button>
                         </td>
                         <td>
-                        <form action="{{ route('distribuidor_agenda_destroy_equipo', $equipo->entregaId ) }}" method="POST">
+                        <form action="{{ route('administrador_entrega_destroy', $equipo->entregaId ) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <x-button type="submit" class="bg-yellow-300 hover:bg-yellow-600 text-white font-bold py-2 px-2 rounded">
@@ -51,7 +55,6 @@
                     
                         </tr>
                            
-                            
                             @endforeach
                         </table>
                         @else
