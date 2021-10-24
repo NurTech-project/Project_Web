@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('tecnico_dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <img src="/imagenes/logo.png" class="block h-10 w-auto">
                     </a>
                 </div>
 
@@ -14,6 +14,15 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('tecnico_dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Tecnico') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('tecnico_diagnostico')" :active="request()->routeIs('diagnostico')">
+                        {{ __('Diagnósticos') }}
+                    </x-nav-link>
+                    
+                    <x-nav-link :href="route('tecnico_entrega_dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Entrega de equipos diagnosticados') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -63,7 +72,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('tecnico_dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>

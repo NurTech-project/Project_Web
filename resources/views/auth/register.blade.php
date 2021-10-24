@@ -44,7 +44,6 @@
                     @endforeach
                 </select>
 
-                <!-- <x-input id="canton_id" class="block mt-1 w-full" type="number" name="canton_id" :value="old('canton_id')" /> -->
                 </div>
 
                     <!-- Cantón -->
@@ -57,8 +56,6 @@
                     <option value="{{ $canton->cantonId }}" name="canton_id">{{ $canton->cantonDescripcion }}</option>
                     @endforeach-->
                 
-
-                <!-- <x-input id="canton_id" class="block mt-1 w-full" type="number" name="canton_id" :value="old('canton_id')" /> -->
                 </div>
 
                 <!-- Name -->

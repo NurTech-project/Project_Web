@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 px-40">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                <h2 class="mb-4 text-xl text-center font-semibold">Agendar entrega a técnico</h2>
+                <div class="p-16 bg-white border-b border-gray-200">
+                <h2 class="mb-4 font-black text-3xl  text-center">Agendar entrega a técnico</h2><br>
                 <!-- Formulario de agendar a técnico -->
                 <form action="{{ url('/distribuidor/create/pieza/agenda') }}" method="POST">
                     @csrf
@@ -18,23 +18,23 @@
                     <div>
                     <x-label for="fecha" :value="__('Fecha de entrega')" />
                     <x-input type="date" class="block mt-1 w-full mb-4" name="fecha" />
-                    </div>
+                    </div><br>
 
                     <div>
                     <x-label for="hora" :value="__('Hora de entrega')" />
                     <input type="time" class="block mt-1 w-full mb-4" name="hora"/>
-                    </div>
+                    </div><br>
                     
                     <div>
                     <x-label for="tecnico_id" :value="__('Técnicos')" />
-                    <select id="tecnico_id" name="tecnico_id" class="form-control mb-2">
+                    <select class="w-full" id="tecnico_id" name="tecnico_id" class="form-control mb-2">
                     <option>------Seleccionar------</option>
                     @foreach($tecnicos as $tecnico)
                     <option value="{{ $tecnico->tecnicoId }}" name="tecnico_id">{{$tecnico->userNombre}} {{$tecnico->userApellido}} -- {{$tecnico->userEmail}}</option>
                     @endforeach
                     </select>
-                    </div>
-
+                    </div><br>
+                    <br>
                     @foreach($detallesDonacion as $detalle)
                     @if(Auth::user()->id == $detalle->distribuidorUser)
                     <div>
@@ -52,12 +52,14 @@
                     <div>
                     <input type="text" class="block mt-1 w-full mb-4" name="estado" value="Agendado" readonly/>
                     </div>
-
-                    <x-button type="submit" 
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded">Crear</x-button>
-                    <x-button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">
+                    <br><br>
+                    <center>
+                        <x-button type="submit" 
+                    class="bg-yellow-400 hover:bg-yellow-300 text-white font-bold py-2 px-2 rounded">Crear</x-button>
+                    <x-button class="bg-purple-900 hover:bg-purple-600 text-white font-bold py-2 px-2 rounded">
                         <a href="{{ url('/distribuidor/agenda') }}">Regresar</a>
                         </x-button>
+                    </center>
                     </form>
 
                     <!-- Mostrar tabla de agendas -->

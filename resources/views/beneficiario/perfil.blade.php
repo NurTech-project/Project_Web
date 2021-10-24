@@ -3,7 +3,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Perfil de ') }} {{$beneficiario->nombre}} {{$beneficiario->apellido}}
-            <x-button class="ml-4">
+            <x-button class="ml-4 bg-yellow-400 hover:bg-gray-800 duration-700 ease-in-out">
                 <a href="{{url('beneficiario/'.$beneficiario->id.'/edit')}}">Editar Descripción</a>
             </x-button> 
         </h2>
@@ -18,8 +18,8 @@
                     <p><b>Dirección: </b> {{$beneficiario->direccion}} </p>
                     <p><b>Correo Electrónico: </b> {{$beneficiario->email}} </p>
                     <p><b>Estado: </b> {{$beneficiario->estado}} </p>
-                    <p><b>Descripcion: </b> {{$beneficiario->descripcion}} </p>
-                    <a href="{{url('beneficiario/dashboard')}}"><b>Regresar</b></a>
+                    <p class="border-b-4 border-purple-800"><b>Descripcion: </b> {{$beneficiario->descripcion}} </p><br>
+                    <x-button class="bg-purple-700 hover:bg-gray-800 duration-700 ease-in-out" href="{{url('beneficiario/dashboard')}}"><b>Regresar</b></x-button>
                 </div>
             </div>
         </div>

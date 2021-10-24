@@ -33,7 +33,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Role::factory(5)->create();
-
         Provincia::factory()->create(['descripcion'=>'Azuay']);
         Provincia::factory()->create(['descripcion'=>'Bolivar']);
         Provincia::factory()->create(['descripcion'=>'Cañar']);
@@ -58,7 +57,6 @@ class DatabaseSeeder extends Seeder
         Provincia::factory()->create(['descripcion'=>'Orellana']);
         Provincia::factory()->create(['descripcion'=>'Santo Domingo de los Tsachilas']);
         Provincia::factory()->create(['descripcion'=>'Santa Elena']);
-
 
         Canton::factory()->create(['provincia_id'=>'1','descripcion'=>'Cuenca']);
         Canton::factory()->create(['provincia_id'=>'1','descripcion'=>'Gualaceo']);
@@ -335,3 +333,4 @@ class DatabaseSeeder extends Seeder
 
     }
 }
+
