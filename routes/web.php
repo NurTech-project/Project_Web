@@ -31,12 +31,10 @@ use App\Http\Controllers\Historia;
 Route::get('/', function () {
     return view('home.home');
 });
-<<<<<<< HEAD
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth','verified'])->name('dashboard');
-=======
 
 
 Route::get('/home/quienes-somos', function () {
@@ -54,7 +52,6 @@ Route::get('/home/historias', function () {
     return view('home.historias');
 });
 
->>>>>>> c96203a3b5d01147797578d2acc1915fa2009015
 
 //Rutas de Donante
 Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middleware(['auth','verified'])->name('donante_dashboard');
@@ -130,9 +127,7 @@ Route::delete('/tecnico/delete/equipo/diagnostico/{id}', [TecnicoController::cla
 Route::delete('/tecnico/delete/pieza/diagnostico/{id}', [TecnicoController::class, 'diagnosticoPiezaDestroy'])->middleware(['auth'])->name('tecnico_diagnostico_destroy_pieza');
 
 //Rutas de Administrador
-<<<<<<< HEAD
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth','verified'])->name('administrador_dashboard');
-=======
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
 Route::get('/administrador/create/entrega', [AdministradorController::class, 'index'])->middleware(['auth'])->name('administrador_entrega_create');
 Route::post('/administrador/create/entregas', [AdministradorController::class, 'store'])->middleware(['auth'])->name('administrador_entrega_post');
@@ -157,7 +152,6 @@ Route::get('/distribuidor/show/entrega/{id}', [DistribuidorController::class, 's
 Route::get('/distribuidor/edit/entrega/{id}', [DistribuidorController::class, 'aceptarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_edit');
 Route::delete('/distribuidor/delete/entrega//{id}', [DistribuidorController::class, 'rechazarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_destroy');
 
->>>>>>> c96203a3b5d01147797578d2acc1915fa2009015
 
 //Ruta Donación
 
