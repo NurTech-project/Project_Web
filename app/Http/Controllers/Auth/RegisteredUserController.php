@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -40,7 +42,9 @@ class RegisteredUserController extends Controller
              ->get();
         //dd($roles);
         return view('auth.register',compact('roles', 'provincias','cantones'));
+        
     }
+    
 
     /**
      * Handle an incoming registration request.
@@ -52,6 +56,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        $characters = '0123456789';
+        $randomCode = substr(str_shuffle($characters), 0, 6);
         $request->validate([
             'role_id' => ['required'],
             'canton_id' =>['required'],
@@ -71,9 +77,22 @@ class RegisteredUserController extends Controller
         $user->celular = $request->celular;
         $user->direccion = $request->direccion;
         $user->email = $request->email;
+        $user->confirmation_code= $randomCode;
         $user->password = Hash::make($request->password);
         
         $roles= DB::table('roles')->get();
+
+    /**
+         * Send mail for verified
+         */
+        $details = [
+            'title' => 'Código de verificación',
+            'body' => $user->confirmation_code
+        ];
+        Mail::to($user->email)->send(new TestMail($details));
+
+        
+        
 
         //dd($roles);
         
@@ -98,20 +117,41 @@ class RegisteredUserController extends Controller
                 }
             }
             //colocar lo de beneficiario de ser el caso
-            return redirect(RouteServiceProvider::LOGIN);
+            return redirect('/register/verify');
             
+        }    
+    }
+public function accountVerification (Request $request) 
+    {
+        /**
+         * Verified the existence of an account
+         */
+        if ($user = DB::table('users')->where('email', $request->email)->first()) 
+        {
+            /**
+             * Code validation
+             */
+            if ($user->confirmation_code == $request->confirmation_code) {
+                /**
+                 * StatusEmailVerified update
+                 */
+                DB::table('users')->where('email', $user->email)
+                    ->update(['confirmed' => '1']);
+                    return redirect('/login');
+            }
+            /*return response()->json([
+                'error' => [
+                    'message' => 'error in code verification'
+                ]
+            ]);*/
         }
-
-
-        
     }
-     public function canton(){
-        $q       = trim(\request('q'));
-        $results = Cantons::where('nombre', 'LIKE', '%' . $q . '%')->take(15)->get();
+    public function vista(){
+
+        return view('emails.confirmation_code');
     
-        return Response::json($results);
+    }
+     
     }
 
-    
-     }
 

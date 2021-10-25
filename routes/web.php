@@ -42,7 +42,7 @@ Route::get('tecnic/create', [TecnicoController::class,'create']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','verified'])->name('dashboard');
 
 //Rutas de Donante
 Route::get('/donante/dashboard', [DonanteController::class, 'vista'])->middleware(['auth'])->name('donante_dashboard');
@@ -93,4 +93,9 @@ Route::resource('/donante/pieza', PiezaController::class)->middleware(['auth']);
 //Ruta Beneficiario
 Route::resource('/beneficiario', BeneficiarioController::class)->middleware(['auth']);
 
+Auth::routes(['verify'=>true]);
+
+Route::get('/confirmation_code',[]);
+
 require __DIR__.'/auth.php';
+
