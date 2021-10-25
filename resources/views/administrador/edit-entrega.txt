@@ -1,0 +1,108 @@
+public function update(Request $request, $id)
+    {
+        //Tener en cuenta el estado de detalle_entrega_donacions
+        //beneficiario distinto se debe cambiar el estado
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+
+          // Tecnico-Diagnostico
+       
+          if($entrega->diagnostico_id == '' || $entrega->estado_tecnico == 'Rechazado') {
+
+            $diagnostico=Diagnostico::findOrFail($entrega->diagnostico_id);
+            $recepcion=DetalleRecepcionTecnico::findOrFail($diagnostico->detalle_recepcion_id);
+            $donacion=DetalleDonacion::findOrFail($recepcion->detalle_donacion_id);
+            $equipo=Equipo::findOrFail($donacion->equipo_id);
+
+            $diagnostico->estado = 'Pre-entregado';
+            
+            $diagnostico->update();
+
+            $recepcion->estado = 'Pre-entregado';
+            $recepcion->update();
+
+            $donacion->estado = 'Pre-entregado';
+            $donacion->update();
+
+            $equipo->estado = 'Pre-entregado';
+            $equipo->update();
+
+            $entrega->estado_tecnico='Pendiente';
+
+            $entrega->fecha_entrega=$request->fecha_entrega;
+            $entrega->hora_entrega=$request->hora_entrega;
+            $entrega->diagnostico_id = $request->diagnostico_id;
+            $entrega->beneficiario_id = $request->beneficiario_id;
+            $entrega->distribuidor_id = $request->distribuidor_id;
+    
+            $entrega->update();
+                
+            return redirect('administrador/dashboard');
+
+    
+            }
+
+
+        // Beneficiario
+        if($entrega->beneficiario_id == ''){
+            
+            $beneficiarioActual=Beneficiario::findOrFail($request->beneficiario_id);
+            $entrega->estado_beneficiario='Pendiente';
+            $beneficiarioActual->estado = 'En espera';
+
+            $entrega->fecha_entrega=$request->fecha_entrega;
+            $entrega->hora_entrega=$request->hora_entrega;
+            $entrega->diagnostico_id = $request->diagnostico_id;
+            $entrega->beneficiario_id = $request->beneficiario_id;
+            $entrega->distribuidor_id = $request->distribuidor_id;
+
+            $entrega->update();
+                $beneficiarioActual->update();
+                return redirect('administrador/dashboard');
+            
+
+        }
+
+        if($entrega->estado_beneficiario == 'Pendiente'){
+            $beneficiarioActual=Beneficiario::findOrFail($request->beneficiario_id);
+            $beneficiarioAnterior=Beneficiario::findOrFail($entrega->beneficiario_id);
+            // if($entrega->beneficiario_id !== $request->beneficiario_id){
+            //     $beneficiarioAnterior->estado='Pendiente';
+            //     $beneficiarioActual->estado='En espera';
+            // }
+
+            $entrega->fecha_entrega=$request->fecha_entrega;
+            $entrega->hora_entrega=$request->hora_entrega;
+            $entrega->diagnostico_id = $request->diagnostico_id;
+            $entrega->beneficiario_id = $request->beneficiario_id;
+            $entrega->distribuidor_id = $request->distribuidor_id;
+
+            $entrega->update();
+                $beneficiarioActual->update();
+                $beneficiarioAnterior->update();
+                return redirect('administrador/dashboard');
+            
+
+        }
+       
+            // Distribuidor
+        if($entrega->distribuidor_id == ''){
+            $entrega->estado_distribuidor='Pendiente';
+
+            $entrega->fecha_entrega=$request->fecha_entrega;
+            $entrega->hora_entrega=$request->hora_entrega;
+            $entrega->diagnostico_id = $request->diagnostico_id;
+            $entrega->beneficiario_id = $request->beneficiario_id;
+            $entrega->distribuidor_id = $request->distribuidor_id;
+            $entrega->update();
+            return redirect('administrador/dashboard');
+            
+        }
+        $entrega->fecha_entrega=$request->fecha_entrega;
+        $entrega->hora_entrega=$request->hora_entrega;
+        $entrega->diagnostico_id = $request->diagnostico_id;
+        $entrega->beneficiario_id = $request->beneficiario_id;
+        $entrega->distribuidor_id = $request->distribuidor_id;
+
+        $entrega->update();
+        return redirect('administrador/dashboard');
+    }

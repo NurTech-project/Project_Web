@@ -145,6 +145,10 @@ Route::delete('/tecnico/delete/entrega//{id}', [TecnicoController::class, 'recha
 Route::get('/distribuidor/vista/entrega', [DistribuidorController::class, 'vistaEntrega'])->middleware(['auth'])->name('distribuidor_entrega_dashboard');
 Route::get('/distribuidor/show/entrega/{id}', [DistribuidorController::class, 'showEntrega'])->middleware(['auth'])->name('distribuidor_entrega_show');
 Route::get('/distribuidor/edit/entrega/{id}', [DistribuidorController::class, 'aceptarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_edit');
+
+Route::get('/distribuidor/show/detalle/{id}', [DistribuidorController::class, 'showDetalle'])->middleware(['auth'])->name('distribuidor_detalle_show');
+//Route::get('/distribuidor/mostrar/detalle/{id}', [DistribuidorController::class, 'mostrarDetalle'])->middleware(['auth'])->name('distribuidor_detalle_edit');
+
 Route::delete('/distribuidor/delete/entrega//{id}', [DistribuidorController::class, 'rechazarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_destroy');
 
 

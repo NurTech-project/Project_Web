@@ -20,7 +20,7 @@
                         <tr >
                             <th class="px-4 py-2">Fecha de entrega</th>
                             <th class="px-4 py-2">Detalle del equipo</th>
-                            <th class="px-4 py-2">Estado de beneficiario</th>
+                            <th class="px-4 py-2">Estado de técnico</th>
                             <th class="px-4 py-2">Acción</th>
                         </tr>
                         

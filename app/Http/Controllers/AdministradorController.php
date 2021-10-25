@@ -61,13 +61,11 @@ class AdministradorController extends Controller
         ->get();
 
         $diagnosticos=DB::table('diagnosticos')
-        ->join('tecnicos', 'tecnicos.id','=','diagnosticos.tecnico_id')
         ->join('detalle_recepcion_tecnicos','detalle_recepcion_tecnicos.id','=','diagnosticos.detalle_recepcion_id')
         ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
         ->join('equipos','equipos.id','=','detalle_donacions.equipo_id')
-        ->join('users','users.id','=','tecnicos.user_id')
-        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId',
-        'tecnicos.id as tecnicosId','detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
+        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId'
+        ,'detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
         'equipos.id as equipoId')
         ->where('diagnosticos.estado','=','Diagnosticado')
         ->get();
@@ -129,11 +127,11 @@ class AdministradorController extends Controller
         $entrega->diagnostico_id = $request->diagnostico_id;
 
         if($entrega->save()){
-            $diagnostico->save();
-            $recepcion->save();
-            $donacion->save();
-            $equipo->save();
-            $beneficiario->save();
+            $diagnostico->update();
+            $recepcion->update();
+            $donacion->update();
+            $equipo->update();
+            $beneficiario->update();
             return redirect('administrador/dashboard');
         }
 
@@ -155,15 +153,17 @@ class AdministradorController extends Controller
         ->where('beneficiarios.estado', '=','Pendiente')
         ->get();
 
-        $beneficiarioElegido=DB::table('beneficiarios')
+
+        $beneficiarioElegido=DB::table('detalle_entrega_donacions')
+        ->join('beneficiarios','beneficiarios.id','=','detalle_entrega_donacions.beneficiario_id')
         ->join('users','users.id','=','beneficiarios.user_id')
-        ->join('detalle_entrega_donacions','detalle_entrega_donacions.beneficiario_id','=','beneficiarios.id')
         ->select('users.nombre as userNombre','users.apellido as userApellido',
         'users.email as userEmail','beneficiarios.id as beneficiarioId','users.id as userId',
         'beneficiarios.prioridad as beneficiarioPrioridad','beneficiarios.estado as beneficiarioEstado')
         ->where('beneficiarios.estado', '=','En espera')
-        ->where('detalle_entrega_donacions.id','=',$id)
+        ->where('detalle_entrega_donacions.id', '=',$id)
         ->get();
+
 
         $beneficiarioAceptado=DB::table('beneficiarios')
         ->join('users','users.id','=','beneficiarios.user_id')
@@ -186,40 +186,33 @@ class AdministradorController extends Controller
         ->get();
 
         $diagnosticos=DB::table('diagnosticos')
-        ->join('tecnicos', 'tecnicos.id','=','diagnosticos.tecnico_id')
         ->join('detalle_recepcion_tecnicos','detalle_recepcion_tecnicos.id','=','diagnosticos.detalle_recepcion_id')
         ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
         ->join('equipos','equipos.id','=','detalle_donacions.equipo_id')
-        ->join('users','users.id','=','tecnicos.user_id')
-        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId',
-        'tecnicos.id as tecnicosId','detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
+        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId'
+        ,'detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
         'equipos.id as equipoId')
         ->where('diagnosticos.estado','=','Diagnosticado')
         ->get();
 
         $diagnosticoElegido=DB::table('diagnosticos')
-        ->join('tecnicos', 'tecnicos.id','=','diagnosticos.tecnico_id')
         ->join('detalle_entrega_donacions','detalle_entrega_donacions.diagnostico_id','=','diagnosticos.id')
         ->join('detalle_recepcion_tecnicos','detalle_recepcion_tecnicos.id','=','diagnosticos.detalle_recepcion_id')
         ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
         ->join('equipos','equipos.id','=','detalle_donacions.equipo_id')
-        ->join('users','users.id','=','tecnicos.user_id')
-        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId',
-        'tecnicos.id as tecnicosId','detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
+        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId','detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
         'equipos.id as equipoId')
         ->where('diagnosticos.estado','=','Pre-entregado')
         ->where('detalle_entrega_donacions.id','=',$id)
         ->get();
 
         $diagnosticoAceptado=DB::table('diagnosticos')
-        ->join('tecnicos', 'tecnicos.id','=','diagnosticos.tecnico_id')
         ->join('detalle_entrega_donacions','detalle_entrega_donacions.diagnostico_id','=','diagnosticos.id')
         ->join('detalle_recepcion_tecnicos','detalle_recepcion_tecnicos.id','=','diagnosticos.detalle_recepcion_id')
         ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
         ->join('equipos','equipos.id','=','detalle_donacions.equipo_id')
-        ->join('users','users.id','=','tecnicos.user_id')
-        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId',
-        'tecnicos.id as tecnicosId','detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
+        ->select('diagnosticos.detalle as diagnosticoDetalle','diagnosticos.id as diagnosticoId'
+        ,'detalle_recepcion_tecnicos.id as recepcionId','detalle_donacions.id as donacionId',
         'equipos.id as equipoId')
         ->where('detalle_entrega_donacions.estado_tecnico','=','Aceptado')
         ->where('detalle_entrega_donacions.id','=',$id)
@@ -253,7 +246,7 @@ class AdministradorController extends Controller
         }
 
 
-        //dd($diagnosticoElegido);
+        //dd($beneficiarioElegido);
         return view('administrador.edit-entrega' ,
         compact('beneficiarios','diagnosticos','diagnosticoElegido',
         'entregas','distribuidors','distribuidorElegido','beneficiarioElegido',
@@ -274,108 +267,51 @@ class AdministradorController extends Controller
         //Tener en cuenta el estado de detalle_entrega_donacions
         //beneficiario distinto se debe cambiar el estado
         $entrega=DetalleEntregaDonacion::findOrFail($id);
+        $entrega->fecha_entrega = $request->fecha_entrega;
+        $entrega->hora_entrega = $request->hora_entrega;
 
-          // Tecnico-Diagnostico
        
-          if($entrega->diagnostico_id == '' || $entrega->estado_tecnico == 'Rechazado') {
-
-            $diagnostico=Diagnostico::findOrFail($entrega->diagnostico_id);
-            $recepcion=DetalleRecepcionTecnico::findOrFail($diagnostico->detalle_recepcion_id);
-            $donacion=DetalleDonacion::findOrFail($recepcion->detalle_donacion_id);
-            $equipo=Equipo::findOrFail($donacion->equipo_id);
-
-            $diagnostico->estado = 'Pre-entregado';
-            
-            $diagnostico->update();
-
-            $recepcion->estado = 'Pre-entregado';
-            $recepcion->update();
-
-            $donacion->estado = 'Pre-entregado';
-            $donacion->update();
-
-            $equipo->estado = 'Pre-entregado';
-            $equipo->update();
-
-            $entrega->estado_tecnico='Pendiente';
-
-            $entrega->fecha_entrega=$request->fecha_entrega;
-            $entrega->hora_entrega=$request->hora_entrega;
-            $entrega->diagnostico_id = $request->diagnostico_id;
-            $entrega->beneficiario_id = $request->beneficiario_id;
-            $entrega->distribuidor_id = $request->distribuidor_id;
-    
-            $entrega->update();
-                
-            return redirect('administrador/dashboard');
-
-    
-            }
-
-
-        // Beneficiario
-        if($entrega->beneficiario_id == ''){
-            
-            $beneficiarioActual=Beneficiario::findOrFail($request->beneficiario_id);
-            $entrega->estado_beneficiario='Pendiente';
-            $beneficiarioActual->estado = 'En espera';
-
-            $entrega->fecha_entrega=$request->fecha_entrega;
-            $entrega->hora_entrega=$request->hora_entrega;
-            $entrega->diagnostico_id = $request->diagnostico_id;
-            $entrega->beneficiario_id = $request->beneficiario_id;
-            $entrega->distribuidor_id = $request->distribuidor_id;
-
-            $entrega->update();
-                $beneficiarioActual->update();
-                return redirect('administrador/dashboard');
-            
-
-        }
-
-        if($entrega->estado_beneficiario == 'Pendiente'){
-            $beneficiarioActual=Beneficiario::findOrFail($request->beneficiario_id);
-            $beneficiarioAnterior=Beneficiario::findOrFail($entrega->beneficiario_id);
             if($entrega->beneficiario_id !== $request->beneficiario_id){
+                $beneficiarioActual=Beneficiario::findOrFail($request->beneficiario_id);
+                $beneficiarioAnterior=Beneficiario::findOrFail($entrega->beneficiario_id);
+
                 $beneficiarioAnterior->estado='Pendiente';
                 $beneficiarioActual->estado='En espera';
-            }
-
-            $entrega->fecha_entrega=$request->fecha_entrega;
-            $entrega->hora_entrega=$request->hora_entrega;
-            $entrega->diagnostico_id = $request->diagnostico_id;
-            $entrega->beneficiario_id = $request->beneficiario_id;
-            $entrega->distribuidor_id = $request->distribuidor_id;
-
-            $entrega->update();
                 $beneficiarioActual->update();
                 $beneficiarioAnterior->update();
-                return redirect('administrador/dashboard');
-            
+            }
+           
 
-        }
-       
-            // Distribuidor
-        if($entrega->distribuidor_id == ''){
-            $entrega->estado_distribuidor='Pendiente';
+            if($entrega->estado_tecnico == 'Rechazado' || $entrega->diagnostico_id == null){
+                $diagnostico=Diagnostico::findOrFail($request->diagnostico_id);
+                $recepcion=DetalleRecepcionTecnico::findOrFail($diagnostico->detalle_recepcion_id);
+                $donacion=DetalleDonacion::findOrFail($recepcion->detalle_donacion_id);
+                $equipo=Equipo::findOrFail($donacion->equipo_id);
 
-            $entrega->fecha_entrega=$request->fecha_entrega;
-            $entrega->hora_entrega=$request->hora_entrega;
-            $entrega->diagnostico_id = $request->diagnostico_id;
-            $entrega->beneficiario_id = $request->beneficiario_id;
-            $entrega->distribuidor_id = $request->distribuidor_id;
-            $entrega->update();
-            return redirect('administrador/dashboard');
-            
-        }
-        $entrega->fecha_entrega=$request->fecha_entrega;
-        $entrega->hora_entrega=$request->hora_entrega;
-        $entrega->diagnostico_id = $request->diagnostico_id;
+                $diagnostico->estado = 'Pre-entregado';
+                $diagnostico->update();
+    
+                $recepcion->estado = 'Pre-entregado';
+                $recepcion->update();
+    
+                $donacion->estado = 'Pre-entregado';
+                $donacion->update();
+    
+                $equipo->estado = 'Pre-entregado';
+                $equipo->update();
+    
+                $entrega->estado_tecnico='Pendiente';
+            }
+            if($entrega->estado_distribuidor == 'Rechazado' || $entrega->distribuidor_id == null){
+                $entrega->estado_distribuidor='Pendiente';
+            }
+        $entrega->diagnostico_id=$request->diagnostico_id;
         $entrega->beneficiario_id = $request->beneficiario_id;
         $entrega->distribuidor_id = $request->distribuidor_id;
 
         $entrega->update();
         return redirect('administrador/dashboard');
+         
     }
 
     /**
@@ -409,12 +345,14 @@ class AdministradorController extends Controller
 
         if($entrega->estado_tecnico == 'Rechazado' && $entrega->estado_distribuidor == 'Rechazado'
         && $entrega->estado_beneficiario == 'Rechazado'){
+
+            $diagnostico->update();
+            $recepcion->update();
+            $donacion->update();
+            $equipo->update();
+            $beneficiario->update();
             $entrega->delete();
-            $diagnostico->save();
-            $recepcion->save();
-            $donacion->save();
-            $equipo->save();
-            $beneficiario->save();
+
             return redirect('administrador/dashboard');
         }else{
             return redirect('administrador/dashboard')->with('mensaje','Este registro será eliminado, cuando todos los estados sean rechazados');

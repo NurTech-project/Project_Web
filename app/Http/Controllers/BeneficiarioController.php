@@ -183,7 +183,7 @@ class BeneficiarioController extends Controller
         $beneficiario=Beneficiario::findOrFail($entrega->beneficiario_id);
         $beneficiario->estado='Pendiente';
         $entrega->estado_beneficiario='Rechazado';
-        $entrega->beneficiario_id=null;
+        //$entrega->beneficiario_id=null;
         $entrega->save();
         $beneficiario->save();
         return redirect('beneficiario/vista/entrega');

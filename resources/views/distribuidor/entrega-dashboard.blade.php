@@ -13,6 +13,7 @@
 
                     @if (count($entregaPendiente) > 0)
                     <h2 class="mb-4 text-4xl font-black text-center ">Entrega de equipos diagnosticados a beneficiarios</h2>
+                    <br>
                     <p>Nota: Tenga en cuenta que al momento de rechazar la entrega, el proceso para entregar donación sería aún más largo</p>
                 
                     <hr><br>
@@ -49,10 +50,12 @@
                            
                             @endforeach
                         </table>
-
-
+                        @else
+                            <h2 class="mb-4 text-xl font-medium text-center ">Se encuentra en espera para entregar donaciones</h2>
+                        @endif
+                       <br><br>
                         <!-- Detalle de la donación -->
-                        @elseif (count($entregaAceptada) > 0)
+                        @if (count($entregaAceptada) > 0)
                         <h2 class="mb-4 text-4xl font-black text-center ">Equipo aceptado</h2>
                     <hr><br>
                         <table class="w-full text-left border-separate " >
@@ -67,15 +70,18 @@
                         <td class="px-4 py-2">{{$equipo->fecha}}</td>
                         <td class="px-4 py-2">{{$equipo->detalle}}</td>
                         <td class="px-4 py-2">{{$equipo->estado}}</td>
-                        
+                        <td>
+                        <x-button class="bg-yellow-300 hover:bg-yellow-600 text-white font-bold py-2 px-2 rounded">
+                        <a href="{{ route('distribuidor_detalle_show', $equipo->entregaId ) }}">Ver detalles</a>
+                        </x-button>
+                        </td>
                         </tr>
                            
                             @endforeach
                         </table>
 
 
-                        @else
-                            <h2 class="mb-4 text-xl font-medium text-center ">Se encuentra en espera para entregar donaciones</h2>
+                       
                         @endif
                         
                 </div>
@@ -83,3 +89,6 @@
         </div>
     </div>
 </x-app-layout>
+
+
+distribuidor_detalle_show

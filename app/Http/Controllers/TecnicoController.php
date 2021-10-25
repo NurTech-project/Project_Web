@@ -576,7 +576,7 @@ class TecnicoController extends Controller
     public function vistaEntrega()
     {
         $entregaPendiente=DB::table('detalle_entrega_donacions')
-        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.beneficiario_id')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
         ->join('tecnicos','tecnicos.id','=','diagnosticos.tecnico_id')
         ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
         'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
@@ -592,7 +592,7 @@ class TecnicoController extends Controller
         ->where('tecnicos.user_id','=',Auth::user()->id)
         ->where('detalle_entrega_donacions.estado_tecnico','=','Aceptado')
         ->get();
-       //dd($entregaAceptada);
+       //dd($entregaPendiente);
          return view('tecnico.entrega-dashboard', compact('entregaPendiente','entregaAceptada'));
     }
 
@@ -646,12 +646,12 @@ class TecnicoController extends Controller
 
 
         $entrega->estado_tecnico='Rechazado';
-        $entrega->diagnostico_id=null;
-        $entrega->save();
-        $diagnostico->save();
-        $recepcion->save();
-        $donacion->save();
-        $equipo->save();
+        //$entrega->diagnostico_id=null;
+        $entrega->update();
+        $diagnostico->update();
+        $recepcion->update();
+        $donacion->update();
+        $equipo->update();
 
         return redirect('tecnico/vista/entrega');
     }

@@ -39,6 +39,16 @@
 
                     @endif
 
+
+                    @if($entrega->tecnicoEstado == 'Pendiente')
+
+                    @foreach($diagnosticoElegido as $elegido)
+                    <p class="block mt-1 w-full mb-4">{{$elegido->diagnosticoDetalle}}</p>
+                    <input type="hidden" value="{{ $elegido->diagnosticoId }}" name="diagnostico_id" readonly>
+                    @endforeach
+
+                    @endif
+
                     @if($entrega->tecnicoEstado == 'Aceptado')
 
                     @foreach($diagnosticoAceptado as $elegido)
@@ -49,14 +59,6 @@
 
                     @endif
 
-                    @if($entrega->tecnicoEstado == 'Pendiente')
-
-                    @foreach($diagnosticoElegido as $elegido)
-                    <p class="block mt-1 w-full mb-4">{{$elegido->diagnosticoDetalle}}</p>
-                    <input type="hidden" value="{{ $elegido->diagnosticoId }}" name="diagnostico_id" readonly>
-                    @endforeach
-
-                    @endif
                     </div>
                     <!-- Fin-Diagnostico -->
 
@@ -74,16 +76,6 @@
 
                     @endif 
 
-                    @if($entrega->beneficiarioEstado == 'Aceptado')
-
-                    @foreach($beneficiarioAceptado as $elegido)
-                    <input type="hidden" value="{{ $elegido->beneficiarioId }}" name="beneficiario_id" readonly>
-                    <h4>{{$elegido->userNombre}} {{$elegido->userApellido}} -- {{$elegido->userEmail}} -- Prioridad: {{$elegido->beneficiarioPrioridad}}</h4>
-                    @endforeach
-                    <h4>El beneficiario ya ha aceptado la entrega del equipo</h4>
-
-                    @endif
-
                     @if($entrega->beneficiarioEstado == 'Pendiente')
 
                     <select class="w-full" id="beneficiario_id" name="beneficiario_id" class="form-control mb-2">
@@ -96,6 +88,18 @@
                     </select>
                   
                     @endif
+
+                    
+                    @if($entrega->beneficiarioEstado == 'Aceptado')
+
+                    @foreach($beneficiarioAceptado as $elegido)
+                    <input type="hidden" value="{{ $elegido->beneficiarioId }}" name="beneficiario_id" readonly>
+                    <h4>{{$elegido->userNombre}} {{$elegido->userApellido}} -- {{$elegido->userEmail}} -- Prioridad: {{$elegido->beneficiarioPrioridad}}</h4>
+                    @endforeach
+                    <h4>El beneficiario ya ha aceptado la entrega del equipo</h4>
+
+                    @endif
+
                     </div>
                     <!-- Fin-Beneficiario -->
 
@@ -114,15 +118,6 @@
 
                     @endif
 
-                    @if($entrega->distribuidorEstado == 'Aceptado')
-
-                    @foreach($distribuidorAceptado as $distribuidor)
-                    <input type="hidden" value="{{ $distribuidor->distribuidorId }}" name="distribuidor_id" readonly>
-                    <h4>{{$distribuidor->userNombre}} {{$distribuidor->userApellido}} -- {{$distribuidor->userEmail}}</h4>
-                    @endforeach
-                    <h4>El distribuidor ya ha aceptado la entrega del equipo</h4>
-
-                    @endif
 
                     @if($entrega->distribuidorEstado == 'Pendiente')
 
@@ -137,6 +132,17 @@
                     </select>
 
                     @endif
+
+                    @if($entrega->distribuidorEstado == 'Aceptado')
+
+                    @foreach($distribuidorAceptado as $distribuidor)
+                    <input type="hidden" value="{{ $distribuidor->distribuidorId }}" name="distribuidor_id" readonly>
+                    <h4>{{$distribuidor->userNombre}} {{$distribuidor->userApellido}} -- {{$distribuidor->userEmail}}</h4>
+                    @endforeach
+                    <h4>El distribuidor ya ha aceptado la entrega del equipo</h4>
+
+                    @endif
+
                     </div>
                     <!-- Fin-Distribuidor -->
 
