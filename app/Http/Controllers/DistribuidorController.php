@@ -24,7 +24,7 @@ class DistribuidorController extends Controller
     public function vista()
     {
         
-        $donantesEquipo=DB::table('users')
+        $equiposDonados=DB::table('users')
         ->join('donantes', 'donantes.user_id', '=', 'users.id')
         ->join('cantons','users.canton_id','=','cantons.id')
         ->join('provincias','cantons.provincia_id','=','provincias.id')
@@ -35,23 +35,29 @@ class DistribuidorController extends Controller
         'provincias.descripcion as provinciaDescripcion',
         'cantons.descripcion as cantonDescripcion','users.direccion as userDireccion',
         'equipos.detalle as equipoDetalle','equipos.estado as equipoEstado')
+        ->where('equipos.estado','=',null)
         ->get();
 
-        $distribuidor=DB::table('distribuidors')
-        ->get();
-        $equiposDonados=array();
-        $equiposAceptados=array();
-        foreach ($donantesEquipo as $equipos){
-            
-            if($equipos->equipoEstado == null){
-                $equiposDonados[]=$equipos;
-            }
-            if($equipos->equipoEstado == 'Aceptado'){
-                $equiposAceptados[]=$equipos;
-            }
-        }
 
-        $donantesPieza=DB::table('users')
+        $equiposAceptados=DB::table('users')
+        ->join('donantes', 'donantes.user_id', '=', 'users.id')
+        ->join('cantons','users.canton_id','=','cantons.id')
+        ->join('provincias','cantons.provincia_id','=','provincias.id')
+        ->join('equipos','donantes.id','=','equipos.donante_id')
+        ->join('detalle_donacions','detalle_donacions.equipo_id','=','equipos.id')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
+        ->select('donantes.id as donanteId','users.id as userId',
+        'equipos.id as equipoId',
+        'users.nombre as userNombre','users.apellido as userApellido',
+        'provincias.descripcion as provinciaDescripcion',
+        'cantons.descripcion as cantonDescripcion','users.direccion as userDireccion',
+        'equipos.detalle as equipoDetalle','equipos.estado as equipoEstado')
+        ->where('equipos.estado','=','Aceptado')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
+        ->get();
+
+
+        $piezasDonadas=DB::table('users')
         ->join('donantes', 'donantes.user_id', '=', 'users.id')
         ->join('cantons','users.canton_id','=','cantons.id')
         ->join('provincias','cantons.provincia_id','=','provincias.id')
@@ -62,19 +68,28 @@ class DistribuidorController extends Controller
         'provincias.descripcion as provinciaDescripcion',
         'cantons.descripcion as cantonDescripcion','users.direccion as userDireccion',
         'piezas.nombre as piezaNombre','piezas.detalle as piezaDetalle','piezas.estado as piezaEstado')
+        ->where('piezas.estado','=',null)
         ->get();
-        //dd($donantesPieza);
 
-        $piezasDonadas=array();
-        $piezasAceptadas=array();
 
-        foreach ($donantesPieza as $piezas){
-            if($piezas->piezaEstado == null){
-                $piezasDonadas[]=$piezas;
-            }elseif($piezas->piezaEstado == 'Aceptado'){
-                $piezasAceptadas[]=$piezas;
-            }
-        }
+        $piezasAceptadas= DB::table('users')
+        ->join('donantes', 'donantes.user_id', '=', 'users.id')
+        ->join('cantons','users.canton_id','=','cantons.id')
+        ->join('provincias','cantons.provincia_id','=','provincias.id')
+        ->join('piezas','donantes.id','=','piezas.donante_id')
+        ->join('detalle_donacions','detalle_donacions.pieza_id','=','piezas.id')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
+        ->select('donantes.id as donanteId','users.id as userId',
+        'piezas.id as piezaId',
+        'users.nombre as userNombre','users.apellido as userApellido',
+        'provincias.descripcion as provinciaDescripcion',
+        'cantons.descripcion as cantonDescripcion','users.direccion as userDireccion',
+        'piezas.nombre as piezaNombre','piezas.detalle as piezaDetalle','piezas.estado as piezaEstado')
+        ->where('piezas.estado','=','Aceptado')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
+        ->get();
+  
+
         $perfilDistribuidors = DB::table('distribuidors')
         ->join('users','users.id','=','distribuidors.user_id')
         ->select('distribuidors.descripcion', 'distribuidors.id', 'distribuidors.disponibilidad', 
@@ -83,7 +98,8 @@ class DistribuidorController extends Controller
         ->where('user_id', '=', Auth::user()->id)
         ->get();
         
-        return view('distribuidor.dashboard',compact('equiposDonados','equiposAceptados','piezasDonadas','piezasAceptadas','perfilDistribuidors'));
+        return view('distribuidor.dashboard',
+        compact('equiposDonados','equiposAceptados','piezasDonadas','piezasAceptadas','perfilDistribuidors'));
     }
 
     /**
@@ -297,22 +313,28 @@ class DistribuidorController extends Controller
     public function agenda()
     {
         $detalle_donacion_equipos=DB::table('detalle_donacions')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
         ->join('equipos','equipos.id','=','detalle_donacions.equipo_id')
         ->select('equipos.id as equipoId','detalle_donacions.id as detalleId',
         'equipos.estado as equipoEstado','detalle_donacions.estado as detalleEstado',
         'equipos.detalle as equipoDetalle','equipos.sistema_operativo as equipoSistema',
         'equipos.almacenamiento as equipoAlmacenamiento')
+        ->where('distribuidors.user_id','=', Auth::user()->id)
         ->where('detalle_donacions.estado','=','Aceptado')
         ->get();
+        
+
         //detalleRecepcion los campos
         $detalleRecepcionEquipos=DB::table('detalle_recepcion_tecnicos')
         ->join('tecnicos','tecnicos.id','=','detalle_recepcion_tecnicos.tecnico_id')
         ->join('users','users.id','=','tecnicos.user_id')
         ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
         ->join('equipos','equipos.id','=','detalle_donacions.equipo_id')
         ->select('detalle_recepcion_tecnicos.fecha as recepcionFecha','detalle_recepcion_tecnicos.hora as recepcionHora',
         'users.nombre as tecnicoNombre','users.apellido as tecnicoApellido','equipos.detalle as equipoDetalle',
         'detalle_recepcion_tecnicos.estado as detalleEstado','detalle_recepcion_tecnicos.id as recepcionId')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
         ->get();
 
         $detallePendienteEquipos=array();
@@ -321,23 +343,28 @@ class DistribuidorController extends Controller
                 $detallePendienteEquipos[]=$detalleEquipo;
             }
         }
-
+       
         $detalle_donacion_piezas=DB::table('detalle_donacions')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
         ->join('piezas','piezas.id','=','detalle_donacions.pieza_id')
         ->select('piezas.id as piezaId','detalle_donacions.id as detalleId',
         'piezas.estado as piezaEstado','detalle_donacions.estado as detalleEstado',
         'piezas.detalle as piezaDetalle','piezas.nombre as piezaNombre')
         ->where('detalle_donacions.estado','=','Aceptado')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
         ->get();
+        
         //detalleRecepcion los campos
         $detalleRecepcionPiezas=DB::table('detalle_recepcion_tecnicos')
         ->join('tecnicos','tecnicos.id','=','detalle_recepcion_tecnicos.tecnico_id')
         ->join('users','users.id','=','tecnicos.user_id')
         ->join('detalle_donacions','detalle_donacions.id','=','detalle_recepcion_tecnicos.detalle_donacion_id')
+        ->join('distribuidors','distribuidors.id','=','detalle_donacions.distribuidor_id')
         ->join('piezas','piezas.id','=','detalle_donacions.pieza_id')
         ->select('detalle_recepcion_tecnicos.fecha as recepcionFecha','detalle_recepcion_tecnicos.hora as recepcionHora',
         'users.nombre as tecnicoNombre','users.apellido as tecnicoApellido','piezas.detalle as piezaDetalle',
         'detalle_recepcion_tecnicos.estado as detalleEstado','detalle_recepcion_tecnicos.id as recepcionId')
+        ->where('distribuidors.user_id','=',Auth::user()->id)
         ->get();
 
         $detallePendientePiezas=array();
@@ -693,7 +720,7 @@ class DistribuidorController extends Controller
         ->join('distribuidors','distribuidors.id','=','detalle_entrega_donacions.distribuidor_id')
         ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
         ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
-        'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
+        'detalle_entrega_donacions.estado_distribuidor as estado','detalle_entrega_donacions.id as entregaId')
         ->where('distribuidors.user_id','=',Auth::user()->id)
         ->where('detalle_entrega_donacions.estado_distribuidor','=','Aceptado')
         ->get();

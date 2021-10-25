@@ -125,7 +125,7 @@ class BeneficiarioController extends Controller
         #Validación de los caracteres ingresados en la descripción
         if ($request->contador >= 5000) {
             $datosBeneficiario->prioridad = 'Alta';
-        }if ($request->contador >=2000) {
+        }if ($request->contador >=1000) {
             $datosBeneficiario->prioridad = 'Media';
         }else{
             $datosBeneficiario->prioridad = 'Baja';

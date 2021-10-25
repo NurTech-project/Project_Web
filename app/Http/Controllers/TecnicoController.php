@@ -482,6 +482,7 @@ class TecnicoController extends Controller
         'equipos.procesador as equipoProcesador','equipos.ram as equipoRam','equipos.almacenamiento as equipoAlmacenamiento',
         'equipos.detalle as equipoDetalle','diagnosticos.detalle as diagnosticoDetalle','diagnosticos.estado as diagnosticoEstado')
         ->where('diagnosticos.estado','=','Diagnosticado')
+        ->where('diagnosticos.id','=',$id)
         ->where('tecnicos.user_id','=',Auth::user()->id)
         ->get();
 
@@ -499,6 +500,7 @@ class TecnicoController extends Controller
         'diagnosticos.id as diagnosticoId','piezas.nombre as piezaNombre',
         'piezas.detalle as piezaDetalle','diagnosticos.detalle as diagnosticoDetalle','diagnosticos.estado as diagnosticoEstado')
         ->where('diagnosticos.estado','=','Diagnosticado')
+        ->where('diagnosticos.id','=',$id)
         ->where('tecnicos.user_id','=',Auth::user()->id)
         ->get();
 
@@ -579,7 +581,7 @@ class TecnicoController extends Controller
         ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
         ->join('tecnicos','tecnicos.id','=','diagnosticos.tecnico_id')
         ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
-        'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
+        'detalle_entrega_donacions.estado_tecnico as estado','detalle_entrega_donacions.id as entregaId')
         ->where('tecnicos.user_id','=',Auth::user()->id)
         ->where('detalle_entrega_donacions.estado_tecnico','=','Pendiente')
         ->get();

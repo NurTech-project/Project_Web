@@ -49,10 +49,12 @@
                            
                             @endforeach
                         </table>
-
-
+                        @else
+                            <h2 class="mb-4 text-xl font-medium text-center ">Se encuentra en espera de donación</h2>
+                        @endif
+                        <br> <br>
                         <!-- Detalle de la donación -->
-                        @elseif (count($entregaAceptada) > 0)
+                        @if (count($entregaAceptada) > 0)
                         <h2 class="mb-4 text-4xl font-black text-center ">Equipo aceptado</h2>
                     <hr><br>
                         <table class="w-full text-left border-separate " >
@@ -74,8 +76,7 @@
                         </table>
 
 
-                        @else
-                            <h2 class="mb-4 text-xl font-medium text-center ">Se encuentra en espera de donación</h2>
+                       
                         @endif
                         
                 </div>

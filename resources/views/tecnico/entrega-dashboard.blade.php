@@ -20,7 +20,7 @@
                         <tr >
                             <th class="px-4 py-2">Fecha de entrega</th>
                             <th class="px-4 py-2">Detalle del equipo</th>
-                            <th class="px-4 py-2">Estado de técnico</th>
+                            <th class="px-4 py-2">Estado de tecnico</th>
                             <th class="px-4 py-2">Acción</th>
                         </tr>
                         
@@ -49,10 +49,13 @@
                            
                             @endforeach
                         </table>
+                        @else
+                            <h2 class="mb-4 text-xl font-medium text-center ">Se encuentra en espera para entregar donaciones</h2>
+                        @endif
 
-
+                        <br><br>
                         <!-- Detalle de la donación -->
-                        @elseif (count($entregaAceptada) > 0)
+                        @if (count($entregaAceptada) > 0)
                         <h2 class="mb-4 text-4xl font-black text-center ">Equipo aceptado</h2>
                     <hr><br>
                         <table class="w-full text-left border-separate " >
@@ -74,8 +77,7 @@
                         </table>
 
 
-                        @else
-                            <h2 class="mb-4 text-xl font-medium text-center ">Se encuentra en espera de entregar los equipos diagnosticados</h2>
+                       
                         @endif
                         
                 </div>
