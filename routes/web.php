@@ -21,6 +21,7 @@ use App\Http\Controllers\PiezaController;
 
 
 
+use App\Http\Controllers\Historia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,13 +32,10 @@ use App\Http\Controllers\PiezaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('home.home');
 });
-Route::get('tecnic/create', [TecnicoController::class,'create']);
 
-;
 
 Route::get('/home/quienes-somos', function () {
     return view('home.quienes-somos');
@@ -50,9 +48,8 @@ Route::get('/home/quiero-computador', function () {
 Route::get('/home/ser-voluntario', function () {
     return view('home.ser-voluntario');
 });
-
-Route::get('/home/quienes-somos', function () {
-    return view('home.quienes-somos');
+Route::get('/home/historias', function () {
+    return view('home.historias');
 });
 
 
@@ -135,6 +132,33 @@ Route::delete('/tecnico/delete/pieza/diagnostico/{id}', [TecnicoController::clas
 
 //Rutas de Administrador
 Route::get('/administrador/dashboard', [AdministradorController::class, 'vista'])->middleware(['auth'])->name('administrador_dashboard');
+Route::get('/administrador/create/entrega', [AdministradorController::class, 'index'])->middleware(['auth'])->name('administrador_entrega_create');
+Route::post('/administrador/create/entregas', [AdministradorController::class, 'store'])->middleware(['auth'])->name('administrador_entrega_post');
+Route::get('/administrador/edit/entrega/{id}', [AdministradorController::class, 'show'])->middleware(['auth'])->name('administrador_entrega_show');
+Route::put('/administrador/edit/entrega/{id}', [AdministradorController::class, 'update'])->middleware(['auth'])->name('administrador_entrega_edit');
+Route::delete('/administrador/delete/entrega//{id}', [AdministradorController::class, 'destroy'])->middleware(['auth'])->name('administrador_entrega_destroy');
+
+//Rutas para la aceptación de una donación 
+//Beneficiario
+Route::get('/beneficiario/vista/entrega', [BeneficiarioController::class, 'vistaEntrega'])->middleware(['auth'])->name('beneficiario_entrega_dashboard');
+Route::get('/beneficiario/edit/entrega/{id}', [BeneficiarioController::class, 'aceptarEntrega'])->middleware(['auth'])->name('beneficiario_entrega_edit');
+Route::delete('/beneficiario/delete/entrega//{id}', [BeneficiarioController::class, 'rechazarEntrega'])->middleware(['auth'])->name('beneficiario_entrega_destroy');
+
+//Tecnico
+Route::get('/tecnico/vista/entrega', [TecnicoController::class, 'vistaEntrega'])->middleware(['auth'])->name('tecnico_entrega_dashboard');
+Route::get('/tecnico/edit/entrega/{id}', [TecnicoController::class, 'aceptarEntrega'])->middleware(['auth'])->name('tecnico_entrega_edit');
+Route::delete('/tecnico/delete/entrega//{id}', [TecnicoController::class, 'rechazarEntrega'])->middleware(['auth'])->name('tecnico_entrega_destroy');
+
+//Distribuidor
+Route::get('/distribuidor/vista/entrega', [DistribuidorController::class, 'vistaEntrega'])->middleware(['auth'])->name('distribuidor_entrega_dashboard');
+Route::get('/distribuidor/show/entrega/{id}', [DistribuidorController::class, 'showEntrega'])->middleware(['auth'])->name('distribuidor_entrega_show');
+Route::get('/distribuidor/edit/entrega/{id}', [DistribuidorController::class, 'aceptarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_edit');
+
+Route::get('/distribuidor/show/detalle/{id}', [DistribuidorController::class, 'showDetalle'])->middleware(['auth'])->name('distribuidor_detalle_show');
+//Route::get('/distribuidor/mostrar/detalle/{id}', [DistribuidorController::class, 'mostrarDetalle'])->middleware(['auth'])->name('distribuidor_detalle_edit');
+
+Route::delete('/distribuidor/delete/entrega//{id}', [DistribuidorController::class, 'rechazarEntrega'])->middleware(['auth'])->name('distribuidor_entrega_destroy');
+
 
 //Ruta Donación
 
@@ -151,3 +175,34 @@ Route::resource('/tecnico', TecnicoController::class)->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';
+
+//Rutas de las historias administrador
+Route::get('/historia', [HistoriaController::class, 'verHistoriaAdministrador'])->middleware(['auth'])->name('administrador_historia');
+//Rutas de las historias visitante
+Route::get('/historia/visitante', [HistoriaController::class, 'verHistoriaVisitante'])->middleware(['guest'])->name('visitante_historia');
+
+Route::get('/historia/create', [HistoriaController::class, 'create'])->middleware(['auth'])->name('administrador_crear_historia');
+Route::post('/historia/create', [HistoriaController::class, 'store'])->middleware(['auth'])->name('administrador_crear_post_historia');
+
+Route::delete('/historia/delete/{id}', [HistoriaController::class, 'destroy'])->middleware(['auth'])->name('historia_delete');
+
+Route::get('/historia/edit/{id}', [HistoriaController::class, 'edit'])->middleware(['auth'])->name('historia_edit');
+
+
+Route::put('/historia/edit/{id}', [HistoriaController::class, 'update'])->middleware(['auth'])->name('historia_update');
+//Route::resource('/historia', HistoriaController::class);
+
+//rutas charlas 
+Route::get('/charla', [CharlaController::class, 'verCharlaAdministrador'])->middleware(['auth'])->name('administrador_charla');
+
+Route::get('/charla/visitante', [CharlaController::class, 'verCharlaVisitante'])->middleware(['guest'])->name('visitante_charla');
+
+Route::get('/charla/create', [CharlaController::class, 'create'])->middleware(['auth'])->name('administrador_crear_charla');
+Route::post('/charla/create', [CharlaController::class, 'store'])->middleware(['auth'])->name('administrador_crear_post_charla');
+
+Route::delete('/charla/delete/{id}', [CharlaController::class, 'destroy'])->middleware(['auth'])->name('charla_delete');
+
+Route::get('/charla/edit/{id}', [CharlaController::class, 'edit'])->middleware(['auth'])->name('charla_edit');
+
+
+Route::put('/charla/edit/{id}', [CharlaController::class, 'update'])->middleware(['auth'])->name('charla_update');

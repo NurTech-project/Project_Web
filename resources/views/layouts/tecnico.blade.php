@@ -20,6 +20,10 @@
                     <x-nav-link :href="route('tecnico_diagnostico')" :active="request()->routeIs('diagnostico')">
                         {{ __('Diagnósticos') }}
                     </x-nav-link>
+                    
+                    <x-nav-link :href="route('tecnico_entrega_dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Entrega de equipos diagnosticados') }}
+                    </x-nav-link>
                 </div>
             </div>
 

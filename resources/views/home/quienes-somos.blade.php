@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Nur Tech</title>
+        <title>Quienes-somos</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,7 +19,6 @@
     margin: 0;
     padding: 0;
 }
-
 body {
     background-image: linear-gradient(rgba(255, 255, 255, 0.911), rgba(255, 255, 255, 0.911)), url("/imagenes/fondo.jpg");
     background-size: cover;
@@ -30,16 +29,9 @@ body {
     padding: 0;
     height: 100vh;
 }
-
-
 /* ------------------------- */
-
-
 /* Separador */
-
-
 /* ------------------------- */
-
 #banner {
     width: 100%;
     max-height: 670px;
@@ -50,17 +42,14 @@ body {
     background: #fff;
     background-size: cover;
 }
-
 #banner img {
     width: 100%;
 }
-
 .texto-encima {
     position: absolute;
     top: 160px;
     left: 1000px;
 }
-
 .centrado {
     position: absolute;
     margin-right: 5%;
@@ -71,12 +60,9 @@ body {
     -webkit-text-stroke: 1.3px rgb(0, 0, 0);
     font-family: 'Noto Serif', serif;
 }
-
-
 /*
 MISION
 */
-
 .mision {
     position: absolute;
     width: 100%;
@@ -88,30 +74,24 @@ MISION
     -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .parrafo {
     position: absolute;
     left: 10%;
     right: 40%;
     font-family: 'Noto Serif', serif;
 }
-
 .donacionimagen {
     position: absolute;
     top: 1%;
     left: 70%;
 }
-
-
 /* FRASE*/
-
 .imagendos {
     position: absolute;
     top: 130%;
     height: 27%;
     width: 100%;
 }
-
 .frase1 {
     position: absolute;
     margin-right: 5%;
@@ -122,10 +102,7 @@ MISION
     -webkit-text-stroke: 0.5px #fff;
     font-family: 'Noto Serif', serif;
 }
-
-
 /*VISION*/
-
 .vision {
     position: absolute;
     width: 100%;
@@ -137,30 +114,24 @@ MISION
     -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .parrafo2 {
     position: absolute;
     left: 10%;
     right: 40%;
     font-family: 'Noto Serif', serif;
 }
-
 .reparacionimagen {
     position: absolute;
     top: 1%;
     left: 70%;
 }
-
-
 /* FRASE 2*/
-
 .imagentres {
     position: absolute;
     top: 195%;
     height: 27%;
     width: 100%;
 }
-
 .frase2 {
     position: absolute;
     margin-right: 5%;
@@ -171,10 +142,7 @@ MISION
     -webkit-text-stroke: 0.5px #fff;
     font-family: 'Noto Serif', serif;
 }
-
-
 /* Donar*/
-
 .donar {
     position: absolute;
     width: 100%;
@@ -186,14 +154,12 @@ MISION
     -webkit-text-stroke: 1px rgba(249, 250, 198, 0.651);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .parrafo3 {
     position: absolute;
     left: 17%;
     right: 40%;
     font-family: 'Noto Serif', serif;
 }
-
 .btn {
     background: #B061DF;
     top: 240%;
@@ -209,15 +175,11 @@ MISION
     text-decoration: none;
     box-shadow: 5px 3px 0pc #373c3c;
 }
-
 .btn:hover {
     box-shadow: 0px 0px 0px;
     padding-top: 7px
 }
-
-
 /*PIE DE PAGINA*/
-
 footer {
     position: relative;
     top: 280%;
@@ -241,6 +203,8 @@ footer {
         <a href="{{url('/home/quienes-somos')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">¿Quienes Somos?</a>
         <a href="{{url('/home/quiero-computador')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Quiero un Computador</a>
         <a href="{{url('/home/ser-voluntario')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Ser Voluntario</a>
+        <a href="{{url('/historia/visitante')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Historias</a>
+        <a href="{{url('/charla/visitante')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 rounded hover:bg-purple-400 hover:text-white transition-colors duration-300">Charlas</a>
         <a href="{{url('/login')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 text-center border border-solid border-purple-500 rounded hover:bg-purple-500 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Login</a>
         <a href="{{url('/register')}}" class="p-2 lg:px-4 md:mx-2 text-black-600 text-center border border-solid border-purple-500 rounded hover:bg-purple-500 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Register</a>
       </div>

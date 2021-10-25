@@ -17,7 +17,8 @@ class CreateHistoriasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('administrador_id');
             $table->string('imagen')->nullable();
-            $table->string('descripcion',300);
+            $table->text('descripcion')->nullable();
+            $table->string('estado')->nullable();
            
             $table->foreign('administrador_id')->references('id')->on('administradors')->onUpdate('cascade');
 

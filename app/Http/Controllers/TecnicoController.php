@@ -10,6 +10,7 @@ use App\Models\Equipo;
 use App\Models\Tecnico;
 use App\Models\DetalleDonacion;
 use App\Models\DetalleRecepcionTecnico;
+use App\Models\DetalleEntregaDonacion;
 use App\Models\Diagnostico;
 use App\Models\Distribuidor;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +37,10 @@ class TecnicoController extends Controller
         'users.nombre as userNombre','users.apellido as userApellido',
         'users.email as userEmail','equipos.sistema_operativo as equipoSistema',
         'equipos.procesador as equipoProcesador','equipos.ram as equipoRam','equipos.almacenamiento as equipoAlmacenamiento',
-        'equipos.detalle as equipoDetalle','equipos.estado as equipoEstado')
+        'equipos.detalle as equipoDetalle','equipos.estado as equipoEstado',
+        'detalle_recepcion_tecnicos.estado as recepcionEstado','detalle_recepcion_tecnicos.tecnico_id as tecnicoId')
         ->get();
+        
         $perfilTecnico = DB::table('tecnicos')
         ->join('users','users.id','=','tecnicos.user_id')
         ->select('tecnicos.descripcion', 'tecnicos.id', 'tecnicos.disponibilidad', 
@@ -50,16 +53,18 @@ class TecnicoController extends Controller
 
         $tecnicos=DB::table('tecnicos')
         ->join('users', 'users.id','=','tecnicos.user_id')
+        ->select('tecnicos.id as tecnicoID')
+        ->where('tecnicos.user_id', '=', Auth::user()->id)
         ->get();
 
         $equiposAceptados=array();
         $equiposAgendados=array();
         foreach ($donancionEquipo as $equipos){
            foreach ($tecnicos as $tecnico){
-            if($equipos->equipoEstado == 'Agendado' && $tecnico->user_id == Auth::user()->id){
+            if($equipos->recepcionEstado == 'Agendado' && $tecnico->tecnicoID == $equipos->tecnicoId){
                 $equiposAgendados[]=$equipos;
                 //dd($equiposAgendados);
-            }elseif($equipos->equipoEstado == 'Mantenimiento' && $tecnico->user_id == Auth::user()->id){
+            }elseif($equipos->recepcionEstado == 'Mantenimiento' && $tecnico->tecnicoID == $equipos->tecnicoId){
                 $equiposAceptados[]=$equipos;
                 //dd($equiposAceptados);
             }
@@ -75,7 +80,8 @@ class TecnicoController extends Controller
         'piezas.id as piezaId','detalle_recepcion_tecnicos.id as recepcionId',
         'users.nombre as userNombre','users.apellido as userApellido',
         'users.email as userEmail','piezas.nombre as piezaNombre',
-        'piezas.detalle as piezaDetalle','piezas.estado as piezaEstado')
+        'piezas.detalle as piezaDetalle','piezas.estado as piezaEstado',
+        'detalle_recepcion_tecnicos.estado as recepcionEstado','detalle_recepcion_tecnicos.tecnico_id as tecnicoId')
         ->get();
         
 
@@ -84,10 +90,10 @@ class TecnicoController extends Controller
 
         foreach ($donancionPieza as $piezas){
             foreach ($tecnicos as $tecnico){
-             if($piezas->piezaEstado == 'Agendado' && $tecnico->user_id == Auth::user()->id){
+             if($piezas->recepcionEstado == 'Agendado' && $tecnico->tecnicoID == $piezas->tecnicoId){
                 $piezasAgendadas[]=$piezas;
                 //dd($piezasAgendadas);
-            }elseif($piezas->piezaEstado == 'Mantenimiento' && $tecnico->user_id == Auth::user()->id){
+            }elseif($piezas->recepcionEstado == 'Mantenimiento' && $tecnico->tecnicoID == $piezas->tecnicoId){
                 $piezasAceptadas[]=$piezas;
             }
             }
@@ -566,4 +572,88 @@ class TecnicoController extends Controller
         $pieza->save();
         return redirect('tecnico/diagnostico');
     }
+
+    public function vistaEntrega()
+    {
+        $entregaPendiente=DB::table('detalle_entrega_donacions')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.diagnostico_id')
+        ->join('tecnicos','tecnicos.id','=','diagnosticos.tecnico_id')
+        ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+        'detalle_entrega_donacions.estado_beneficiario as estado','detalle_entrega_donacions.id as entregaId')
+        ->where('tecnicos.user_id','=',Auth::user()->id)
+        ->where('detalle_entrega_donacions.estado_tecnico','=','Pendiente')
+        ->get();
+
+        $entregaAceptada=DB::table('detalle_entrega_donacions')
+        ->join('diagnosticos','diagnosticos.id','=','detalle_entrega_donacions.beneficiario_id')
+        ->join('tecnicos','tecnicos.id','=','diagnosticos.tecnico_id')
+        ->select('detalle_entrega_donacions.fecha_entrega as fecha','diagnosticos.detalle as detalle',
+        'detalle_entrega_donacions.estado_beneficiario as estado')
+        ->where('tecnicos.user_id','=',Auth::user()->id)
+        ->where('detalle_entrega_donacions.estado_tecnico','=','Aceptado')
+        ->get();
+       //dd($entregaPendiente);
+         return view('tecnico.entrega-dashboard', compact('entregaPendiente','entregaAceptada'));
+    }
+
+    public function aceptarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+
+        $diagnostico=Diagnostico::findOrFail($entrega->diagnostico_id);
+        $diagnostico->estado = 'Entregado';
+
+        $recepcion=DetalleRecepcionTecnico::findOrFail($diagnostico->detalle_recepcion_id);
+        $recepcion->estado = 'Entregado';
+
+
+        $donacion=DetalleDonacion::findOrFail($recepcion->detalle_donacion_id);
+        $donacion->estado = 'Entregado';
+
+
+        $equipo=Equipo::findOrFail($donacion->equipo_id);
+        $equipo->estado = 'Entregado';
+
+
+        $entrega->estado_tecnico='Aceptado';
+
+        $entrega->save();
+        $diagnostico->save();
+        $recepcion->save();
+        $donacion->save();
+        $equipo->save();
+
+        return redirect('tecnico/vista/entrega');
+    }
+
+    public function rechazarEntrega($id)
+    {
+        $entrega=DetalleEntregaDonacion::findOrFail($id);
+
+        $diagnostico=Diagnostico::findOrFail($entrega->diagnostico_id);
+        $diagnostico->estado = 'Diagnosticado';
+
+        $recepcion=DetalleRecepcionTecnico::findOrFail($diagnostico->detalle_recepcion_id);
+        $recepcion->estado = 'Diagnosticado';
+
+
+        $donacion=DetalleDonacion::findOrFail($recepcion->detalle_donacion_id);
+        $donacion->estado = 'Diagnosticado';
+
+
+        $equipo=Equipo::findOrFail($donacion->equipo_id);
+        $equipo->estado = 'Diagnosticado';
+
+
+        $entrega->estado_tecnico='Rechazado';
+        //$entrega->diagnostico_id=null;
+        $entrega->update();
+        $diagnostico->update();
+        $recepcion->update();
+        $donacion->update();
+        $equipo->update();
+
+        return redirect('tecnico/vista/entrega');
+    }
+    
 }
