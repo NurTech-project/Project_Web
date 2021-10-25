@@ -71,3 +71,7 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+// E-mail verification
+Route::post('/register/verify',[RegisteredUserController::class,'accountVerification'])->name('verify');
+Route::get('/register/verify',[RegisteredUserController::class,'vista'])
+->middleware('guest');

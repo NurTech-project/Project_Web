@@ -37,31 +37,64 @@ class AuthenticatedSessionController extends Controller
         if((DB::table('users')
         ->join('roles', 'users.role_id','=','roles.id')
         ->where('email', $request->email)->value('roles.descripcion') === 'Donante')){
-        return redirect()->intended(RouteServiceProvider::DONANTE);
+        $confirmed=DB::table('users')->where('email','=',$request->email)->get(); 
+        foreach($confirmed as $user){
+            if($user->confirmed == 1){
+                return redirect()->intended(RouteServiceProvider::DONANTE);
+
+            }
+        }
         }
 
         if((DB::table('users')
         ->join('roles', 'users.role_id','=','roles.id')
         ->where('email', $request->email)->value('roles.descripcion') === 'Beneficiario')){
-        return redirect()->intended(RouteServiceProvider::BENEFICIARIO);
+            $confirmed=DB::table('users')->where('email','=',$request->email)->get(); 
+        foreach($confirmed as $user){
+            if($user->confirmed == 1){
+                return redirect()->intended(RouteServiceProvider::BENEFICIARIO);
+            } 
+        }
+        
+        
         }
 
         if((DB::table('users')
         ->join('roles', 'users.role_id','=','roles.id')
         ->where('email', $request->email)->value('roles.descripcion') === 'Distribuidor')){
-        return redirect()->intended(RouteServiceProvider::DISTRIBUIDOR);
+        $confirmed=DB::table('users')->where('email','=',$request->email)->get(); 
+        foreach($confirmed as $user){
+            if($user->confirmed == 1){
+                return redirect()->intended(RouteServiceProvider::DISTRIBUIDOR);
+
+            } 
+        }
+        
         }
 
         if((DB::table('users')
         ->join('roles', 'users.role_id','=','roles.id')
         ->where('email', $request->email)->value('roles.descripcion') === 'Técnico')){
-        return redirect()->intended(RouteServiceProvider::TECNICO);
+            $confirmed=DB::table('users')->where('email','=',$request->email)->get(); 
+            foreach($confirmed as $user){
+                if($user->confirmed == 1){
+                    return redirect()->intended(RouteServiceProvider::TECNICO);
+             } 
+            }
         }
+        
 
         if((DB::table('users')
         ->join('roles', 'users.role_id','=','roles.id')
         ->where('email', $request->email)->value('roles.descripcion') === 'Administrador')){
-        return redirect()->intended(RouteServiceProvider::ADMINISTRADOR);
+            $confirmed=DB::table('users')->where('email','=',$request->email)->get(); 
+            foreach($confirmed as $user){
+                if($user->confirmed == 1){
+                    return redirect()->intended(RouteServiceProvider::ADMINISTRADOR);
+             } 
+            }
+        
+        
         }
         
     }

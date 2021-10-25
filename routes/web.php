@@ -166,6 +166,10 @@ Route::resource('/tecnico', TecnicoController::class)->middleware(['auth']);
 
 
 
+Auth::routes(['verify'=>true]);
+
+Route::get('/confirmation_code',[]);
+
 require __DIR__.'/auth.php';
 
 //Rutas de las historias administrador
