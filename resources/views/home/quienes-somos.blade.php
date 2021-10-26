@@ -218,7 +218,7 @@ footer {
 
 
             <center>
-                <div class="texto-encima"><img src="/imagenes/logo_nur_tech.png" alt=""></div>
+                
                 <div class="centrado">Bienvenido a nuestro sitio en este lugar podrás ayudar a la comunidad con tus donaciones o en caso de necesitar aquí te donaremos un equipo</div>
             </center>
         </div>
