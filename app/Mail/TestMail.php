@@ -30,6 +30,6 @@ class TestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Pueba de correo')->view('emails.verification_code');
+        return $this->subject('Prueba de correo')->view('emails.verification_code');
     }
 }

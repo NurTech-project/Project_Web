@@ -107,6 +107,7 @@ class RegisteredUserController extends Controller
         $user->direccion = $request->direccion;
         $user->email = $request->email;
         $user->confirmation_code= $randomCode;
+        $user->confirmed=0;
         $user->password = Hash::make($request->password);
         
         $roles= DB::table('roles')->get();
