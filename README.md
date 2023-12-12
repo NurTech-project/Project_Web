@@ -63,10 +63,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-se debe revisar en este proyecto:
-compose install o compose update
-verificar el archivo .env y no dejar .env.example ya que no corre
-luego php artisan migrate-> tablas
-luego php artisan db:seed
-luego php artisan storage:link -> mostrar imagenes
-luego ya ejecutar php artisan serve
+## Pasos a correr
+-se debe revisar en este proyecto:
+-compose install o compose update
+-verificar el archivo .env y no dejar .env.example ya que no corre
+-luego php artisan migrate-> tablas
+-luego php artisan db:seed
+-luego php artisan storage:link -> mostrar imagenes
+-luego ya ejecutar php artisan serve
