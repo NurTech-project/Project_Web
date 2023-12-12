@@ -30,11 +30,11 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        // $roles=DB::table('roles')->get();
+         $roles=DB::table('roles')->get();
 
-        $roles=DB::table('roles')->where([
-            ['descripcion', '<>', 'Administrador'],
-        ])->get();
+        //$roles=DB::table('roles')->where([
+        //    ['descripcion', '<>', 'Administrador'],
+        //])->get();
 
         $provincias=DB::table('provincias')->get();
 
@@ -107,7 +107,7 @@ class RegisteredUserController extends Controller
         $user->direccion = $request->direccion;
         $user->email = $request->email;
         $user->confirmation_code= $randomCode;
-        $user->confirmed=0;
+        $user->confirmed=1;
         $user->password = Hash::make($request->password);
         
         $roles= DB::table('roles')->get();
@@ -115,11 +115,12 @@ class RegisteredUserController extends Controller
     /**
          * Send mail for verified
          */
-        $details = [
-            'title' => 'Código de verificación',
-            'body' => $user->confirmation_code
-        ];
-        Mail::to($user->email)->send(new TestMail($details));
+        
+        //$details = [
+        //    'title' => 'Código de verificación',
+        //    'body' => $user->confirmation_code
+        //];
+        //Mail::to($user->email)->send(new TestMail($details));
 
         
         
@@ -152,7 +153,7 @@ class RegisteredUserController extends Controller
                 }
             }
             //colocar lo de beneficiario de ser el caso
-            return redirect('/register/verify');
+            return redirect('/login');
             
         }    
     }
