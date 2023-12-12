@@ -69,7 +69,12 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 -compose install o compose update
 
 -verificar el archivo .env y no dejar .env.example ya que no corre
+
 -luego php artisan migrate-> tablas
+
 -luego php artisan db:seed
+
 -luego php artisan storage:link -> mostrar imagenes
+
 -luego ya ejecutar php artisan serve
+
