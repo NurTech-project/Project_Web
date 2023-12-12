@@ -65,7 +65,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Pasos a correr
 -se debe revisar en este proyecto:
+
 -compose install o compose update
+
 -verificar el archivo .env y no dejar .env.example ya que no corre
 -luego php artisan migrate-> tablas
 -luego php artisan db:seed
